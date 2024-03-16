@@ -1,5 +1,6 @@
 # General
-title: The Awesome Jekyll Template
+title: O Blog do Douglas
+sub_title: Engenheiro de Software, Pesquisador de Soluções Sênior V e Core Team da comunidade Stackoverflow Oriented Programming.
 email: example_author@email.com
 source: .
 destination: ./public
