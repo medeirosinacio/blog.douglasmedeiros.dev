@@ -11,6 +11,8 @@ html {
   font-size: inherit;
   line-height: inherit;
   font-weight: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 // Custom Bootstrap classes
@@ -73,15 +75,32 @@ a.nav-link {
 }
 
 // index.html:10
-article {
-  border: none;
+article .card-title a:hover {
+  color: white;
+}
+
+article, article card, article .card-header, article .card-body {
+  border: none !important;
+  background-color: initial !important;
+}
+
+article .card-body .card-img-top {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 250px;
+  width: 100%;
+}
+
+article .card-body .card-text {
+  font-size: 1.11rem;
+  font-weight: 100;
+  line-height: 1.5;
 }
 
 // _includes/aside.html
 .aside-input {
-  border: solid 1px #8a8a8a;
   border-radius: 6px;
-  background-color: #4545455c;
 }
 
 .aside-input input {
@@ -97,7 +116,6 @@ article {
   background: none;
   box-shadow: none;
   border: 0;
-  color: #666666;
   padding: 0 8px 0 10px;
   border-left: solid 1px #ccc;
   border-radius: 0;
@@ -106,7 +124,6 @@ article {
 .aside-input button:hover {
   border: 0;
   box-shadow: none;
-  border-left: solid 1px #ccc;
 }
 
 .aside-input i {
