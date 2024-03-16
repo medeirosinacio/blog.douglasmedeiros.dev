@@ -28,9 +28,14 @@ body.mode-dark {
     background-color: rgba(117, 117, 117, 0.11);
   }
 
+  // index.html:10
+  article {
+    background-color: initial;
+  }
+
 }
 
-body.mode-dark:before {
+body.mode-dark:after {
   content: "";
   position: absolute;
   z-index: -1;

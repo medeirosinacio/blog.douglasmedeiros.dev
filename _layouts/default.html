@@ -3,15 +3,25 @@ layout: html_minifier
 ---
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: 'en-US' }}">
-{% include head.html %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="index, follow"/>
+    <meta charset="utf-8">
+    {%if paginator and paginator.page != 1 %} <title> {{ page.title }} - Página {{ paginator.page }} | {{ site.title }} </title>{% endif %}
+    {% seo %}
+    <link rel="stylesheet" href="{{ site.srcurl }}{{ site.css_path }}main.css">
+    <link rel="icon" type="image/x-icon" href="{{ site.srcurl }}/favicon.ico">
+    <!--[if IE]>
+    <link rel="shortcut icon" href="{{ site.srcurl }}/favicon.ico"><![endif]-->
+</head>
 <body class="d-flex flex-column h-100 mode-dark" cz-shortcut-listen="true">
-{% include header.html %}
-<main class="flex-shrink-0">
-    <a href="#" class="btn btn-primary switch">Switch Light/Dark</a>
-    {{ content }}
-</main>
-{% include footer.html %}
-<script src="{{ site.srcurl }}{{ site.js_path }}bootstrap/bootstrap.bundle.min.js"></script>
-<script src="{{ site.srcurl }}{{ site.js_path }}bundle.js"></script>
+    {% include header.html %}
+    <main class="flex-shrink-0">
+<!--        <a href="#" class="btn btn-primary switch">Switch Light/Dark</a>-->
+        {{ content }}
+    </main>
+    {% include footer.html %}
+    <script src="{{ site.srcurl }}{{ site.js_path }}bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="{{ site.srcurl }}{{ site.js_path }}bundle.js"></script>
 </body>
 </html>
