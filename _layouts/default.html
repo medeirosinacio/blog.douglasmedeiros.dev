@@ -14,13 +14,12 @@ layout: html_minifier
     <!--[if IE]>
     <link rel="shortcut icon" href="{{ site.srcurl }}/favicon.ico"><![endif]-->
 </head>
-<body class="d-flex flex-column h-100 mode-dark" cz-shortcut-listen="true">
+<body class="d-flex flex-column mode-dark" cz-shortcut-listen="true">
     {% include header.html %}
     <main class="flex-shrink-0">
 <!--        <a href="#" class="btn btn-primary switch">Switch Light/Dark</a>-->
         {{ content }}
     </main>
-    {% include footer.html %}
     <script src="{{ site.srcurl }}{{ site.js_path }}bootstrap/bootstrap.bundle.min.js"></script>
     <script src="{{ site.srcurl }}{{ site.js_path }}bundle.js"></script>
 </body>
