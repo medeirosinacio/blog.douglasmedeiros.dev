@@ -1,8 +1,8 @@
 ---
 layout: blog-post
 date: 2020-04-23
-permalink: /blog/:categories/blog-post-dois
-title: Blog Post Dois
+permalink: /artigos/:categories/blog-post-dois
+title: "Desmistificando o Docker: A Revolução da Virtualização de Contêineres"
 categories: categoria-um
 tags:
     - tag1

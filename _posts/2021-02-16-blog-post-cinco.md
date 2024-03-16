@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 date: 2021-02-16
-permalink: /blog/:categories/blog-post-cinco
+permalink: /artigos/:categories/blog-post-cinco
 title: Blog Post Cinco
 categories: categoria-cinco
 tags:

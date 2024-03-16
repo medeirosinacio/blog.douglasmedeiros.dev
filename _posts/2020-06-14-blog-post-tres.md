@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 date: 2020-06-14
-permalink: /blog/:categories/blog-post-tres
+permalink: /artigos/:categories/blog-post-tres
 title: Blog Post Três
 categories: categoria-dois
 tags:

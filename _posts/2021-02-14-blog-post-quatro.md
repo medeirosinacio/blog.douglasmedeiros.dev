@@ -1,7 +1,7 @@
 ---
 layout: blog-post
 date: 2021-02-14
-permalink: /blog/:categories/blog-post-quatro
+permalink: /artigos/:categories/blog-post-quatro
 title: Blog Post Quatro
 categories: categoria-dois
 tags:

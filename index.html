@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Blog
+title: V0
 ---
 
 <!-- Page Content-->
@@ -9,15 +9,23 @@ title: Blog
         <div class="row">
             <div class="col-md-9">
                 {% for post in paginator.posts %}
-                <article class="card mb-3">
-                    <img src="{{ site.srcurl }}{{ site.image_path }}{{ post.image }}" class="card-img-top" alt="...">
+                <article class="card py-4">
+                    <header class="card-header">
+                        <h4 class="card-title">
+                            <a class="text-inherit fw-bolder fs-1 color-hover" href="{{ site.srcurl }}{{ post.url }}">
+                                {{ post.title }}
+                            </a>
+                        </h4>
+                    </header>
                     <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">
-                            {{ post.introduction | strip_html | strip_newlines | truncate: 150 }}
+                        <a class="card-img-top d-block" style="background-image: url('{{ site.srcurl }}{{ site.image_path }}{{ post.image }}')" href="{{ site.srcurl }}{{ post.url }}"></a>
+                        <p class="card-text pt-2">
+                            {{ post.introduction | strip_html | strip_newlines | truncate: 500 }}
                         </p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                     </div>
+                    <footer class="card-footer">
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </footer>
                 </article>
                 <!--                <div class="card border-0 shadow rounded-3 overflow-hidden mb-4">-->
                 <!--                    <div class="card-body p-0 link-hover-blue">-->
@@ -48,7 +56,7 @@ title: Blog
                 <!--                </div>-->
                 {% endfor %}
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 pt-5">
                 {% include aside.html %}
             </div>
         </div>

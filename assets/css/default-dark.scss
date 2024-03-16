@@ -3,7 +3,7 @@ body.mode-dark {
   background: #171c1e;
 
   .color-hover:hover {
-    color: #e7903a;
+    color: #ee9749;
   }
 
   //_includes/header.html:7
@@ -31,6 +31,21 @@ body.mode-dark {
   // index.html:10
   article {
     background-color: initial;
+  }
+
+  // _includes/aside.html
+  .aside-input {
+    border: solid 1px #8a8a8a;
+    background-color: #4545455c;
+  }
+
+  .aside-input button {
+    color: #666666;
+    border-left: solid 1px #ccc;
+  }
+
+  .aside-input button:hover {
+    border-left: solid 1px #ccc;
   }
 
 }
