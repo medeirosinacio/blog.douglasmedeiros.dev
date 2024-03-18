@@ -4,7 +4,6 @@ html {
   font-family: "Open Sans", sans-serif;
   min-height: 100%;
   position: relative;
-  height: 100vh;
 }
 
 // reset text
@@ -129,4 +128,21 @@ article .card-body .card-text {
 
 .aside-input i {
   font-size: 17px;
+}
+
+aside .badge {
+  border-radius: 5px;
+  font-size: 0.80rem;
+  font-weight: 400;
+}
+
+aside .latest-post li{
+  color: white;
+  background-color: initial;
+  font-size: 0.90rem;
+  font-weight: 500;
+}
+
+aside .badge span {
+  padding-right: 2px;
 }

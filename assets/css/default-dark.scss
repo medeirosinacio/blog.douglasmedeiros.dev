@@ -48,9 +48,13 @@ body.mode-dark {
     border-left: solid 1px #ccc;
   }
 
+  aside .badge {
+    background-color: #363636;
+    color: #9b9b9b;
+  }
 }
 
-body.mode-dark:after {
+body.mode-dark:before {
   content: "";
   position: absolute;
   z-index: -1;
