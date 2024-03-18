@@ -29,7 +29,15 @@
 
     </div>
     <div class="py-2">
-        <h3 class="d-block fs-5 fw-bolder">Categorias:</h3>
-
+        <h3 class="d-block fs-5 fw-bold">Categorias:</h3>
+        {% assign unique_tags = '' | split: ',' %}
+        {% for post in paginator.posts %}
+            {% for tag in post.tags %}
+                {% unless unique_tags contains tag %}
+                    {% assign unique_tags = unique_tags | push: tag %}
+                    <a class="badge bg-secondary opacity-50 rounded-pill m-1 text-inherit fs-7 color-hover" href="#">#{{ tag }}</a>
+                {% endunless %}
+            {% endfor %}
+        {% endfor %}
     </div>
 </aside>
