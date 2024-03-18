@@ -19,9 +19,9 @@ title: Blog
                     </header>
                     <div class="card-body">
                         <a class="card-img-top d-block" style="background-image: url('{{ site.srcurl }}{{ site.image_path }}{{ post.image }}')" href="{{ site.srcurl }}{{ post.url }}" title="{{ post.title }}"></a>
-                        <p class="card-text pt-2">
+                        <a class="card-text pt-2 text-decoration-none" href="{{ site.srcurl }}{{ post.url }}" title="{{ post.title }}">
                             {{ post.introduction | strip_html | strip_newlines | truncate: 500 }}
-                        </p>
+                        </a>
                     </div>
                     <footer class="card-footer">
                         <p class="card-text">
