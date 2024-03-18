@@ -1,6 +1,6 @@
 ---
 layout: default
-title: V0
+title: Blog
 ---
 
 <!-- Page Content-->
@@ -12,19 +12,46 @@ title: V0
                 <article class="card py-4">
                     <header class="card-header">
                         <h4 class="card-title">
-                            <a class="text-inherit fw-bolder fs-1 color-hover" href="{{ site.srcurl }}{{ post.url }}">
+                            <a class="text-inherit fw-bolder fs-1 color-hover" href="{{ site.srcurl }}{{ post.url }}" title="{{ post.title }}">
                                 {{ post.title }}
                             </a>
                         </h4>
                     </header>
                     <div class="card-body">
-                        <a class="card-img-top d-block" style="background-image: url('{{ site.srcurl }}{{ site.image_path }}{{ post.image }}')" href="{{ site.srcurl }}{{ post.url }}"></a>
+                        <a class="card-img-top d-block" style="background-image: url('{{ site.srcurl }}{{ site.image_path }}{{ post.image }}')" href="{{ site.srcurl }}{{ post.url }}" title="{{ post.title }}"></a>
                         <p class="card-text pt-2">
                             {{ post.introduction | strip_html | strip_newlines | truncate: 500 }}
                         </p>
                     </div>
                     <footer class="card-footer">
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text">
+                        <small class="text-muted">
+                            {% assign m = post.date | date: "%-m" %}
+                            {{ post.date | date: "%-d" }}
+                            {% case m %}
+                                {% when '1' %}Janeiro
+                                {% when '2' %}Fevereiro
+                                {% when '3' %}Março
+                                {% when '4' %}Abril
+                                {% when '5' %}Maio
+                                {% when '6' %}Junho
+                                {% when '7' %}Julho
+                                {% when '8' %}Agosto
+                                {% when '9' %}Setembro
+                                {% when '10' %}Outubro
+                                {% when '11' %}Novembro
+                                {% when '12' %}Dezembro
+                            {% endcase %}
+                            {{ post.date | date: "%Y" }}
+                            ·
+                            {% assign wordCount = post.content | number_of_words | divided_by: 50 %}
+                            {% if wordCount < 1 %}
+                                {{ '1 min para ler' }}
+                            {% else %}
+                                {{ wordCount }}&nbsp;min para ler
+                            {% endif %}
+                        </small>
+                        </p>
                     </footer>
                 </article>
                 <!--                <div class="card border-0 shadow rounded-3 overflow-hidden mb-4">-->
