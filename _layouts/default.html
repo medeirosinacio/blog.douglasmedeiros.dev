@@ -13,6 +13,7 @@ layout: html_minifier
     <link rel="icon" type="image/x-icon" href="{{ site.srcurl }}/favicon.ico">
     <!--[if IE]>
     <link rel="shortcut icon" href="{{ site.srcurl }}/favicon.ico"><![endif]-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="d-flex flex-column mode-dark" cz-shortcut-listen="true">
     {% include header.html %}
@@ -20,6 +21,9 @@ layout: html_minifier
 <!--        <a href="#" class="btn btn-primary switch">Switch Light/Dark</a>-->
         {{ content }}
     </main>
+    <footer class="text-center my-4">
+        <p>&copy; 2024 Douglas Medeiros. Todos os direitos reservados.</p>
+    </footer>
     <script src="{{ site.srcurl }}{{ site.js_path }}bootstrap/bootstrap.bundle.min.js"></script>
     <script src="{{ site.srcurl }}{{ site.js_path }}bundle.js"></script>
 </body>
