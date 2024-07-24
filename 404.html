@@ -8,87 +8,79 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
-
-        .article-meta {
-            font-size: 0.9rem;
-            color: #6c757d;
+        .blog-post {
+            margin: 2rem 0;
         }
-
-        .article-title {
-            font-size: 2.5rem;
-            margin-top: 1rem;
-        }
-
-        .article-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #6c757d;
-        }
-
         .author-info {
             display: flex;
             align-items: center;
+            margin-bottom: 1rem;
         }
-
-        .author-info img {
+        .author-photo {
             border-radius: 50%;
             width: 60px;
             height: 60px;
-            margin-right: 15px;
+            margin-right: 1rem;
         }
-
-        .author-info .author-details {
+        .author-details {
+            text-align: center;
+        }
+        .author-details h5 {
+            margin: 0;
+        }
+        .author-details p {
+            margin: 0;
             font-size: 0.9rem;
+            color: gray;
+        }
+        .content-column {
+            border-right: 1px solid #ddd;
+        }
+        @media (max-width: 768px) {
+            .content-column {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
         }
     </style>
 </head>
 <body>
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-md-8">
-            <article>
-                <header>
-                    <h1 class="article-title">Título do Artigo</h1>
-                    <h2 class="article-subtitle">Subtítulo do Artigo</h2>
-                    <div class="article-meta">
-                        <span>Publicado em: 24 de Julho de 2024</span> |
-                        <span>Tempo de leitura: 5 minutos</span>
-                    </div>
-                </header>
-                <section>
-                    <p>Este é o conteúdo do artigo. Pode incluir <strong>texto em negrito</strong>, <em>texto em
-                        itálico</em>, e <a href="#">links</a>.</p>
-                    <p>Você também pode adicionar imagens:</p>
-                    <img src="https://via.placeholder.com/800x400" class="img-fluid mb-4" alt="Descrição da Imagem">
-                    <p>Listas não ordenadas:</p>
-                    <ul>
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                    </ul>
-                    <p>Listas ordenadas:</p>
-                    <ol>
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                    </ol>
-                </section>
-            </article>
-        </div>
-        <div class="col-md-4">
-            <aside>
-                <div class="author-info">
-                    <img src="https://via.placeholder.com/60" alt="Foto do Autor">
-                    <div class="author-details">
-                        <p><strong>Nome do Autor</strong></p>
-                        <p>Profissão do Autor</p>
-                    </div>
+<div class="container">
+    <header class="my-4">
+        <h1>Nome do Blog</h1>
+        <p>Leituras interessantes e informativas.</p>
+    </header>
+    <main class="row">
+        <article class="col-md-8 blog-post">
+            <h2>Título do Artigo</h2>
+            <h4>Subtítulo do Artigo</h4>
+            <p class="text-muted">Publicado em: <time datetime="2024-07-24">24 de Julho de 2024</time> | Tempo de leitura: 5 minutos</p>
+            <img src="link-da-imagem.jpg" alt="Descrição da imagem" class="img-fluid my-3">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <h5>Seção do Artigo</h5>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <ul>
+                <li>Ponto 1</li>
+                <li>Ponto 2</li>
+                <li>Ponto 3</li>
+            </ul>
+            <pre><code>console.log('Código de exemplo');</code></pre>
+            <blockquote class="blockquote">
+                <p class="mb-0">"Citação de exemplo."</p>
+            </blockquote>
+        </article>
+        <aside class="col-md-4">
+            <div class="author-info">
+                <img src="https://via.placeholder.com/60" alt="Foto do Autor" class="author-photo">
+                <div class="author-details">
+                    <h5>Nome do Autor</h5>
+                    <p>Profissão do Autor</p>
                 </div>
-            </aside>
-        </div>
-    </div>
+            </div>
+        </aside>
+    </main>
 </div>
 <script>
     // Script para calcular o tempo de leitura
