@@ -16,8 +16,9 @@ title: Blog
                     </a>
                 </h2>
                 <p class="post-meta text-muted">
-                    Publicado em {% assign m = post.date | date: "%-m" %}
+                    Publicado em: {% assign m = post.date | date: "%-m" %}
                     {{ post.date | date: "%-d" }}
+                    de
                     {% case m %}
                     {% when '1' %}Janeiro
                     {% when '2' %}Fevereiro
@@ -32,13 +33,14 @@ title: Blog
                     {% when '11' %}Novembro
                     {% when '12' %}Dezembro
                     {% endcase %}
+                    de
                     {{ post.date | date: "%Y" }}
                     ·
                     {% assign wordCount = post.content | number_of_words | divided_by: 50 %}
                     {% if wordCount < 1 %}
-                    {{ '1 min para ler' }}
+                    {{ '1 minuto de leitura' }}
                     {% else %}
-                    {{ wordCount }}&nbsp;min para ler
+                    {{ wordCount }} minutos de leitura
                     {% endif %}
                 </p>
                 <div class="post-image mb-3">
@@ -129,9 +131,9 @@ title: Blog
                 </ul>
             </nav>
         </div>
-        <!--        <div class="col-md-3 d-none d-md-block">-->
-        <!--            {% include aside.html %}-->
-        <!--        </div>-->
+                <div class="col-md-3 d-none d-md-block">
+                    {% include aside.html %}
+                </div>
     </div>
 </div>
 <script>

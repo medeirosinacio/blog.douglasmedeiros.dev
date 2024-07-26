@@ -64,6 +64,13 @@ body.mode-dark {
     background-color: #363636;
     color: #9b9b9b;
   }
+
+  .badge.badge-primary {
+    background-color: #363636;
+    color: #9b9b9b;
+    font-size: 0.7rem;
+    margin-right: 0.5rem;
+  }
 }
 
 body.mode-dark:before {
