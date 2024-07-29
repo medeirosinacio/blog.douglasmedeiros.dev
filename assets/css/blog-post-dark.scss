@@ -1222,3 +1222,126 @@
 .post-content > *:first-child > .heading-element:first-child {
   margin-top: 0 !important;
 }
+
+/* Estilos gerais do bloco de código */
+.language-php {
+  color: #A9B7C6; /* Cor do texto */
+  border-radius: 4px;
+  overflow: auto;
+  font-family: Consolas, Monaco, monospace; /* Fonte de código */
+}
+
+/* Estilos para cada elemento destacado no código */
+.language-php .cp {
+  color: #d84848; /* Cor para keywords */
+}
+
+.language-php .kn {
+  color: #CC7832; /* Cor para palavras-chave */
+}
+
+.language-php .nn {
+  color: #B9B9B9; /* Cor para nomes de classes e namespaces */
+}
+
+.language-php .nc {
+  color: #B9B9B9; /* Cor para nomes de classes e namespaces */
+}
+
+.language-php .p {
+  color: #A9B7C6; /* Cor para pontuações e operadores */
+}
+
+.language-php .s1 {
+  color: #789765; /* Cor para strings */
+}
+
+.language-php .o, .language-php .kc {
+  color: #A9B7C6; /* Cor para operadores */
+}
+
+.language-php .no {
+  color: #CC7832; /* Cor para números */
+}
+
+.language-php .k {
+  color: #CC7832; /* Cor para palavras-chave */
+}
+
+.language-php .kd {
+  color: #CC7832; /* Cor para palavras-chave de declaração */
+}
+
+.language-php .kt {
+  color: #A9B7C6; /* Cor para tipos de dados */
+}
+
+.language-php .mf {
+  color: #CC7832; /* Cor para modificadores */
+}
+
+.language-php .nb {
+  color: #A9B7C6; /* Cor para nomes de funções e métodos */
+}
+
+.language-php .nf {
+  color: #FFC66D; /* Cor para nomes de funções e métodos */
+}
+
+.language-php .nt {
+  color: #A9B7C6; /* Cor para tags */
+}
+
+.language-php .n, .language-php .nb {
+  color: #FFC66D; /* Cor para nome metodo */
+}
+
+.language-php .nv {
+  color: #A782BB; /* Cor para valores de variáveis */
+}
+
+.language-php .mi {
+  color: #A9B7C6; /* Cor para números inteiros */
+}
+
+.language-php .cd, .language-php .c1 {
+  color: #5e6565; /* Cor para comentarios */
+}
+
+/* Opcional: destaque de linhas */
+.language-php pre {
+  border-left: 5px solid #7e7e7e; /* Linha de destaque à esquerda */
+  padding-left: 10px;
+}
+
+/* Opcional: estilizar a linha de código quando em foco */
+.language-php code:focus {
+  outline: none;
+  background-color: #3D3D3D; /* Cor de fundo ao focar */
+}
+
+// copiar
+/* Estilo para o botão de copiar */
+.language-php {
+  position: relative;
+}
+
+/* Criando o botão de copiar com ::after */
+.language-php::after {
+  content: '\F759';
+  font-family: 'Bootstrap Icons';
+  cursor: pointer;
+  font-size: 20px;
+  color: #a3a3a3;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 99;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* Estilo ao passar o mouse sobre o ícone */
+.language-php:hover::after {
+  color: #d3d3d3;
+}

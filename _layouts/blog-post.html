@@ -47,7 +47,7 @@ layout: default
             <div class="post-content pb-2">
                 {{ page.content}}
             </div>
-            <div class="post-tags small">
+            <div class="post-tags pt-2">
                 {% for tag in page.tags %}
                 <a class="badge badge-primary text-inherit color-hover" href="#"><span>#</span>{{ tag }}</a>
                 {% endfor %}
@@ -55,8 +55,9 @@ layout: default
         </div>
         <div class="col-md-3 d-none d-md-block">
             <div class="d-flex align-items-center mb-4">
-                <img class="img-fluid rounded-circle" src="{{ site.srcurl }}{{site.image_path}}40x40.png"
-                     alt="Avatar">
+                <img class="img-fluid rounded-circle"
+                     src="{{ site.srcurl }}{{site.image_path}}author/Douglas Medeiros - Engenheiro de Software.jpg"
+                     alt="Avatar" width="40" height="40">
                 <div class="ms-3">
                     <div class="fw-bold">{{ page.author }}</div>
                     <div class="text-muted">{{ page.author_title }}</div>
@@ -74,5 +75,19 @@ layout: default
         const {x, y} = button.getBoundingClientRect();
         button.style.setProperty("--x", e.clientX - x);
         button.style.setProperty("--y", e.clientY - y);
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.language-php').forEach(function (codeBlock) {
+            codeBlock.addEventListener('click', function () {
+                const textToCopy = codeBlock.textContent || codeBlock.innerText;
+                navigator.clipboard.writeText(textToCopy).then(function () {
+                    alert('Código copiado com sucesso!');
+                }).catch(function (err) {
+                    alert('Falha ao copiar o código.');
+                });
+            });
+        });
     });
 </script>

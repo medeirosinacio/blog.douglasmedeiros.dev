@@ -65,3 +65,8 @@
 .font-open-sans {
   font-family: "Open Sans", var(--bs-font-sans-serif) !important;
 }
+
+@font-face {
+  font-family: 'Bootstrap Icons';
+  src: url('./bootstrap-icons/fonts/bootstrap-icons.woff2') format('truetype');
+}
