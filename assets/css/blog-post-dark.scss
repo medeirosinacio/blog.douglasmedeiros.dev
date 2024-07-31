@@ -1224,7 +1224,7 @@
 }
 
 /* Estilos gerais do bloco de código */
-.language-php {
+.highlighter-rouge {
   color: #A9B7C6; /* Cor do texto */
   border-radius: 4px;
   overflow: auto;
@@ -1309,39 +1309,54 @@
 }
 
 /* Opcional: destaque de linhas */
-.language-php pre {
+.highlighter-rouge pre {
   border-left: 5px solid #7e7e7e; /* Linha de destaque à esquerda */
   padding-left: 10px;
 }
 
 /* Opcional: estilizar a linha de código quando em foco */
-.language-php code:focus {
+.highlighter-rouge code:focus {
   outline: none;
   background-color: #3D3D3D; /* Cor de fundo ao focar */
 }
 
+/* Estilos para o destaque de linha */
+/* Estilos para cada elemento destacado no código */
+.language-shell .nb {
+  color: #CC7832; /* Cor para comandos e palavras-chave */
+}
+
+.language-shell .nt {
+  color: #6A8759; /* Cor para opções e flags */
+}
+
+.language-shell .s2 {
+  color: #A9B7C6; /* Cor para strings */
+}
+
+.language-shell .se {
+  color: #A9B7C6; /* Cor para caracteres de escape */
+}
+
 // copiar
 /* Estilo para o botão de copiar */
-.language-php {
+.highlighter-rouge {
   position: relative;
 }
 
 /* Criando o botão de copiar com ::after */
-.language-php::after {
-  content: '\F759';
-  font-family: 'Bootstrap Icons';
+.highlighter-rouge span.copy {
   cursor: pointer;
   font-size: 20px;
   color: #a3a3a3;
   position: absolute;
   top: 10px;
   right: 10px;
-  z-index: 99;
   padding: 5px 10px;
   border-radius: 4px;
 }
 
 /* Estilo ao passar o mouse sobre o ícone */
-.language-php:hover::after {
+.highlighter-rouge span.copy:active {
   color: #d3d3d3;
 }

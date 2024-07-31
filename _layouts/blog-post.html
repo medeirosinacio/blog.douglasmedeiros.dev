@@ -66,28 +66,62 @@ layout: default
         </div>
     </article>
 </div>
-<script>
-    const button = document.querySelector(".pagination");
 
-    const readout = document.querySelector("p");
-
-    button.addEventListener("mousemove", (e) => {
-        const {x, y} = button.getBoundingClientRect();
-        button.style.setProperty("--x", e.clientX - x);
-        button.style.setProperty("--y", e.clientY - y);
-    });
-</script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.language-php').forEach(function (codeBlock) {
+
+        // Add copy button to code blocks
+        const codeElements = document.querySelectorAll('.highlighter-rouge');
+        codeElements.forEach(function (codeElement) {
+            const newDiv = document.createElement('span');
+            newDiv.className = 'copy';
+            newDiv.setAttribute('data-bs-toggle', 'tooltip');
+            newDiv.setAttribute('title', 'Código copiado!');
+            newDiv.innerHTML = '<i class="bi bi-copy"></i>';
+            codeElement.insertAdjacentElement('afterbegin', newDiv);
+        });
+
+        // Initialize code block tooltips
+        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function (tooltipTriggerEl) {
+            const tooltip = new bootstrap.Tooltip(tooltipTriggerEl, {
+                trigger: 'click',
+                placement: 'top',
+                animation: true
+            });
+            tooltipTriggerEl.addEventListener('shown.bs.tooltip', function () {
+                setTimeout(function () {
+                    tooltip.hide();
+                }, 1000);
+            });
+            return tooltip;
+        });
+
+        // Script to Copy code block to clipboard from click event in icon
+        document.querySelectorAll('.copy').forEach(function (codeBlock) {
             codeBlock.addEventListener('click', function () {
-                const textToCopy = codeBlock.textContent || codeBlock.innerText;
+                const code = codeBlock.parentNode.lastElementChild;
+                const textToCopy = code.textContent || code.innerText;
                 navigator.clipboard.writeText(textToCopy).then(function () {
-                    alert('Código copiado com sucesso!');
+                    console.log('Código copiado com sucesso!');
+                    console.log(textToCopy);
                 }).catch(function (err) {
-                    alert('Falha ao copiar o código.');
+                    console.log(err);
                 });
             });
+        });
+
+        // Customize/add class to blockquote based on type
+        document.querySelectorAll('blockquote').forEach(blockquote => {
+            const p = blockquote.querySelector('p');
+            if (p) {
+                const text = p.textContent.trim();
+                const type = text.match(/^\[!(\w+)\]/);
+                if (type) {
+                    const typeName = type[1].toLowerCase();
+                    p.textContent = text.replace(/^\[!\w+\]/, '').trim();
+                    blockquote.classList.add(typeName);
+                }
+            }
         });
     });
 </script>

@@ -19,6 +19,9 @@ O Windows Subsystem for Linux (WSL) tem se tornado uma ferramenta essencial para
 familiaridade do ambiente Linux com a robustez do sistema operacional Windows. Neste artigo, vamos explorar os
 benefícios, recursos e casos de uso do WSL.
 
+> [!TIP]
+> Optional information to help a user be more successful.
+
 ## **O que é o WSL?**
 
 O Windows Subsystem for Linux é uma camada de compatibilidade para executar aplicativos binários do Linux diretamente no
@@ -394,33 +397,52 @@ class TaskRepository extends BaseRepository implements TaskRepositoryInterface
 > WARNING: This is a warning.
 >
 
-```shell
-This is a note.
+```php
+
+sudo apt-get update
+git push origin branch_name
+cat /tmp/workload_result
+docker run -it ubuntu bash \
+    -c "echo 'Hello, World!'"
+  
 ```
 
-> [NOTE]
-> Useful information that users should know, even when skimming content.
+```shell
 
-<span data-type="note">
+sudo apt-get update
+git push origin branch_name
+cat /tmp/workload_result
+docker run -it ubuntu bash \
+    -c "echo 'Hello, World!'"
+  
+```
 
+```php
 
-> Useful information that users should know, even when skimming content.
+import os
 
+os.system("sudo apt-get update")
+  
+```
 
-</span>
-
-
-> [!NOTE]  
+> [!NOTE]
 > Highlights information that users should take into account, even when skimming.
+
 
 > [!TIP]
 > Optional information to help a user be more successful.
 
-> [!IMPORTANT]  
+
+> [!IMPORTANT]
 > Crucial information necessary for users to succeed.
 
-> [!WARNING]  
+
+> [!WARNING]
 > Critical content demanding immediate user attention due to potential risks.
+
 
 > [!CAUTION]
 > Negative potential consequences of an action.
+
+> [!NOTE]
+> ddddddddddddddddddd
