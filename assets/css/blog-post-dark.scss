@@ -436,7 +436,7 @@
 
 .post-content blockquote {
   margin: 0;
-  padding: 0 1em;
+  padding: 0.5em 1em;
   color: var(--fgColor-muted);
   border-left: .25em solid var(--borderColor-default);
 }
@@ -1310,7 +1310,7 @@
 
 /* Opcional: destaque de linhas */
 .highlighter-rouge pre {
-  border-left: 5px solid #7e7e7e; /* Linha de destaque à esquerda */
+  //border-left: 5px solid #7e7e7e; /* Linha de destaque à esquerda */
   padding-left: 10px;
 }
 
@@ -1362,8 +1362,7 @@
 }
 
 .blockquote-alert {
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 4px;
 }
 
 blockquote.blockquote-warning {
