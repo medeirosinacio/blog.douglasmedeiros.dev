@@ -1360,3 +1360,28 @@
 .highlighter-rouge span.copy:active {
   color: #d3d3d3;
 }
+
+.blockquote-alert {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+blockquote.blockquote-warning {
+  border-color: var(--borderColor-attention-emphasis);
+}
+
+blockquote.blockquote-note {
+  border-color: var(--borderColor-accent-emphasis);
+}
+
+blockquote.blockquote-caution {
+  border-color: var(--borderColor-danger-emphasis);
+}
+
+blockquote.blockquote-tip {
+  border-color: var(--borderColor-success-emphasis);
+}
+
+blockquote.blockquote-important {
+  border-color: var(--borderColor-done-emphasis);
+}

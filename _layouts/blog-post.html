@@ -119,7 +119,8 @@ layout: default
                 if (type) {
                     const typeName = type[1].toLowerCase();
                     p.textContent = text.replace(/^\[!\w+\]/, '').trim();
-                    blockquote.classList.add(typeName);
+                    blockquote.classList.add("blockquote-alert");
+                    blockquote.classList.add("blockquote-" + typeName);
                 }
             }
         });
