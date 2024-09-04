@@ -4,11 +4,11 @@ title: Blog
 ---
 
 <!-- Page Content-->
-<div class="container py-5" xmlns="http://www.w3.org/1999/html">
+<div class="container py-4" xmlns="http://www.w3.org/1999/html">
     <div class="row justify-content-center">
         <div class="col-md-8">
             {% for post in paginator.posts %}
-            <article class="mb-5">
+            <article class="pb-2 mb-5 border-bottom border-secondary border-opacity-25">
                 <h2 class="post-title fw-bold color-hover">
                     <a class="text-reset text-decoration-none" href="{{ site.srcurl }}{{ post.url }}"
                        title="Clique para Ler">
@@ -16,14 +16,14 @@ title: Blog
                     </a>
                 </h2>
                 <p class="post-meta text-muted">
-                    Publicado em: {% assign m = post.date | date: "%-m" %}
+                    {% assign m = post.date | date: "%-m" %}
                     {{ post.date | date: "%-d" }}
                     de
                     {% case m %}
                     {% when '1' %}Janeiro
                     {% when '2' %}Fevereiro
                     {% when '3' %}Março
-                    {% when '4' %}Abril
+                    {% when '4' %}Abrils
                     {% when '5' %}Maio
                     {% when '6' %}Junho
                     {% when '7' %}Julho
@@ -44,16 +44,17 @@ title: Blog
                     {% endif %}
                 </p>
                 <div class="post-image mb-3">
-                    <a class="card-img-top d-block"
+                    <a class="card-img-top d-block rounded-3"
                        style="background-image: url('{{ site.srcurl }}{{ site.image_path }}{{ post.image }}')"
                        href="{{ site.srcurl }}{{ post.url }}" title="{{ post.title }}"></a>
                 </div>
                 <div class="post-content pb-2">
-                    {{ post.introduction | strip_html | strip_newlines | truncate: 500 }}
+                    {{ post.introduction | strip_html | strip_newlines | truncate: 200 }}
                 </div>
-                <a class="text-reset text-decoration-none text-white fw-semibold continue-reading" href="{{ site.srcurl }}{{ post.url }}"
+                <a class="text-reset text-decoration-none text-white fw-semibold continue-reading"
+                   href="{{ site.srcurl }}{{ post.url }}"
                    title="Clique para Ler">
-                    Continuar lendo ->
+                    Continuar lendo <i class="bi bi-arrow-right fw-bold"></i>
                 </a>
             </article>
             {% endfor %}
@@ -131,9 +132,9 @@ title: Blog
                 </ul>
             </nav>
         </div>
-                <div class="col-md-3 d-none d-md-block">
-                    {% include aside.html %}
-                </div>
+<!--        <div class="col-md-3 d-none d-md-block">-->
+<!--            {% include aside.html %}-->
+<!--        </div>-->
     </div>
 </div>
 <script>

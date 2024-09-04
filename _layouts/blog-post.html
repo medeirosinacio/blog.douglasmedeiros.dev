@@ -5,12 +5,12 @@ layout: default
 <!-- Page Content-->
 <div class="container py-4" xmlns="http://www.w3.org/1999/html">
     <article class="row justify-content-center">
-        <div class="col-md-11">
+        <div class="col-md-8">
             <h2 class="post-title fw-bold color-hover">
                 {{ page.title }}
             </h2>
             <p class="post-meta text-muted">
-                Publicado em: {% assign m = page.date | date: "%-m" %}
+                {% assign m = page.date | date: "%-m" %}
                 {{ page.date | date: "%-d" }}
                 de
                 {% case m %}
@@ -52,17 +52,32 @@ layout: default
                 <a class="badge badge-primary text-inherit color-hover" href="#"><span>#</span>{{ tag }}</a>
                 {% endfor %}
             </div>
-        </div>
-        <div class="col-md-3 d-none d-md-block">
-            <div class="d-flex align-items-center mb-4">
-                <img class="img-fluid rounded-circle"
-                     src="{{ site.srcurl }}{{site.image_path}}author/Douglas Medeiros - Engenheiro de Software.jpg"
-                     alt="Avatar" width="40" height="40">
-                <div class="ms-3">
-                    <div class="fw-bold">{{ page.author }}</div>
-                    <div class="text-muted">{{ page.author_title }}</div>
+            <footer class="card bg-dark mt-3 p-3 text-light rounded shadow-sm border-0">
+                <h5 class="card-title mb-4 text-light">Sobre o Autor</h5>
+                <div class="d-flex align-items-center">
+                    <!-- Foto Redonda -->
+                    <div class="me-4">
+                        <img src="{{ site.srcurl }}{{site.image_path}}author/Douglas Medeiros - Engenheiro de Software.jpg"
+                             alt="Douglas Medeiros - Engenheiro de Software" class="rounded-circle"
+                             width="100" height="100">
+                    </div>
+                    <!-- Informações do Autor -->
+                    <div>
+                        <h4 class="text-light mb-1">Douglas Medeiros</h4>
+                        <h6 class="text-muted mb-3">Engenheiro de Software no <a href="https://picpay.com/"
+                                                                                 class="text-reset text-decoration-none color-hover"
+                                                                                 target="_blank">@PicPay</a></h6>
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a href="https://douglasmedeiros.dev" target="_blank" title="Visitar Perfil"
+                                   class="text-reset text-decoration-none color-hover">
+                                    <i class="bi bi-globe-americas"></i> Perfil completo
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </footer>
         </div>
     </article>
 </div>
