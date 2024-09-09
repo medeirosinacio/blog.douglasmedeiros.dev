@@ -1,9 +1,8 @@
 ---
 layout: default
 ---
-
 <!-- Page Content-->
-<div class="container py-4" xmlns="http://www.w3.org/1999/html">
+<div class="container py-4">
     <article class="row justify-content-center">
         <div class="col-md-8">
             <h2 class="post-title fw-bold color-hover">
@@ -31,7 +30,7 @@ layout: default
                 {{ page.date | date: "%Y" }}
                 ·
                 {% assign wordCount = page.content | number_of_words | divided_by: 50 %}
-                {% if wordCount < 1 %}
+                {% if wordCount < 2 %}
                 {{ '1 minuto de leitura' }}
                 {% else %}
                 {{ wordCount }} minutos de leitura
@@ -47,12 +46,12 @@ layout: default
             <div class="post-content pb-2">
                 {{ page.content}}
             </div>
-            <div class="post-tags pt-2">
-                {% for tag in page.tags %}
-                <a class="badge badge-primary text-inherit color-hover" href="#"><span>#</span>{{ tag }}</a>
-                {% endfor %}
-            </div>
-            <footer class="card bg-dark mt-3 p-3 text-light rounded shadow-sm border-0">
+            <!--            <div class="post-tags pt-2">-->
+            <!--                {% for tag in page.tags %}-->
+            <!--                <a class="badge badge-primary text-inherit color-hover" href="#"><span>#</span>{{ tag }}</a>-->
+            <!--                {% endfor %}-->
+            <!--            </div>-->
+            <footer class="card bg-dark mt-4 p-3 text-light rounded shadow-sm border-0">
                 <h5 class="card-title mb-4 text-light">Sobre o Autor</h5>
                 <div class="d-flex align-items-center">
                     <!-- Foto Redonda -->
@@ -64,14 +63,19 @@ layout: default
                     <!-- Informações do Autor -->
                     <div>
                         <h4 class="text-light mb-1">Douglas Medeiros</h4>
-                        <h6 class="text-muted mb-3">Engenheiro de Software no <a href="https://picpay.com/"
-                                                                                 class="text-reset text-decoration-none color-hover"
-                                                                                 target="_blank">@PicPay</a></h6>
+                        <h6 class="text-muted mb-3">
+                            Engenheiro de Software no&nbsp;
+                            <a href="https://picpay.com/"
+                               class="text-reset text-decoration-none color-hover"
+                               target="_blank">
+                                @PicPay
+                            </a>
+                        </h6>
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item">
                                 <a href="https://douglasmedeiros.dev" target="_blank" title="Visitar Perfil"
                                    class="text-reset text-decoration-none color-hover">
-                                    <i class="bi bi-globe-americas"></i> Perfil completo
+                                    <i class="bi bi-globe-americas"></i>&nbsp;Perfil completo
                                 </a>
                             </li>
                         </ul>
