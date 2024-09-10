@@ -1,8 +1,8 @@
 # MVC
 
-    [ ] Pagina inicial com listagem de posts e paginação
+    [X] Pagina inicial com listagem de posts e paginação
     [ ] Pagina de postagem
-    [ ] Pagina de erro 404
+    [X] Pagina de erro 404
     [ ] Mobile 
     [ ] SEO
     [ ] Post introdutório
