@@ -2,7 +2,7 @@
 layout: html_minifier
 ---
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}" data-theme="dark">
+<html lang="{{ site.lang | default: 'pt-BR' }}" data-theme="dark">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="index, follow"/>
@@ -17,12 +17,11 @@ layout: html_minifier
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="d-flex flex-column mode-dark" cz-shortcut-listen="true" data-theme="dark">
-{% include header.html %}
-<main class="flex-shrink-0">
-    <!--        <a href="#" class="btn btn-primary switch">Switch Light/Dark</a>-->
-    {{ content }}
-</main>
-{% include footer.html %}
+<div class="container-sm">
+    {% include header.html %}
+    <main class="flex-shrink-0">{{ content }}</main>
+    {% include footer.html %}
+</div>
 <script src="{{ site.srcurl }}{{ site.js_path }}bootstrap/bootstrap.bundle.min.js"></script>
 <script src="{{ site.srcurl }}{{ site.js_path }}bundle.js"></script>
 </body>

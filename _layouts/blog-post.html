@@ -2,89 +2,87 @@
 layout: default
 ---
 <!-- Page Content-->
-<div class="container py-4">
-    <article class="row justify-content-center">
-        <div class="col-md-8">
-            <h2 class="post-title fw-bold color-hover">
-                {{ page.title }}
-            </h2>
-            <p class="post-meta text-muted">
-                {% assign m = page.date | date: "%-m" %}
-                {{ page.date | date: "%-d" }}
-                de
-                {% case m %}
-                {% when '1' %}Janeiro
-                {% when '2' %}Fevereiro
-                {% when '3' %}Março
-                {% when '4' %}Abril
-                {% when '5' %}Maio
-                {% when '6' %}Junho
-                {% when '7' %}Julho
-                {% when '8' %}Agosto
-                {% when '9' %}Setembro
-                {% when '10' %}Outubro
-                {% when '11' %}Novembro
-                {% when '12' %}Dezembro
-                {% endcase %}
-                de
-                {{ page.date | date: "%Y" }}
-                ·
-                {% assign wordCount = page.content | number_of_words | divided_by: 50 %}
-                {% if wordCount < 2 %}
-                {{ '1 minuto de leitura' }}
-                {% else %}
-                {{ wordCount }} minutos de leitura
-                {% endif %}
-            </p>
+<article class="row justify-content-center py-2 py-md-4">
+    <div class="col-md-10 col-lg-8">
+        <h2 class="post-title fw-bold color-hover">
+            {{ page.title }}
+        </h2>
+        <p class="post-meta text-muted">
+            {% assign m = page.date | date: "%-m" %}
+            {{ page.date | date: "%-d" }}
+            de
+            {% case m %}
+            {% when '1' %}Janeiro
+            {% when '2' %}Fevereiro
+            {% when '3' %}Março
+            {% when '4' %}Abril
+            {% when '5' %}Maio
+            {% when '6' %}Junho
+            {% when '7' %}Julho
+            {% when '8' %}Agosto
+            {% when '9' %}Setembro
+            {% when '10' %}Outubro
+            {% when '11' %}Novembro
+            {% when '12' %}Dezembro
+            {% endcase %}
+            de
+            {{ page.date | date: "%Y" }}
+            ·
+            {% assign wordCount = page.content | number_of_words | divided_by: 50 %}
+            {% if wordCount < 2 %}
+            {{ '1 minuto de leitura' }}
+            {% else %}
+            {{ wordCount }} minutos de leitura
+            {% endif %}
+        </p>
+    </div>
+    <div class="col-md-10 col-lg-8">
+        <div class="post-image mb-3">
+            <a class="card-img-top d-block"
+               style="background-image: url('{{ site.srcurl }}{{ site.image_path }}{{ page.image }}')"
+               href="{{ site.srcurl }}{{ page.url }}" title="{{ page.title }}"></a>
         </div>
-        <div class="col-md-8">
-            <div class="post-image mb-3">
-                <a class="card-img-top d-block"
-                   style="background-image: url('{{ site.srcurl }}{{ site.image_path }}{{ page.image }}')"
-                   href="{{ site.srcurl }}{{ page.url }}" title="{{ page.title }}"></a>
-            </div>
-            <div class="post-content pb-2">
-                {{ page.content}}
-            </div>
-            <!--            <div class="post-tags pt-2">-->
-            <!--                {% for tag in page.tags %}-->
-            <!--                <a class="badge badge-primary text-inherit color-hover" href="#"><span>#</span>{{ tag }}</a>-->
-            <!--                {% endfor %}-->
-            <!--            </div>-->
-            <footer class="card bg-dark mt-4 p-3 text-light rounded shadow-sm border-0">
-                <h5 class="card-title mb-4 text-light">Sobre o Autor</h5>
-                <div class="d-flex align-items-center">
-                    <!-- Foto Redonda -->
-                    <div class="me-4">
-                        <img src="{{ site.srcurl }}{{site.image_path}}author/Douglas Medeiros - Engenheiro de Software.jpg"
-                             alt="Douglas Medeiros - Engenheiro de Software" class="rounded-circle"
-                             width="100" height="100">
-                    </div>
-                    <!-- Informações do Autor -->
-                    <div>
-                        <h4 class="text-light mb-1">Douglas Medeiros</h4>
-                        <h6 class="text-muted mb-3">
-                            Engenheiro de Software no&nbsp;
-                            <a href="https://picpay.com/"
-                               class="text-reset text-decoration-none color-hover"
-                               target="_blank">
-                                @PicPay
-                            </a>
-                        </h6>
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                                <a href="https://douglasmedeiros.dev" target="_blank" title="Visitar Perfil"
-                                   class="text-reset text-decoration-none color-hover">
-                                    <i class="bi bi-globe-americas"></i>&nbsp;Perfil completo
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="post-content pb-2">
+            {{ page.content}}
+        </div>
+        <!--            <div class="post-tags pt-2">-->
+        <!--                {% for tag in page.tags %}-->
+        <!--                <a class="badge badge-primary text-inherit color-hover" href="#"><span>#</span>{{ tag }}</a>-->
+        <!--                {% endfor %}-->
+        <!--            </div>-->
+        <footer class="card bg-dark mt-4 p-3 text-light rounded shadow-sm border-0">
+            <h5 class="card-title mb-4 text-light">Sobre o Autor</h5>
+            <div class="d-flex align-items-center">
+                <!-- Foto Redonda -->
+                <div class="me-4">
+                    <img src="{{ site.srcurl }}{{site.image_path}}author/Douglas Medeiros - Engenheiro de Software.jpg"
+                         alt="Douglas Medeiros - Engenheiro de Software" class="rounded-circle"
+                         width="100" height="100">
                 </div>
-            </footer>
-        </div>
-    </article>
-</div>
+                <!-- Informações do Autor -->
+                <div>
+                    <h4 class="text-light mb-1">Douglas Medeiros</h4>
+                    <h6 class="text-muted mb-3">
+                        Engenheiro de Software no&nbsp;
+                        <a href="https://picpay.com/"
+                           class="text-reset text-decoration-none color-hover"
+                           target="_blank">
+                            @PicPay
+                        </a>
+                    </h6>
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item">
+                            <a href="{{ site.personal_url }}" target="_blank" title="Visitar Perfil"
+                               class="text-reset text-decoration-none color-hover">
+                                <i class="bi bi-globe-americas"></i>&nbsp;Perfil completo
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</article>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
