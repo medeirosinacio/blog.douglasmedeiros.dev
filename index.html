@@ -1,224 +1,125 @@
 ---
-layout: blank
-title: 204 No Content
+layout: default
+title: Blog
 ---
-<style>
 
-    /*[404 error page]
---------------------------*/
-
-    .error-content {
-        padding: 0 0 70px;
-    }
-
-    .error-text {
-        text-align: center;
-    }
-
-    .error {
-        font-size: 6em;
-        font-weight: 100;
-    }
-
-    @media (max-width: 900px) {
-        .error {
-            font-size: 6em !important;
-            margin-top: 20%;
-        }
-    }
-
-    @keyframes bob {
-        0% {
-            top: 0;
-        }
-        50% {
-            top: 0.2em;
-        }
-    }
-
-    .im-sheep {
-        display: inline-block;
-        position: relative;
-        font-size: 1em;
-        margin-bottom: 70px;
-    }
-
-    .im-sheep * {
-        transition: transform 0.3s;
-    }
-
-    .im-sheep .top {
-        position: relative;
-        top: 0;
-        animation: bob 1s infinite;
-    }
-
-    .im-sheep:hover .head {
-        transform: rotate(0deg);
-    }
-
-    .im-sheep:hover .head .im-eye {
-        width: 1.25em;
-        height: 1.25em;
-    }
-
-    .im-sheep:hover .head .im-eye:before {
-        right: 30%;
-    }
-
-    .im-sheep:hover .top {
-        animation-play-state: paused;
-    }
-
-    .im-sheep .head {
-        display: inline-block;
-        width: 5em;
-        height: 5em;
-        border-radius: 100%;
-        background: #253858;
-        vertical-align: middle;
-        position: relative;
-        top: 1em;
-        transform: rotate(30deg);
-    }
-
-    .im-sheep .head:before {
-        content: '';
-        display: inline-block;
-        width: 80%;
-        height: 50%;
-        background: #253858;
-        position: absolute;
-        bottom: 0;
-        right: -10%;
-        border-radius: 50% 40%;
-    }
-
-    .im-sheep .head:hover .im-ear.one, .im-sheep .head:hover .im-ear.two {
-        transform: rotate(0deg);
-    }
-
-    .im-sheep .head .im-eye {
-        display: inline-block;
-        width: 1em;
-        height: 1em;
-        border-radius: 100%;
-        background: white;
-        position: absolute;
-        overflow: hidden;
-    }
-
-    .im-sheep .head .im-eye:before {
-        content: '';
-        display: inline-block;
-        background: black;
-        width: 50%;
-        height: 50%;
-        border-radius: 100%;
-        position: absolute;
-        right: 10%;
-        bottom: 10%;
-        transition: all 0.3s;
-    }
-
-    .im-sheep .head .im-eye.one {
-        right: -2%;
-        top: 1.7em;
-    }
-
-    .im-sheep .head .im-eye.two {
-        right: 2.5em;
-        top: 1.7em;
-    }
-
-    .im-sheep .head .im-ear {
-        background: #253858;
-        width: 50%;
-        height: 30%;
-        border-radius: 100%;
-        position: absolute;
-    }
-
-    .im-sheep .head .im-ear.one {
-        left: -10%;
-        top: 5%;
-        transform: rotate(-30deg);
-    }
-
-    .im-sheep .head .im-ear.two {
-        top: 2%;
-        right: -5%;
-        transform: rotate(20deg);
-    }
-
-    .im-sheep .body {
-        display: inline-block;
-        width: 7em;
-        height: 7em;
-        border-radius: 100%;
-        background: #0054D1;
-        position: relative;
-        vertical-align: middle;
-        margin-right: -3em;
-    }
-
-    .im-sheep .im-legs {
-        display: inline-block;
-        position: absolute;
-        top: 80%;
-        left: 10%;
-        z-index: -1;
-    }
-
-    .im-sheep .im-legs .im-leg {
-        display: inline-block;
-        background: #141214;
-        width: 0.5em;
-        height: 2.5em;
-        margin: 0.2em;
-    }
-
-    .im-sheep::before {
-        left: 0;
-        content: '';
-        display: inline-block;
-        position: absolute;
-        top: 112%;
-        width: 100%;
-        height: 18%;
-        border-radius: 100%;
-        background: rgba(0, 0, 0, 0.2);
-    }
-</style>
-<div class="error-content mt-md-5 pt-3">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-sm-10 ">
-                <div class="error-text">
-                    <h2 class="error error-404 w-100">204 No Content</h2>
-                    <div class="im-sheep">
-                        <div class="top">
-                            <div class="body"></div>
-                            <div class="head">
-                                <div class="im-eye one"></div>
-                                <div class="im-eye two"></div>
-                                <div class="im-ear one"></div>
-                                <div class="im-ear two"></div>
-                            </div>
-                        </div>
-                        <div class="im-legs">
-                            <div class="im-leg"></div>
-                            <div class="im-leg"></div>
-                            <div class="im-leg"></div>
-                            <div class="im-leg"></div>
-                        </div>
-                    </div>
-                    <h4>Oops! Este blog está em construção, volte em breve :)</h4>
-                    <p>O blog está sendo cuidadosamente construído por mim, um back-end esforçado no front, então pode
-                        levar um tempinho kk.</p>
-                    <a href="https://douglasmedeiros.dev" class="btn btn-primary">Site principal</a>
+<!-- Page Content-->
+<div class="container py-3" xmlns="http://www.w3.org/1999/html">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            {% for post in paginator.posts %}
+            <article class="pb-2 mb-5 border-bottom border-secondary border-opacity-25">
+                <h2 class="post-title fw-bold color-hover">
+                    <a class="text-reset text-decoration-none" href="{{ site.srcurl }}{{ post.url }}"
+                       title="Clique para Ler">
+                        {{ post.title }}
+                    </a>
+                </h2>
+                <p class="post-meta text-muted">
+                    {% assign m = post.date | date: "%-m" %}
+                    {{ post.date | date: "%-d" }}
+                    de
+                    {% case m %}
+                    {% when '1' %}Janeiro
+                    {% when '2' %}Fevereiro
+                    {% when '3' %}Março
+                    {% when '4' %}Abrils
+                    {% when '5' %}Maio
+                    {% when '6' %}Junho
+                    {% when '7' %}Julho
+                    {% when '8' %}Agosto
+                    {% when '9' %}Setembro
+                    {% when '10' %}Outubro
+                    {% when '11' %}Novembro
+                    {% when '12' %}Dezembro
+                    {% endcase %}
+                    de
+                    {{ post.date | date: "%Y" }}
+                    ·
+                    {% assign wordCount = post.content | number_of_words | divided_by: 50 %}
+                    {% if wordCount < 1 %}
+                    {{ '1 minuto de leitura' }}
+                    {% else %}
+                    {{ wordCount }} minutos de leitura
+                    {% endif %}
+                </p>
+                <div class="post-image mb-3">
+                    <a class="card-img-top d-block rounded-3"
+                       style="background-image: url('{{ site.srcurl }}{{ site.image_path }}{{ post.image }}')"
+                       href="{{ site.srcurl }}{{ post.url }}" title="{{ post.title }}"></a>
                 </div>
-            </div>
+                <div class="post-content pb-2">
+                    {{ post.introduction | strip_html | strip_newlines | truncate: 200 }}
+                </div>
+                <a class="text-reset text-decoration-none text-white fw-semibold continue-reading"
+                   href="{{ site.srcurl }}{{ post.url }}"
+                   title="Clique para Ler">
+                    Continuar lendo <i class="bi bi-arrow-right fw-bold"></i>
+                </a>
+            </article>
+            {% endfor %}
+            <!-- Pagination -->
+            <nav aria-label="Page navigation" class="d-flex justify-content-center mt-5 nav-pagination">
+                <ul class="pagination justify-content-center">
+                    {% if paginator.previous_page %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ site.srcurl }}{{ paginator.previous_page_path }}" tabindex="-1"
+                           aria-disabled="true">Anterior</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true" onclick="return false;">
+                            Anterior
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% for page in (1..paginator.total_pages) %}
+                    {% if page == paginator.page %}
+                    <li class="page-item active">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                            {{ page }}
+                        </a>
+                    </li>
+                    {% elsif page == 1 %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{site.srcurl}}/">1</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="{{ site.srcurl }}{{ site.paginate_path | relative_url | replace: ':num', page }}">
+                            {{ page }}
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if paginator.next_page %}
+                    <li class="page-item">
+                        <a class="page-link" href="{{ site.srcurl }}{{ paginator.next_page_path }}">Proxima</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true" onclick="return false;">
+                            Proxima
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
         </div>
+        <!--        <div class="col-md-3 d-none d-md-block">-->
+        <!--            {% include aside.html %}-->
+        <!--        </div>-->
     </div>
 </div>
+<script>
+    const button = document.querySelector(".pagination");
+
+    const readout = document.querySelector("p");
+
+    button.addEventListener("mousemove", (e) => {
+        const {x, y} = button.getBoundingClientRect();
+        button.style.setProperty("--x", e.clientX - x);
+        button.style.setProperty("--y", e.clientY - y);
+    });
+</script>

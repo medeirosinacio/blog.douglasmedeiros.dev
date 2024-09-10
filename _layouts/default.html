@@ -22,10 +22,7 @@ layout: html_minifier
     <!--        <a href="#" class="btn btn-primary switch">Switch Light/Dark</a>-->
     {{ content }}
 </main>
-<footer class="text-center my-2">
-    <p>&copy; {% include current_year.html %} Douglas Medeiros. Todos os direitos reservados.
-    </p>
-</footer>
+{% include footer.html %}
 <script src="{{ site.srcurl }}{{ site.js_path }}bootstrap/bootstrap.bundle.min.js"></script>
 <script src="{{ site.srcurl }}{{ site.js_path }}bundle.js"></script>
 </body>
