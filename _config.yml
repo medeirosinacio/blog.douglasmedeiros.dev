@@ -1,37 +1,36 @@
 # General
-title: Douglas Medeiros
-sub_title: Engenheiro de Software, Pesquisador de Soluções Sênior V e Core Team da comunidade Stackoverflow Oriented Programming.
 email: eu@douglasmedeiros.dev
 source: .
 destination: ./public
 baseurl: ""
-url: https://blog.douglasmedeiros.dev
 personal_url: https://douglasmedeiros.dev
 srcurl: ""
 lang: pt-BR
 locale: pt_BR
-author: Douglas Medeiros
 google_analytics: "" # UA-111111111-1
 published: true
 
-# Staticforms form contact email
-staticforms_api_key: b805ad43-5c0a-42f4-bcb7-f08c89da57b3 # jekyll-bootstrap@outlook.com
+###### SEO (jekyll-seo-tag)
+# https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+title: Douglas Medeiros
+author: Douglas Medeiros
+tagline: Engenheiro de Software no @PicPay, Pesquisador de Soluções Sênior V e Core Team da comunidade de Programação Orientada a Stackoverflow.
+sub_title: Engenheiro de Software no @PicPay, Pesquisador de Soluções Sênior V e Core Team da comunidade de Programação Orientada a Stackoverflow.
+url: https://blog.douglasmedeiros.dev
+social:
+  name: Douglas Medeiros
+  links:
+    - https://www.instagram.com/douglasmedeiros.dev/
+    - https://bsky.app/profile/douglasmedeiros.dev
+    - https://github.com/medeirosinacio
+    - https://www.linkedin.com/in/medeirosinacio/
+type: blog
+keywords: Douglas Medeiros, Douglas, Medeiros, Software, Engenheiro, PicPay, Sênior
 
 # Blog Paginator configuration
 paginate: 3
 paginate_path: "/pagina/:num"
 
-# disqus comment
-disqus_api_url: jekyll-bootstrap-douglasmedeiros-dev.disqus.com
-
-# Social Media
-social:
-  name: Example Author
-  links:
-    - https://www.instagram.com/example_author/
-    - https://twitter.com/example_author
-    - https://github.com/example_author
-    - https://www.linkedin.com/in/example_author/
 
 # Site Paths
 post_path: /assets/images/posts/

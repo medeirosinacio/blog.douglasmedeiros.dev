@@ -16,5 +16,9 @@
     [ ] Adição de um sistema de comentários    
     [ ] Adição de um sistema de contagem de visualizações    
     [ ] Adição de um sistema de posts relacionados    
-    [ ] Adição de um sistema de posts recentes    .
+    [ ] Adição de um sistema de posts recentes
     [ ] Adição de um sistema de posts populares
+    [ ] Implementação Google Analytics
+    [ ] Adição de um sistema de newsletter
+    [ ] Adição de um sistema de curtidas
+    [ ] Adição de um sistema de compartilhamento
