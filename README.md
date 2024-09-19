@@ -32,6 +32,7 @@ Esse template já totalmente configurado, basta fazer o clone dele na sua maquin
 
 - Git
 - Docker
+- make
 
 ### Instalação
 
@@ -44,7 +45,7 @@ git clone https://github.com/medeirosinacio/jekyll-bootstrap-github-pages.git
 2 -  Execute o script bash para subir o servidor local
 
 ```sh
-./server.sh
+make setup
 ```
 
 3 - O servidor estara disponivel em seu ambiente local
