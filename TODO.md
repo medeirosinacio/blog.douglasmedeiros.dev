@@ -1,4 +1,6 @@
-# MVC
+> [blog.douglasmederios.dev](blog.douglasmederios.dev)
+
+## MVC
 
     [X] Pagina inicial com listagem de posts e paginação
     [X] Pagina de postagem
@@ -7,7 +9,7 @@
     [ ] SEO
     [ ] Post introdutório
 
-# TODO
+## TODO
 
     [ ] Adição de tema claro/escuro
     [ ] Implementação de tags/categorias com busca

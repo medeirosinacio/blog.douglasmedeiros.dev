@@ -5,7 +5,8 @@ title: Blog
 
 <!-- Page Content-->
 <div class="row justify-content-center py-2 py-md-4">
-    <div class="col-md-10 col-lg-8">
+    <section class="col-md-10 col-lg-8">
+        <h2 style="font-size: 0">Artigos</h2>
         {% for post in paginator.posts %}
         <article class="pb-2 mb-5 border-bottom border-secondary border-opacity-25">
             <h2 class="post-title fw-bold color-hover">
@@ -22,7 +23,7 @@ title: Blog
                 {% when '1' %}Janeiro
                 {% when '2' %}Fevereiro
                 {% when '3' %}Março
-                {% when '4' %}Abrils
+                {% when '4' %}Abril
                 {% when '5' %}Maio
                 {% when '6' %}Junho
                 {% when '7' %}Julho
@@ -42,11 +43,11 @@ title: Blog
                 {{ wordCount }} minutos de leitura
                 {% endif %}
             </p>
-            <div class="post-image mb-3">
+            <figure class="post-image mb-3">
                 <a class="card-img-top d-block rounded-3"
                    style="background-image: url('{{ site.srcurl }}{{ site.image_path }}{{ post.image }}')"
                    href="{{ site.srcurl }}{{ post.url }}" title="{{ post.title }}"></a>
-            </div>
+            </figure>
             <div class="post-content pb-2">
                 {{ post.introduction | strip_html | strip_newlines | truncate: 200 }}
             </div>
@@ -59,15 +60,16 @@ title: Blog
         {% endfor %}
         <!-- Pagination -->
         <nav aria-label="Page navigation" class="d-flex justify-content-center mt-5 nav-pagination">
+            <h2 style="font-size: 0">Paginação</h2>
             <ul class="pagination justify-content-center">
                 {% if paginator.previous_page %}
                 <li class="page-item">
                     <a class="page-link" href="{{ site.srcurl }}{{ paginator.previous_page_path }}" tabindex="-1"
-                       aria-disabled="true">Anterior</a>
+                       disabled>Anterior</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true" onclick="return false;">
+                    <a class="page-link" href="#" tabindex="-1" disabled onclick="return false;">
                         Anterior
                     </a>
                 </li>
@@ -75,7 +77,7 @@ title: Blog
                 {% for page in (1..paginator.total_pages) %}
                 {% if page == paginator.page %}
                 <li class="page-item active">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">
+                    <a class="page-link" href="#" tabindex="-1" disabled>
                         {{ page }}
                     </a>
                 </li>
@@ -94,18 +96,18 @@ title: Blog
                 {% endfor %}
                 {% if paginator.next_page %}
                 <li class="page-item">
-                    <a class="page-link" href="{{ site.srcurl }}{{ paginator.next_page_path }}">Proxima</a>
+                    <a class="page-link" href="{{ site.srcurl }}{{ paginator.next_page_path }}">Próxima</a>
                 </li>
                 {% else %}
                 <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true" onclick="return false;">
-                        Proxima
+                    <a class="page-link" href="#" tabindex="-1" disabled onclick="return false;">
+                        Próxima
                     </a>
                 </li>
                 {% endif %}
             </ul>
         </nav>
-    </div>
+    </section>
     <!--        <div class="col-md-3 d-none d-md-block">-->
     <!--            {% include aside.html %}-->
     <!--        </div>-->
