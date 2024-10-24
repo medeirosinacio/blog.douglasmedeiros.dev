@@ -43,13 +43,15 @@ title: Blog
                 {{ wordCount }} minutos de leitura
                 {% endif %}
             </p>
+            {% if post.image %}
             <figure class="post-image mb-3">
                 <a class="card-img-top d-block rounded-3"
                    style="background-image: url('{{ site.srcurl }}{{ site.image_path }}{{ post.image }}')"
                    href="{{ site.srcurl }}{{ post.url }}" title="{{ post.title }}"></a>
             </figure>
+            {% endif %}
             <div class="post-content pb-2">
-                {{ post.introduction | strip_html | strip_newlines | truncate: 200 }}
+                {{ post.introduction }}
             </div>
             <a class="text-reset text-decoration-none text-white fw-semibold continue-reading"
                href="{{ site.srcurl }}{{ post.url }}"

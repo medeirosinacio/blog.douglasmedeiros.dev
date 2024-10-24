@@ -1,5 +1,11 @@
 > [blog.douglasmederios.dev](blog.douglasmederios.dev)
 
+```
+[X] => Feito
+[-] => Em andamento
+[ ] => Pendente
+```
+
 ## MVC
 
     [X] Pagina inicial com listagem de posts e paginação
@@ -7,7 +13,7 @@
     [X] Pagina de erro 404
     [X] Mobile 
     [ ] SEO
-    [ ] Post introdutório
+    [-] Post introdutório
 
 ## TODO
 
