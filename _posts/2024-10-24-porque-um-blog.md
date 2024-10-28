@@ -7,6 +7,7 @@ categories:
   - pessoal
 tags:
   - pessoal
+image: posts/notebook-cabos-e-cafe.jpeg
 introduction: "Depois de muito tempo planejando e repensando, finalmente decidi lançar meu próprio blog. Aqui, vou reunir meus artigos, experiências e pensamentos sobre tecnologia, todos em um espaço centralizado e pessoal. Embora já tenha conteúdo espalhado em outras plataformas, sempre senti a necessidade de ter um lugar que realmente fosse meu."
 ---
 
@@ -19,8 +20,8 @@ continuar postando nesses sites para dar visibilidade, mas ter um espaço meu fa
 preservação do que produzo.
 
 Esse blog nasceu dessa inquietação. Eu queria um lugar onde pudesse centralizar minhas ideias, onde nada se perdesse com
-o tempo, e onde eu pudesse ser dono de cada detalhe. E cá estamos: [**blog.douglasmedeiros.dev
-**](http://blog.douglasmedeiros.dev).
+o tempo, e onde eu pudesse ser dono de cada detalhe. E cá estamos:
+[**blog.douglasmedeiros.dev**](http://blog.douglasmedeiros.dev).
 
 Ele é um subdomínio focado em troca de experiências e compartilhamento de conhecimento. Vou ser sincero, demorou mais do
 que eu imaginava. Como bom back-end, não foi fácil definir o layout e alinhar as coisas. Apesar da lista de afazeres

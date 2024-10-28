@@ -14,7 +14,7 @@ setup: ## Setup the project
       -p 4000:4000 \
       -p 35729:35729 \
       jekyll/builder:3.8 \
-      /bin/bash -c "bundle install --path=./.gem-cache && bundle exec jekyll serve --force_polling --host 0.0.0.0 --livereload --incremental"
+      /bin/bash -c "bundle install --path=./.gem-cache && bundle exec jekyll serve --force_polling --host 0.0.0.0 --livereload"
 
 check-docker: ## Check if Docker is installed
 	@docker --version > /dev/null || (echo "Docker is not installed. Please install Docker first." && exit 1)
