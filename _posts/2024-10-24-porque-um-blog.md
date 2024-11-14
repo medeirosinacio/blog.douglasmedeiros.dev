@@ -1,8 +1,8 @@
 ---
 layout: blog-post
 date: 2024-10-24
-permalink: /artigos/:categories/porque-um-blog
-title: "Porque um Blog"
+permalink: /artigos/:categories/por-que-criar-um-blog
+title: "Por que criar um blog?"
 categories:
   - pessoal
 tags:
@@ -23,14 +23,14 @@ preservação do que produzo.
 
 Esse blog nasceu dessa inquietação. Eu queria um lugar onde pudesse centralizar minhas ideias, onde nada se perdesse com
 o tempo, e onde eu pudesse ser dono de cada detalhe. E cá estamos:
-[**blog.douglasmedeiros.dev**](http://blog.douglasmedeiros.dev).
+[_blog.douglasmedeiros.dev_](http://blog.douglasmedeiros.dev).
 
 Ele é um subdomínio focado em troca de experiências e compartilhamento de conhecimento. Vou ser sincero, demorou mais do
 que eu imaginava. Como bom back-end, não foi fácil definir o layout e alinhar as coisas. Apesar da lista de afazeres
 ainda ser longa, eu sabia que precisava lançar o MVP do blog para poder começar a postar. Caso contrário, ficaria
 empacado por mais um bom tempo.
 
-![TODO do Blog](/assets/images/posts/blog-todo.png)
+![TODO do Blog](/assets/images/posts/blog-todo.png?style=height:25rem)
 
 Para você ter uma ideia, criei uns 10 ou 15 layouts diferentes. E sempre chegava aquele momento em que eu simplesmente
 não suportava mais olhar para eles. Começava do zero, mudava de ideia, ou, às vezes, só percebia que aquilo não estava
@@ -63,7 +63,7 @@ Além do Jekyll, usei Bootstrap para o frontend, que ainda é minha primeira esc
 
 O blog, sendo totalmente estático e sem back-end, não suporta funções como contadores ou comentários diretamente. Para
 contornar essas limitações, busquei as soluções mais modernas ~~gambiarras~~ para possibilitar comentários, pois o que é
-um blog sem feedback, não é? Para isso, utilizei o [**utterances** 🔮](https://github.com/utterance/utterances), um
+um blog sem feedback, não é? Para isso, utilizei o [**_utterances_** 🔮](https://github.com/utterance/utterances), um
 projeto open source que integra as issues do GitHub às páginas do blog. Ao carregar a página, Utterances procura a issue
 correspondente; se não encontrar, o bot cria uma automaticamente no primeiro comentário. Para participar, os usuários
 apenas autorizam o app pelo GitHub OAuth ou comentam diretamente na issue. Esse sistema, além de prático, permite um

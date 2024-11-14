@@ -229,6 +229,9 @@
   max-width: 100%;
   box-sizing: content-box;
   background-color: var(--bgColor-default);
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .post-content code,

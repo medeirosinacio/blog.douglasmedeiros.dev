@@ -97,6 +97,56 @@ layout: default
 <script>
     document.addEventListener('DOMContentLoaded', function () {
 
+        // Add style to images based on URL parameters
+        const images = document.querySelectorAll('.post-content img');
+        images.forEach(function (img) {
+            const imgUrl = img.src;
+            if (imgUrl.includes('/assets/images/posts/')) {
+                const urlParams = new URLSearchParams(new URL(imgUrl).search);
+                const styleParam = urlParams.get('style');
+                if (styleParam) {
+                    img.style.cssText = styleParam;
+                }
+            }
+        });
+        // Função para alternar entre abrir e fechar a imagem em tela cheia
+        images.forEach(function (img) {
+            img.addEventListener('click', function () {
+                let fullscreenDiv = document.querySelector('.fullscreen-image-container');
+
+                if (fullscreenDiv) {
+                    fullscreenDiv.remove();
+                } else {
+                    // Cria a div que vai conter a imagem em tela cheia
+                    fullscreenDiv = document.createElement('div');
+                    fullscreenDiv.classList.add('fullscreen-image-container');
+                    fullscreenDiv.style.position = 'fixed';
+                    fullscreenDiv.style.top = '0';
+                    fullscreenDiv.style.left = '0';
+                    fullscreenDiv.style.width = '100vw';
+                    fullscreenDiv.style.height = '100vh';
+                    fullscreenDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                    fullscreenDiv.style.display = 'flex';
+                    fullscreenDiv.style.justifyContent = 'center';
+                    fullscreenDiv.style.alignItems = 'center';
+                    fullscreenDiv.style.zIndex = '1000';
+
+                    // Cria a imagem
+                    const fullscreenImg = document.createElement('img');
+                    fullscreenImg.src = img.src;
+                    fullscreenImg.style.maxWidth = '80vh';
+                    fullscreenImg.style.maxHeight = '80vh';
+                    fullscreenImg.style.objectFit = 'contain';
+                    fullscreenDiv.appendChild(fullscreenImg);
+                    document.body.appendChild(fullscreenDiv);
+
+                    fullscreenDiv.addEventListener('click', function () {
+                        fullscreenDiv.remove();
+                    });
+                }
+            });
+        });
+
         // Add copy button to code blocks
         const codeElements = document.querySelectorAll('.highlighter-rouge');
         codeElements.forEach(function (codeElement) {
