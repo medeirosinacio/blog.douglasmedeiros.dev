@@ -8,7 +8,7 @@ categories:
 tags:
   - pessoal
 image: posts/notebook-cabos-e-cafe.jpeg
-introduction: "Depois de muito tempo planejando e repensando, finalmente decidi lançar meu próprio blog. Aqui, vou reunir meus artigos, experiências e pensamentos sobre tecnologia, todos em um espaço centralizado e pessoal. Embora já tenha conteúdo espalhado em outras plataformas, sempre senti a necessidade de ter um lugar que realmente fosse meu."
+description: "Depois de muito tempo planejando e repensando, finalmente decidi lançar meu próprio blog. Aqui, vou reunir meus artigos, experiências e pensamentos sobre tecnologia, todos em um espaço centralizado e pessoal. Embora já tenha conteúdo espalhado em outras plataformas, sempre senti a necessidade de ter um lugar que realmente fosse meu."
 ---
 
 ## Olá, Mundo!
@@ -30,7 +30,7 @@ que eu imaginava. Como bom back-end, não foi fácil definir o layout e alinhar 
 ainda ser longa, eu sabia que precisava lançar o MVP do blog para poder começar a postar. Caso contrário, ficaria
 empacado por mais um bom tempo.
 
-![TODO do Blog](/assets/images/posts/blog-todo.png?style=height:25rem)
+![TODO do Blog](/assets/images/posts/blog-todo.png?class=w-80 w-md-60 w-xxl-40)
 
 Para você ter uma ideia, criei uns 10 ou 15 layouts diferentes. E sempre chegava aquele momento em que eu simplesmente
 não suportava mais olhar para eles. Começava do zero, mudava de ideia, ou, às vezes, só percebia que aquilo não estava

@@ -103,9 +103,11 @@ layout: default
             const imgUrl = img.src;
             if (imgUrl.includes('/assets/images/posts/')) {
                 const urlParams = new URLSearchParams(new URL(imgUrl).search);
-                const styleParam = urlParams.get('style');
-                if (styleParam) {
-                    img.style.cssText = styleParam;
+                const classParams = urlParams.get('class');
+                if (classParams) {
+                    for (const className of classParams.split(' ')) {
+                        img.classList.add(className);
+                    }
                 }
             }
         });

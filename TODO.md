@@ -12,8 +12,8 @@
     [X] Pagina de postagem
     [X] Pagina de erro 404
     [X] Mobile 
-    [ ] SEO
-    [-] Post introdutório
+    [X] SEO
+    [X] Post introdutório
 
 ## TODO
 

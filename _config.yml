@@ -12,11 +12,12 @@ published: true
 
 ###### SEO (jekyll-seo-tag)
 # https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-title: Douglas Medeiros
+title: Blog | Douglas Medeiros
 author: Douglas Medeiros
-tagline: Engenheiro de Software no @PicPay, Pesquisador de Soluções Sênior V e Core Team da comunidade de Programação Orientada a Stackoverflow.
-sub_title: Engenheiro de Software no @PicPay, Pesquisador de Soluções Sênior V e Core Team da comunidade de Programação Orientada a Stackoverflow.
+description: Blog pessoal para compartilhar conhecimento sobre desenvolvimento de software, tecnologia e carreira.
+tagline: Blog pessoal para compartilhar conhecimento sobre desenvolvimento de software, tecnologia e carreira.
 url: https://blog.douglasmedeiros.dev
+image: /assets/posts/notebook-cabos-e-cafe.jpeg
 social:
   name: Douglas Medeiros
   links:
@@ -25,7 +26,7 @@ social:
     - https://github.com/medeirosinacio
     - https://www.linkedin.com/in/medeirosinacio/
 type: blog
-keywords: Douglas Medeiros, Douglas, Medeiros, Software, Engenheiro, PicPay, Sênior
+keywords: Douglas Medeiros, Douglas, Medeiros, Software, Engenheiro, PicPay, Blog, Tutorial, Desenvolvimento
 
 # Blog Paginator configuration
 paginate: 3

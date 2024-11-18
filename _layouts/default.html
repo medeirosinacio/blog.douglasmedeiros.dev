@@ -13,6 +13,16 @@ layout: html_minifier
     {% else %}
     {% seo %}
     {% endif %}
+    {%if paginator %}
+    <meta property="og:image" content="{{ site.url }}/assets/images/card.jpg"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="{{ site.description }}">
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/card.jpg"/>
+    {% endif %}
+    <meta name="twitter:site" content="{{ site.url }}">
+    <meta name="twitter:creator" content="@aqueleMetal">
+    <meta property="github:profile" href="https://github.com/medeirosinacio"/>
+    <meta property="github:repository" href="https://github.com/medeirosinacio/blog.douglasmedeiros.dev"/>
     <link rel="stylesheet" href="{{ site.srcurl }}{{ site.css_path }}main.css">
     <link rel="icon" type="image/x-icon" href="{{ site.srcurl }}/favicon.ico">
     <!--[if IE]>
