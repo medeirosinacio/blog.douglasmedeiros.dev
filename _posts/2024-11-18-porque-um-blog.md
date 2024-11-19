@@ -1,13 +1,13 @@
 ---
 layout: blog-post
-date: 2024-10-24
+date: 2024-11-18
 permalink: /artigos/:categories/por-que-criar-um-blog
 title: "Por que criar um blog?"
 categories:
   - pessoal
 tags:
   - pessoal
-image: posts/notebook-cabos-e-cafe.jpeg
+image: /assets/images/posts/notebook-cabos-e-cafe.jpeg
 description: "Depois de muito tempo planejando e repensando, finalmente decidi lançar meu próprio blog. Aqui, vou reunir meus artigos, experiências e pensamentos sobre tecnologia, todos em um espaço centralizado e pessoal. Embora já tenha conteúdo espalhado em outras plataformas, sempre senti a necessidade de ter um lugar que realmente fosse meu."
 ---
 
