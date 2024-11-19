@@ -35,7 +35,7 @@ layout: html_minifier
     <main class="flex-shrink-0">{{ content }}</main>
     {% include footer.html %}
 </div>
-<script src="{{ site.srcurl }}{{ site.js_path }}bootstrap/bootstrap.bundle.min.js?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
-<script src="{{ site.srcurl }}{{ site.js_path }}bundle.js?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
+<script async src="{{ site.srcurl }}{{ site.js_path }}bootstrap/bootstrap.bundle.min.js?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
+<script async src="{{ site.srcurl }}{{ site.js_path }}bundle.js?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
 </body>
 </html>
