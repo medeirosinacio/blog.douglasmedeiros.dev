@@ -21,7 +21,7 @@
     [ ] Implementação de tags/categorias com busca
     [ ] Atualização de feed via RSS
     [ ] Adição de um sistema de busca    
-    [ ] Adição de um sistema de comentários    
+    [X] Adição de um sistema de comentários    
     [ ] Adição de um sistema de contagem de visualizações    
     [ ] Adição de um sistema de posts relacionados    
     [ ] Adição de um sistema de posts recentes
