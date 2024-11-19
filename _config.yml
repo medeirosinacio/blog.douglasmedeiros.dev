@@ -12,10 +12,10 @@ published: true
 
 ###### SEO (jekyll-seo-tag)
 # https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-title: Blog | Douglas Medeiros
+title: "Douglas Medeiros"
 author: Douglas Medeiros
 description: Blog pessoal para compartilhar conhecimento sobre desenvolvimento de software, tecnologia e carreira.
-tagline: Blog pessoal para compartilhar conhecimento sobre desenvolvimento de software, tecnologia e carreira.
+tagline: Software, Tecnologia e Carreira
 url: https://blog.douglasmedeiros.dev
 image: /assets/posts/notebook-cabos-e-cafe.jpeg
 social:
