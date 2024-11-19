@@ -7,12 +7,12 @@ personal_url: https://douglasmedeiros.dev
 srcurl: ""
 lang: pt-BR
 locale: pt_BR
-google_analytics: "" # UA-111111111-1
+google_analytics: "G-9XPJXZ5YET"
 published: true
 
 ###### SEO (jekyll-seo-tag)
 # https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
-title: "Douglas Medeiros"
+title: "Blog Douglas Medeiros"
 author: Douglas Medeiros
 description: Blog pessoal para compartilhar conhecimento sobre desenvolvimento de software, tecnologia e carreira.
 tagline: Software, Tecnologia e Carreira
