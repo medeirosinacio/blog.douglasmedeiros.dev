@@ -1,37 +1,37 @@
 # General
-title: Douglas Medeiros
-sub_title: Engenheiro de Software, Pesquisador de Soluções Sênior V e Core Team da comunidade Stackoverflow Oriented Programming.
-email: example_author@email.com
+email: eu@douglasmedeiros.dev
 source: .
 destination: ./public
 baseurl: ""
-url: https://blog.douglasmedeiros.dev
+personal_url: https://douglasmedeiros.dev
 srcurl: ""
 lang: pt-BR
 locale: pt_BR
-author: Example Author
 google_analytics: "" # UA-111111111-1
 published: true
 
-# Staticforms form contact email
-staticforms_api_key: b805ad43-5c0a-42f4-bcb7-f08c89da57b3 # jekyll-bootstrap@outlook.com
-
-# Paginator configuration
-paginate: 3
-
-paginate_path: "/alfa-0/pagina/:num"
-
-# disqus comment
-disqus_api_url: jekyll-bootstrap-douglasmedeiros-dev.disqus.com
-
-# Social Media
+###### SEO (jekyll-seo-tag)
+# https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+title: Blog | Douglas Medeiros
+author: Douglas Medeiros
+description: Blog pessoal para compartilhar conhecimento sobre desenvolvimento de software, tecnologia e carreira.
+tagline: Blog pessoal para compartilhar conhecimento sobre desenvolvimento de software, tecnologia e carreira.
+url: https://blog.douglasmedeiros.dev
+image: /assets/posts/notebook-cabos-e-cafe.jpeg
 social:
-  name: Example Author
+  name: Douglas Medeiros
   links:
-    - https://www.instagram.com/example_author/
-    - https://twitter.com/example_author
-    - https://github.com/example_author
-    - https://www.linkedin.com/in/example_author/
+    - https://www.instagram.com/douglasmedeiros.dev/
+    - https://bsky.app/profile/douglasmedeiros.dev
+    - https://github.com/medeirosinacio
+    - https://www.linkedin.com/in/medeirosinacio/
+type: blog
+keywords: Douglas Medeiros, Douglas, Medeiros, Software, Engenheiro, PicPay, Blog, Tutorial, Desenvolvimento
+
+# Blog Paginator configuration
+paginate: 3
+paginate_path: "/pagina/:num"
+
 
 # Site Paths
 post_path: /assets/images/posts/

@@ -2,25 +2,40 @@
 layout: html_minifier
 ---
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}">
+<html lang="{{ site.lang | default: 'pt-BR' }}" data-theme="dark">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="robots" content="index, follow"/>
     <meta charset="utf-8">
-    {%if paginator and paginator.page != 1 %} <title> {{ page.title }} - Página {{ paginator.page }} | {{ site.title }} </title>{% endif %}
+    {%if paginator and paginator.page != 1 %}
+    <title> {{ page.title }} - Página {{ paginator.page }} | {{ site.title }} </title>
+    {% seo title=false %}
+    {% else %}
     {% seo %}
-    <link rel="stylesheet" href="{{ site.srcurl }}{{ site.css_path }}main.css">
-    <link rel="icon" type="image/x-icon" href="{{ site.srcurl }}/favicon.ico">
+    {% endif %}
+    {%if paginator %}
+    <meta property="og:image" content="{{ site.url }}/assets/images/card.jpg"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:description" content="{{ site.description }}">
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/card.jpg"/>
+    {% endif %}
+    <meta name="twitter:site" content="{{ site.url }}">
+    <meta name="twitter:creator" content="@aqueleMetal">
+    <meta property="github:profile" href="https://github.com/medeirosinacio"/>
+    <meta property="github:repository" href="https://github.com/medeirosinacio/blog.douglasmedeiros.dev"/>
+    <link rel="stylesheet" href="{{ site.srcurl }}{{ site.css_path }}main.css?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
+    <link rel="icon" type="image/x-icon" href="{{ site.srcurl }}/favicon.ico?v={{ site.time | date: '%Y%m%d%H%M%S' }}">
     <!--[if IE]>
-    <link rel="shortcut icon" href="{{ site.srcurl }}/favicon.ico"><![endif]-->
+    <link rel="shortcut icon" href="{{ site.srcurl }}/favicon.ico?v={{ site.time | date: '%Y%m%d%H%M%S' }}"><![endif]-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="d-flex flex-column mode-dark" cz-shortcut-listen="true">
+<body class="d-flex flex-column mode-dark" cz-shortcut-listen="true" data-theme="dark">
+<div class="container-sm">
     {% include header.html %}
-    <main class="flex-shrink-0">
-<!--        <a href="#" class="btn btn-primary switch">Switch Light/Dark</a>-->
-        {{ content }}
-    </main>
-    <script src="{{ site.srcurl }}{{ site.js_path }}bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="{{ site.srcurl }}{{ site.js_path }}bundle.js"></script>
+    <main class="flex-shrink-0">{{ content }}</main>
+    {% include footer.html %}
+</div>
+<script src="{{ site.srcurl }}{{ site.js_path }}bootstrap/bootstrap.bundle.min.js?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
+<script src="{{ site.srcurl }}{{ site.js_path }}bundle.js?v={{ site.time | date: '%Y%m%d%H%M%S' }}"></script>
 </body>
 </html>

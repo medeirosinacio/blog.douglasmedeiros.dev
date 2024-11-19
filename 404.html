@@ -1,6 +1,6 @@
 ---
-layout: default
-title: 404
+layout: blank
+title: 204 No Content
 ---
 <style>
 
@@ -16,7 +16,7 @@ title: 404
     }
 
     .error {
-        font-size: 10em;
+        font-size: 6em;
         font-weight: 100;
     }
 
@@ -195,7 +195,9 @@ title: 404
         <div class="row justify-content-center">
             <div class="col-sm-10 ">
                 <div class="error-text">
-                    <h2 class="error error-404 w-100">Erro 404</h2>
+                    <h2 class="error error-404 w-100">
+                        404 Not Found
+                    </h2>
                     <div class="im-sheep">
                         <div class="top">
                             <div class="body"></div>
@@ -213,11 +215,16 @@ title: 404
                             <div class="im-leg"></div>
                         </div>
                     </div>
-                    <h4>Oops! Página não encontrada!</h4>
-                    <p>Desculpe, mas a página que você está procurando não existe, foi removida ou o mudou de nome.</p>
-                    <a href="{{ site.srcurl }}/" class="btn btn-primary">Ir até a Home</a>
+                    <h5>
+                        Oops! Parece que essa página não existe ou foi excluída!
+                    </h5>
+                    <p>
+                        Mas não se preocupe, você pode voltar para o blog ou o site principal e continuar explorando.
+                    </p>
+                    <a href="/" class="btn btn-outline-light m-3">Voltar a home</a>
                 </div>
             </div>
         </div>
     </div>
+    {% include footer.html %}
 </div>
