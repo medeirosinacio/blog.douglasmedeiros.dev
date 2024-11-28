@@ -6,6 +6,10 @@ html {
   position: relative;
 }
 
+:root {
+  color-scheme: only dark !important;
+}
+
 body {
   padding-bottom: 75px;
 }

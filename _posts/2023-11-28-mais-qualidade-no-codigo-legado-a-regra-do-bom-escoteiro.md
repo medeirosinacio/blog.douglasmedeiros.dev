@@ -87,12 +87,12 @@ ferramentas ou metodologias, mas na consistência em aplicá-las regularmente em
 
 Aqui vão algumas dicas práticas para colocar essa regra em ação:
 
-1. **Refatore enquanto altera**: Sempre que fizer uma mudança em uma classe, aproveite para aplicar técnicas de
+1. **Refatore enquanto altera**: Sempre que fizer uma mudança em uma classe, aproveite para aplicar técnicas de 
    refatoração. Isso pode incluir renomear variáveis, extrair métodos de funções grandes ou eliminar código duplicado.
-2. **Mudanças pequenas, mas constantes**: O objetivo não é realizar grandes mudanças de uma vez só, mas fazer melhorias
+2. **Mudanças pequenas, mas constantes**: O objetivo não é realizar grandes mudanças de uma vez só, mas fazer melhorias 
    incrementais e constantes. Isso ajuda a manter o código mais limpo sem impactar o cronograma de entregas.
-3. **Promova o coletivo**: Quando toda a equipe adota essa prática, o código se torna progressivamente mais organizado,
-   sem necessidade de grandes esforços. Isso cria uma cultura de colaboração, onde todos são responsáveis pela qualidade
+3. **Promova o coletivo**: Quando toda a equipe adota essa prática, o código se torna progressivamente mais organizado, 
+   sem necessidade de grandes esforços. Isso cria uma cultura de colaboração, onde todos são responsáveis pela qualidade 
    do código.
 
 No final das contas, a Regra do Bom Escoteiro não é sobre uma grande revolução no seu código, mas sim sobre a soma de
