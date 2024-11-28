@@ -7,7 +7,7 @@ title:
 <div class="row justify-content-center py-2 py-md-4">
     <section class="col-md-10 col-lg-8">
         <h2 style="font-size: 0">Artigos</h2>
-        {% for post in paginator.posts %}
+        {% for post in paginator.posts reversed %}
         <article class="pb-2 mb-5 border-bottom border-secondary border-opacity-25">
             <h2 class="post-title fw-bold color-hover">
                 <a class="text-reset text-decoration-none" href="{{ site.srcurl }}{{ post.url }}"
