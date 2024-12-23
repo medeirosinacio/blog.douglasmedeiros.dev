@@ -1,6 +1,6 @@
 ---
 layout: blog-post
-date: 2023-11-28
+date: 2024-11-28
 permalink: /artigos/:categories/mais-qualidade-no-codigo-legado-a-regra-do-bom-escoteiro
 title: "+ Qualidade no código legado: A Regra do Bom Escoteiro"
 categories:
