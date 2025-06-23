@@ -36,7 +36,7 @@ title:
                 de
                 {{ post.date | date: "%Y" }}
                 ·
-                {% assign wordCount = post.content | number_of_words | divided_by: 50 %}
+                {% assign wordCount = post.content | number_of_words | divided_by: 200 %}
                 {% if wordCount < 1 %}
                 {{ '1 minuto de leitura' }}
                 {% else %}

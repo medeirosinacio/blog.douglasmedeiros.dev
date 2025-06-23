@@ -28,7 +28,7 @@ layout: default
             de
             {{ page.date | date: "%Y" }}
             ·
-            {% assign wordCount = page.content | number_of_words | divided_by: 50 %}
+            {% assign wordCount = page.content | number_of_words | divided_by: 200 %}
             {% if wordCount < 2 %}
             {{ '1 minuto de leitura' }}
             {% else %}
@@ -47,6 +47,33 @@ layout: default
         <div class="post-content pb-2">
             {{ page.content}}
         </div>
+        <div class="d-grid justify-content-end" role="toolbar">
+            <div class="btn-group" role="group">
+                <a class="text-white ms-3"
+                   target="_blank"
+                   href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+                <!--                <a class="text-white ms-3">-->
+                <!--                    <i class="bi bi-instagram"></i>-->
+                <!--                </a>-->
+                <!--                <a class="text-white ms-3" href="https://wa.me/?text={{ site.url }}{{ page.url }}">-->
+                <!--                    <i class="bi bi-whatsapp"></i>-->
+                <!--                </a>-->
+                <!--                <a class="text-white ms-3" href="https://t.me/share/url?url={{ site.url }}{{ page.url }}">-->
+                <!--                    <i class="bi bi-telegram"></i>-->
+                <!--                </a>-->
+                <a class="text-white ms-3"
+                   target="_blank"
+                   href="https://www.linkedin.com/shareArticle?url={{ site.url }}{{ page.url }}">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <!--                <a class="text-white ms-3">-->
+                <!--                    <i class="bi bi-copy"></i>-->
+                <!--                </a>-->
+            </div>
+        </div>
+
         <!--            <div class="post-tags pt-2">-->
         <!--                {% for tag in page.tags %}-->
         <!--                <a class="badge badge-primary text-inherit color-hover" href="#"><span>#</span>{{ tag }}</a>-->
@@ -65,7 +92,7 @@ layout: default
                 <div>
                     <h4 class="text-light mb-1">Douglas Medeiros</h4>
                     <h6 class="text-muted mb-3">
-                        Tech Lead & Engenheiro de Software Sênior no&nbsp;
+                        Tech Lead · Skill Lead PHP · Engenheiro de Software Sênior no&nbsp;
                         <a href="https://picpay.com/"
                            class="text-reset text-decoration-none color-hover"
                            target="_blank">
@@ -197,13 +224,16 @@ layout: default
         document.querySelectorAll('blockquote').forEach(blockquote => {
             const p = blockquote.querySelector('p');
             if (p) {
-                const text = p.textContent.trim();
-                const type = text.match(/^\[!(\w+)\]/);
+                const html = p.innerHTML.trim();
+                const type = html.match(/^\[!(\w+)\]/);
                 if (type) {
                     const typeName = type[1].toLowerCase();
-                    p.textContent = text.replace(/^\[!\w+\]/, '').trim();
+                    p.innerHTML = html.replace(/^\[!\w+\]/, '').trim();
                     blockquote.classList.add("blockquote-alert");
                     blockquote.classList.add("blockquote-" + typeName);
+                } else {
+                    blockquote.classList.add("blockquote-alert");
+                    blockquote.classList.add("blockquote-default");
                 }
             }
         });
@@ -229,11 +259,14 @@ layout: default
     var supportsPassive = false;
     try {
         window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-            get: function () { supportsPassive = true; }
+            get: function () {
+                supportsPassive = true;
+            }
         }));
-    } catch(e) {}
+    } catch (e) {
+    }
 
-    var wheelOpt = supportsPassive ? { passive: false } : false;
+    var wheelOpt = supportsPassive ? {passive: false} : false;
     var wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
     // call this to Disable
