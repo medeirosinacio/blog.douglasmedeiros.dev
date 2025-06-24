@@ -7,34 +7,37 @@ layout: default
         <h2 class="post-title fw-bold color-hover">
             {{ page.title }}
         </h2>
-        <p class="post-meta text-muted">
-            {% assign m = page.date | date: "%-m" %}
-            {{ page.date | date: "%-d" }}
-            de
-            {% case m %}
-            {% when '1' %}Janeiro
-            {% when '2' %}Fevereiro
-            {% when '3' %}Março
-            {% when '4' %}Abril
-            {% when '5' %}Maio
-            {% when '6' %}Junho
-            {% when '7' %}Julho
-            {% when '8' %}Agosto
-            {% when '9' %}Setembro
-            {% when '10' %}Outubro
-            {% when '11' %}Novembro
-            {% when '12' %}Dezembro
-            {% endcase %}
-            de
-            {{ page.date | date: "%Y" }}
-            ·
-            {% assign wordCount = page.content | number_of_words | divided_by: 200 %}
-            {% if wordCount < 2 %}
-            {{ '1 minuto de leitura' }}
-            {% else %}
-            {{ wordCount }} minutos de leitura
-            {% endif %}
-        </p>
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+            <p class="post-meta text-muted mb-0">
+                {% assign m = page.date | date: "%-m" %}
+                {{ page.date | date: "%-d" }}
+                de
+                {% case m %}
+                {% when '1' %}Janeiro
+                {% when '2' %}Fevereiro
+                {% when '3' %}Março
+                {% when '4' %}Abril
+                {% when '5' %}Maio
+                {% when '6' %}Junho
+                {% when '7' %}Julho
+                {% when '8' %}Agosto
+                {% when '9' %}Setembro
+                {% when '10' %}Outubro
+                {% when '11' %}Novembro
+                {% when '12' %}Dezembro
+                {% endcase %}
+                de
+                {{ page.date | date: "%Y" }}
+                ·
+                {% assign wordCount = page.content | number_of_words | divided_by: 200 %}
+                {% if wordCount < 2 %}
+                {{ '1 minuto de leitura' }}
+                {% else %}
+                {{ wordCount }} minutos de leitura
+                {% endif %}
+            </p>
+            {% include share.html %}
+        </div>
     </div>
     <div class="col-md-10 col-lg-8">
         {% if page.image %}
@@ -45,36 +48,9 @@ layout: default
         </div>
         {% endif %}
         <div class="post-content pb-2">
-            {{ page.content}}
+            {{ page.content }}
         </div>
-        <div class="d-grid justify-content-end" role="toolbar">
-            <div class="btn-group" role="group">
-                <a class="text-white ms-3"
-                   target="_blank"
-                   href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}">
-                    <i class="bi bi-twitter-x"></i>
-                </a>
-                <!--                <a class="text-white ms-3">-->
-                <!--                    <i class="bi bi-instagram"></i>-->
-                <!--                </a>-->
-                <a class="text-white ms-3"
-                   href="whatsapp://send?text={{ site.url }}{{ page.url }}" data-action="share/whatsapp/share">
-                    <i class="bi bi-whatsapp"></i>
-                </a>
-                <a class="text-white ms-3" href="https://telegram.me/share/url?url={{ site.url }}{{ page.url }}">
-                    <i class="bi bi-telegram"></i>
-                </a>
-                <a class="text-white ms-3"
-                   target="_blank"
-                   href="https://www.linkedin.com/shareArticle?url={{ site.url }}{{ page.url }}">
-                    <i class="bi bi-linkedin"></i>
-                </a>
-                <!--                <a class="text-white ms-3">-->Ï
-                <!--                    <i class="bi bi-copy"></i>-->
-                <!--                </a>-->
-            </div>
-        </div>
-
+        {% include share.html %}
         <!--            <div class="post-tags pt-2">-->
         <!--                {% for tag in page.tags %}-->
         <!--                <a class="badge badge-primary text-inherit color-hover" href="#"><span>#</span>{{ tag }}</a>-->
