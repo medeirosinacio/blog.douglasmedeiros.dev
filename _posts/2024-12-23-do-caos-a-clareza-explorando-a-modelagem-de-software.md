@@ -25,7 +25,8 @@ trabalho mais claro e produtivo.
 > Este artigo nasceu da minha palestra "Do Caos à Clareza: Explorando a Modelagem de Software". Recentemente, tive a
 > oportunidade de apresentá-la pela terceira vez, desta vez no evento PHP Velho Oeste, em maio de 2024. Palestrar e
 > participar ativamente da comunidade foi uma experiência extremamente gratificante, e isso me deu um empurrãozinho para
-> criar uma nova talk (~~vou-coloca-aqui-quando-decidir~~), para seguir contribuindo com temas que acredito que possam
+> criar uma nova talk ([Nem Só de Código Vive o Dev](/artigos/carreira/nem-so-de-codigo-vive-o-dev)), para seguir
+> contribuindo com temas que acredito que possam
 > fazer a diferença.
 
 Então como uma forma de concluir este ciclo, decidi escrever este artigo dedicado ao conteúdo base da palestra. Nele,
@@ -48,9 +49,7 @@ construção do software, ajudando desenvolvedores e stakeholders a entender mel
 não precisam ser necessariamente técnicos, mas podem servir como referência para discussões entre as equipes, mesmo que
 simplificados.
 
-> UML Class Box
->
-> https://wiki.eclipse.org/File:Eclipselink_uml_class_diagram.gif
+> UML Class Box: [Eclipselink_uml_class_diagram.gif](https://wiki.eclipse.org/File:Eclipselink_uml_class_diagram.gif)
 
 Isso não significa que a UML ou outros tipos de modelagem não sejam importantes. Elas, assim como todos os padrões e
 referências, têm seus casos de uso e propósitos. No entanto, a ideia aqui é mostrar que podemos começar com algo mais
