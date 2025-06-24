@@ -1,14 +1,14 @@
 ---
 layout: blog-post
-date: 2025-06-23
+date: 2025-06-24
 permalink: /artigos/:categories/comunidade
 title: "Comunidade"
 categories:
-  - comunidade
   - carreira
 tags:
   - carreira
-image: /assets/images/posts/times-de-alta-performance.jpeg
+  - comunidade
+image: /assets/images/posts/comunidade/phpvelhooeste-2025.png
 description: "A comunidade PHP foi o divisor de águas na minha carreira. Mais do que absorver conteúdo técnico, foi na troca genuína de experiências, no networking sincero e no sentimento de pertencimento que encontrei o combustível para crescer de verdade. A comunidade é muito mais que um espaço de conhecimento — é onde se constrói carreira, se formam referências e se criam conexões que impulsionam o profissional e o ser humano."
 ---
 
@@ -25,8 +25,9 @@ E como esse sentimento de pertencimento ainda tá fresco, quero aproveitar esse 
 reanimar a comunidade aqui no sul — o PHP RS — para contar um pouco sobre como descobri esse universo e o que ele me
 ensinou até agora.
 
+> [!IMPORTANT]
 > Para quem ficou curioso sobre a talk que palestrei no último Velho Oeste, eu transformei ela em um artigo chamado
-> *"[Nem só de código vive o dev](http://localhost/artigos/carreira/nem-so-de-codigo-vive-o-dev)"*.
+> *"[Nem só de código vive o dev](/artigos/carreira/nem-so-de-codigo-vive-o-dev)"*.
 > Depois dá uma conferida lá — acho que vai curtir.
 
 ### Onde tudo começou
@@ -54,7 +55,7 @@ PHP assíncrono", "Marcel", "Caruso", "Batista" — nomes e talks que explodiram
 cinco, seis vezes, mastigando cada conceito. Foi uma avalanche de aprendizado. Aquilo ali me mostrou que a área era
 muito maior do que eu imaginava, que existia vida além do meu terminal.
 
-![image.png](attachment:494adfae-b931-4ca7-a206-ef9c48b3136d:image.png)
+![historico-youtube-2020](/assets/images/posts/comunidade/historico-youtube-2020.png?class=w-80 w-md-80 w-xxl-60)
 
 E ali, no meio de uma pandemia, eu fiz uma promessa: no primeiro evento presencial que acontecesse depois de tudo isso,
 eu iria. Não importava onde. E cumpri. Em 2022, quando anunciaram o PHPeste — Em Natal — eu não pensei duas vezes. Moro
@@ -80,7 +81,7 @@ Desci do carro, vi o pessoal ali na frente, cumprimentei, me apresentei, e pront
 sumiu. A gente foi almoçar junto, depois teve o evento, e o resto é história. Conexão real. Vínculo. Gente boa, com a
 mesma vibe, falando sobre tecnologia com brilho nos olhos.
 
-![image.png](attachment:2494a322-bb04-4b22-bd35-17417ae0f3b2:image.png)
+![credencial-phpest-2022.png](/assets/images/posts/comunidade/credencial-phpest-2022.png?class=w-80 w-md-80 w-xxl-60)
 
 ### A troca
 
@@ -93,7 +94,7 @@ pessoas evoluírem.
 
 Ali caiu a ficha: é nesse tipo de evento que a mágica acontece.
 
-![image.png](attachment:3eb258de-9b2f-4bc8-812e-a68406143895:image.png)
+![hh-phpest-2022.png](/assets/images/posts/comunidade/hh-phpest-2022.png?class=w-80 w-md-80 w-xxl-60)
 
 ### Uma conversa que mudou tudo
 
@@ -105,11 +106,14 @@ trabalhar no PicPay.
 
 Ele contou um pouco, eu me empolguei, e soltei:
 
-> “Se aparecer uma vaga aí, me dá um toque. Já tentei entrar algumas vezes, mas nunca rolou."
+> [!NOTE]
+> “Se pintar uma vaga por aí, me dá um toque. Já tentei algumas vezes, mas nunca passou da Gupy… tu sabe como é, né?
+> Aquela plataforma parece que tem um buraco negro — a gente se candidata e nada acontece feijoada.”
 
 A conversa ficou por isso mesmo. Só que em **fevereiro do ano seguinte**, meses depois do evento, ele me mandou uma
 mensagem no WhatsApp:
 
+> [!NOTE]
 > “Abriu uma vaga aqui no meu time, bora tentar de novo?”
 
 Aceitei na hora.
@@ -125,6 +129,7 @@ comunidade me entregou.
 Confesso que, no começo, talvez eu nem tivesse um objetivo muito claro ao escrever isso. Mas, à medida que as palavras
 foram tomando forma, ficou cristalino o que eu realmente queria dizer:
 
+> [!TIP]
 > A comunidade me trouxe até aqui.
 
 Não foi sorte, nem um golpe de acaso. Foi a comunidade que me apresentou pessoas incríveis e que, de fato, mudou minha
@@ -137,8 +142,10 @@ ambiente profissional.
 
 Se você ainda não faz parte desse lugar, quero te convidar a conhecer a comunidade PHP da sua região — sim, elas existem
 em praticamente todos os estados, com encontros, grupos e muita troca real acontecendo perto de você. E, claro, fica
-aqui o convite para participar da nossa comunidade do PHP RS, onde a gente conversa, se reúne, compartilha desafios e
-cresce junto.
+aqui o convite para participar da nossa [comunidade do PHP RS](https://t.me/phprs), onde a gente conversa, se reúne,
+compartilha desafios e cresce junto.
 
 Afinal, carreira não é só sobre o que você sabe, mas também sobre quem está junto com você nessa caminhada. E é nesse
 espaço coletivo que o seu próximo passo pode acontecer.
+
+![phpvelhooeste-2025.png](/assets/images/posts/comunidade/phpvelhooeste-2025.png)
