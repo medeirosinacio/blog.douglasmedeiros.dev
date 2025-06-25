@@ -48,7 +48,7 @@ layout: default
         </div>
         {% endif %}
         <div class="post-content pb-2">
-            {{ page.content }}
+            {{ page.content | responsive_img_src }}
         </div>
         {% include share.html %}
         <!--            <div class="post-tags pt-2">-->
