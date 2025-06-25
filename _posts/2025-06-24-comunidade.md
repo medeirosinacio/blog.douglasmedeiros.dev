@@ -25,7 +25,7 @@ E como esse sentimento de pertencimento ainda tá fresco, quero aproveitar esse 
 reanimar a comunidade aqui no sul — o PHP RS — para contar um pouco sobre como descobri esse universo e o que ele me
 ensinou até agora.
 
-> [!IMPORTANT]
+> [!IMPORTANT] 
 > Para quem ficou curioso sobre a talk que palestrei no último Velho Oeste, eu transformei ela em um artigo chamado
 > *"[Nem só de código vive o dev](/artigos/carreira/nem-so-de-codigo-vive-o-dev)"*.
 > Depois dá uma conferida lá — acho que vai curtir.
@@ -66,6 +66,10 @@ participar da comunidade, estar com gente que vive os mesmos desafios e comparti
 que transforma. Foi ali que tudo começou a mudar de verdade.
 
 ### De um voo solitário ao começo de tudo
+
+```php
+echo "A comunidade me trouxe até aqui.";
+```
 
 Mas, cara... o networking faz uma diferença absurda.
 
