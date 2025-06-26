@@ -1,15 +1,17 @@
 #!/usr/bin/make
 
+CONTAINER_NAME=blog.douglasmedeiros.dev
 .DEFAULT_GOAL := help
 
 setup: ## Setup the project
+	mkdir -p .well-known/appspecific/ && touch .well-known/appspecific/com.chrome.devtools.json
 	make check-docker
-	docker stop blog.douglasmedeiros.dev > /dev/null 2>&1 || true
+	docker stop $(CONTAINER_NAME) > /dev/null 2>&1 || true
 	if [ "$(shell uname -m)" = "arm64" ]; then make setup-arm; else make setup-x86; fi
 
 setup-x86: ## Setup the project for x86
 	docker run -t --rm \
-	  --name blog.douglasmedeiros.dev \
+	  --name $(CONTAINER_NAME) \
       -v ./:/app \
       -w /app \
       --dns 8.8.8.8 \
@@ -21,7 +23,7 @@ setup-x86: ## Setup the project for x86
 
 setup-arm: ## Setup the project for ARM
 	docker run -t --rm \
-	  --name blog.douglasmedeiros.dev \
+	  --name $(CONTAINER_NAME) \
       -v ./:/app \
       -w /app \
       --dns 8.8.8.8 \

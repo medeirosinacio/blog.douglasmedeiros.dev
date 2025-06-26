@@ -11,5 +11,6 @@ group :jekyll_plugins do
   gem 'jekyll-paginate'
 end
 
+gem "nokogiri", "1.15.7"
 gem "wdm"
 

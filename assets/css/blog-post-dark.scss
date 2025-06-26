@@ -201,7 +201,7 @@
 
 .post-content mark {
   background-color: var(--bgColor-attention-muted);
-  color: var(--fgColor-default)  !important;
+  color: var(--fgColor-default) !important;
 }
 
 .post-content small {
@@ -224,6 +224,23 @@
   top: -0.5em;
 }
 
+.post-content figure {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.post-content figure figcaption {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  color: #747474;
+  font-size: 0.8em;
+  font-weight: 300;
+  padding-top: 5px;
+  font-style: italic;
+}
+
 .post-content img {
   border-style: none;
   max-width: 100%;
@@ -241,10 +258,6 @@
 .post-content samp {
   font-family: monospace;
   font-size: 1em;
-}
-
-.post-content figure {
-  margin: 1em 40px;
 }
 
 .post-content hr {

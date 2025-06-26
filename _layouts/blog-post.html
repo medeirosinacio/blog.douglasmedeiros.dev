@@ -101,30 +101,15 @@ layout: default
 <script>
     document.addEventListener('DOMContentLoaded', function () {
 
-        // Add style to images based on URL parameters
-        const images = document.querySelectorAll('.post-content img');
-        images.forEach(function (img) {
-            const imgUrl = img.src;
-            if (imgUrl.includes('/assets/images/posts/')) {
-                const urlParams = new URLSearchParams(new URL(imgUrl).search);
-                const classParams = urlParams.get('class');
-                if (classParams) {
-                    for (const className of classParams.split(' ')) {
-                        img.classList.add(className);
-                    }
-                }
-            }
-        });
         // Função para alternar entre abrir e fechar a imagem em tela cheia
+        const images = document.querySelectorAll('.post-content img');
         images.forEach(function (img) {
             img.addEventListener('click', function () {
                 let fullscreenDiv = document.querySelector('.fullscreen-image-container');
-
                 if (fullscreenDiv) {
                     fullscreenDiv.remove();
                     enableScroll();
                 } else {
-                    // Cria a div que vai conter a imagem em tela cheia
                     fullscreenDiv = document.createElement('div');
                     fullscreenDiv.classList.add('fullscreen-image-container');
                     fullscreenDiv.style.position = 'fixed';
@@ -134,19 +119,38 @@ layout: default
                     fullscreenDiv.style.height = '100vh';
                     fullscreenDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
                     fullscreenDiv.style.display = 'flex';
+                    fullscreenDiv.style.flexDirection = 'column';
                     fullscreenDiv.style.justifyContent = 'center';
                     fullscreenDiv.style.alignItems = 'center';
                     fullscreenDiv.style.zIndex = '1000';
 
-                    // Cria a imagem
                     const fullscreenImg = document.createElement('img');
                     fullscreenImg.src = img.src;
                     fullscreenImg.style.maxWidth = '90%';
                     fullscreenImg.style.maxHeight = '80vh';
                     fullscreenImg.style.objectFit = 'contain';
-                    fullscreenDiv.appendChild(fullscreenImg);
-                    document.body.appendChild(fullscreenDiv);
 
+                    fullscreenDiv.appendChild(fullscreenImg);
+
+                    const figure = img.closest('figure');
+                    if (figure) {
+                        const figcaption = figure.querySelector('figcaption');
+                        if (figcaption) {
+                            const captionClone = figcaption.cloneNode(true);
+                            captionClone.style.color = '#fff';
+                            captionClone.style.marginTop = '1rem';
+                            captionClone.style.textAlign = 'center';
+                            captionClone.style.fontSize = '0.9em';
+                            captionClone.style.fontWeight = '300';
+                            captionClone.style.fontStyle = 'italic';
+                            captionClone.style.padding = '10px 10%';
+                            captionClone.style.backgroundColor = '#131313';
+
+                            fullscreenDiv.appendChild(captionClone);
+                        }
+                    }
+
+                    document.body.appendChild(fullscreenDiv);
                     disableScroll();
 
                     fullscreenDiv.addEventListener('click', function () {
@@ -155,17 +159,6 @@ layout: default
                     });
                 }
             });
-        });
-
-        // Add copy button to code blocks
-        const codeElements = document.querySelectorAll('div.highlighter-rouge');
-        codeElements.forEach(function (codeElement) {
-            const newDiv = document.createElement('span');
-            newDiv.className = 'copy';
-            newDiv.setAttribute('data-bs-toggle', 'tooltip');
-            newDiv.setAttribute('title', 'Código copiado!');
-            newDiv.innerHTML = '<i class="bi bi-copy"></i>';
-            codeElement.insertAdjacentElement('afterbegin', newDiv);
         });
 
         // Initialize code block tooltips
@@ -195,24 +188,6 @@ layout: default
                     console.log(err);
                 });
             });
-        });
-
-        // Customize/add class to blockquote based on type
-        document.querySelectorAll('blockquote').forEach(blockquote => {
-            const p = blockquote.querySelector('p');
-            if (p) {
-                const html = p.innerHTML.trim();
-                const type = html.match(/^\[!(\w+)\]/);
-                if (type) {
-                    const typeName = type[1].toLowerCase();
-                    p.innerHTML = html.replace(/^\[!\w+\]/, '').trim();
-                    blockquote.classList.add("blockquote-alert");
-                    blockquote.classList.add("blockquote-" + typeName);
-                } else {
-                    blockquote.classList.add("blockquote-alert");
-                    blockquote.classList.add("blockquote-default");
-                }
-            }
         });
     });
 
