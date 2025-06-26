@@ -1,57 +1,73 @@
-# The Awesome Jekyll Template
+# Douglas Medeiros Blog
 
-###### Um template Jekyll completo com Bootstrap para Github Pages!
+###### my personal space
+
+> [blog.douglasmedeiros.dev](https://blog.douglasmedeiros.dev)
 
 ---
 
-Este é um template completo para geração de sites estáticos, desenvolvendo paginas dinamicamente com [Jekyll](https://jekyllrb.com/). 
-Desenvolva sites completos e dinâmicos, totalmente estáticos mesmo tendo contagem de visualizações, comentários ou posts.
+A personal blog focused on sharing technical articles, experiences, and reflections on technology. This blog is a space
+for me to centralize my thoughts and knowledge, making it easier to share with others while maintaining control over the
+content.
 
-[Demostração](https://jekyll-bootstrap.douglasmedeiros.dev/)
+### 📬 Social & Contact
 
-## Recursos
+* **Blog:** [blog.douglasmedeiros.dev](https://blog.douglasmedeiros.dev)
+* **GitHub:** [@medeirosinacio](https://github.com/medeirosinacio)
+* **LinkedIn:** [Douglas Medeiros](https://www.linkedin.com/in/medeirosinacio/)
+* **Twitter:** [@aqueleMetal](https://x.com/aqueleMetal)
 
-Configuração prontas que você vai encontrar nesse template:
+### 🏗️ Project Architecture
 
-- [Jekyll](https://jekyllrb.com/) com sua versão compatível com o Github Pages;
-- [Bootstrap v5.1](https://getbootstrap.com/docs/5.1/getting-started/introduction/) com compilador [Sass](https://getbootstrap.com/docs/5.1/getting-started/build-tools/#sass);
-- [Jekyll Minifier](https://github.com/Mendeo/jekyll-minifier) para compilação de HTML, CSS e JS;
-- Efeitos de uma Landing Page com [AOS library](https://michalsnik.github.io/aos/)
-- Configurações [globais](./_config.yml) de variáveis, diretórios e arquivos;
-- Um [bashscript](./server.sh) para subir localmente seu projeto via Docker;
-- Blog com paginação dinâmica, tags e categorias;
-- Contagem de visualizações/curtidas com [CountAPI](https://countapi.xyz/);
-- Sistema de comentários com [Disqus](https://disqus.com/);
-- Formulario de contato com resposta via email com [Static Forms](https://www.staticforms.xyz/);
+#### Technologies Used
 
-## Começando
+* **Jekyll:** Static site generator for easy content management and GitHub Pages compatibility.
+* **GitHub Pages:** Free, fast, and reliable static hosting.
+* **Bootstrap:** Responsive and modern UI framework.
+* **Vanilla JavaScript:** For interactive features (image zoom, code copy, etc.).
+* **Utterances:** GitHub-based comments integration.
 
-Esse template já totalmente configurado, basta fazer o clone dele na sua maquina e executar o script para subir o servidor. Por padrão o servidor ira subir nas portas 80/4000/35729, sinta-se a vontade para mudar diretamente no script.
+> [!IMPORTANT]
+> 💡 The entire architecture runs at zero cost, using open-source tools and GitHub’s native support for static content
+> hosting.
 
-### Pré-requisitos
+#### Project Structure
+
+```
+.
+├── _posts/           # Markdown articles (blog posts)
+├── _layouts/         # Custom Jekyll layouts and templates
+├── assets/           # Images, CSS, JS, and other static assets
+├── _includes/        # Reusable HTML snippets (e.g., share buttons)
+├── _config.yml       # Jekyll configuration
+├── Gemfile           # Ruby dependencies
+└── README.md         # Project documentation
+```
+
+### 🚀 Running Locally
+
+#### Prerequisites
 
 - Git
 - Docker
-- make
 
-### Instalação
+#### Setup
 
-1 -  Clone o repositorio
+Clone the repository:
 
-```sh
-git clone https://github.com/medeirosinacio/jekyll-bootstrap-github-pages.git
+```shell
+  git clone https://github.com/medeirosinacio/blog.douglasmedeiros.dev.git
+  cd blog.douglasmedeiros.dev
 ```
 
-2 -  Execute o script bash para subir o servidor local
+Run the project:
 
-```sh
-make setup
+```shell
+  make setup
 ```
 
-3 - O servidor estara disponivel em seu ambiente local
+This will start a Docker container with Jekyll, allowing you to preview the site locally at `http://localhost:4000`.
 
-> [http://localhost/index.html](http://localhost/index.html)
+### ⚖️ License
 
-## Licença
-
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
