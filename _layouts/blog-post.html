@@ -106,12 +106,10 @@ layout: default
         images.forEach(function (img) {
             img.addEventListener('click', function () {
                 let fullscreenDiv = document.querySelector('.fullscreen-image-container');
-
                 if (fullscreenDiv) {
                     fullscreenDiv.remove();
                     enableScroll();
                 } else {
-                    // Cria a div que vai conter a imagem em tela cheia
                     fullscreenDiv = document.createElement('div');
                     fullscreenDiv.classList.add('fullscreen-image-container');
                     fullscreenDiv.style.position = 'fixed';
@@ -121,19 +119,38 @@ layout: default
                     fullscreenDiv.style.height = '100vh';
                     fullscreenDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
                     fullscreenDiv.style.display = 'flex';
+                    fullscreenDiv.style.flexDirection = 'column';
                     fullscreenDiv.style.justifyContent = 'center';
                     fullscreenDiv.style.alignItems = 'center';
                     fullscreenDiv.style.zIndex = '1000';
 
-                    // Cria a imagem
                     const fullscreenImg = document.createElement('img');
                     fullscreenImg.src = img.src;
                     fullscreenImg.style.maxWidth = '90%';
                     fullscreenImg.style.maxHeight = '80vh';
                     fullscreenImg.style.objectFit = 'contain';
-                    fullscreenDiv.appendChild(fullscreenImg);
-                    document.body.appendChild(fullscreenDiv);
 
+                    fullscreenDiv.appendChild(fullscreenImg);
+
+                    const figure = img.closest('figure');
+                    if (figure) {
+                        const figcaption = figure.querySelector('figcaption');
+                        if (figcaption) {
+                            const captionClone = figcaption.cloneNode(true);
+                            captionClone.style.color = '#fff';
+                            captionClone.style.marginTop = '1rem';
+                            captionClone.style.textAlign = 'center';
+                            captionClone.style.fontSize = '0.9em';
+                            captionClone.style.fontWeight = '300';
+                            captionClone.style.fontStyle = 'italic';
+                            captionClone.style.padding = '10px 10%';
+                            captionClone.style.backgroundColor = '#131313';
+
+                            fullscreenDiv.appendChild(captionClone);
+                        }
+                    }
+
+                    document.body.appendChild(fullscreenDiv);
                     disableScroll();
 
                     fullscreenDiv.addEventListener('click', function () {
