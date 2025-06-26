@@ -101,9 +101,9 @@ layout: default
 <script>
     document.addEventListener('DOMContentLoaded', function () {
 
-        // Add style to images based on URL parameters
         const images = document.querySelectorAll('.post-content img');
         images.forEach(function (img) {
+            // Add style to images based on URL parameters
             const imgUrl = img.src;
             if (imgUrl.includes('/assets/images/posts/')) {
                 const urlParams = new URLSearchParams(new URL(imgUrl).search);
@@ -114,7 +114,22 @@ layout: default
                     }
                 }
             }
+
+            // Transform images into figures with captions
+            if (!img.closest('figure')) {
+                const figure = document.createElement('figure');
+                figure.className = 'post-figure';
+                img.parentNode.insertBefore(figure, img);
+                figure.appendChild(img);
+                if (img.alt && img.alt.trim() !== '') {
+                    const figcaption = document.createElement('figcaption');
+                    figcaption.className = 'post-figcaption';
+                    figcaption.textContent = img.alt;
+                    figure.appendChild(figcaption);
+                }
+            }
         });
+
         // Função para alternar entre abrir e fechar a imagem em tela cheia
         images.forEach(function (img) {
             img.addEventListener('click', function () {
@@ -134,6 +149,7 @@ layout: default
                     fullscreenDiv.style.height = '100vh';
                     fullscreenDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
                     fullscreenDiv.style.display = 'flex';
+                    fullscreenDiv.style.flexDirection = 'column';
                     fullscreenDiv.style.justifyContent = 'center';
                     fullscreenDiv.style.alignItems = 'center';
                     fullscreenDiv.style.zIndex = '1000';
@@ -146,6 +162,24 @@ layout: default
                     fullscreenImg.style.objectFit = 'contain';
                     fullscreenDiv.appendChild(fullscreenImg);
                     document.body.appendChild(fullscreenDiv);
+
+                    const figure = img.closest('figure');
+                    if (figure) {
+                        const figcaption = figure.querySelector('figcaption');
+                        if (figcaption) {
+                            const captionClone = figcaption.cloneNode(true);
+                            captionClone.style.color = '#fff';
+                            captionClone.style.marginTop = '1rem';
+                            captionClone.style.textAlign = 'center';
+                            captionClone.style.fontSize = '0.9em';
+                            captionClone.style.fontWeight = '300';
+                            captionClone.style.fontStyle = 'italic';
+                            captionClone.style.padding = '10px 10%';
+                            captionClone.style.backgroundColor = '#131313';
+
+                            fullscreenDiv.appendChild(captionClone);
+                        }
+                    }
 
                     disableScroll();
 
