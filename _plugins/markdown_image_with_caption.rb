@@ -12,9 +12,12 @@ Jekyll::Hooks.register [:posts, :pages], :post_render do |doc|
       query = src.split('?', 2)[1]
       query.split('&').each do |param|
         key, value = param.split('=', 2)
-        if key == 'class' && value
-          classes = value.split('%20').map { |c| c.tr('+', ' ') }
-          img['class'] = [img['class'], *classes].compact.join(' ')
+        next unless key && value
+        value = value.gsub('%20', ' ').tr('+', ' ')
+        if key == 'class'
+          img['class'] = [img['class'], value].compact.join(' ')
+        else
+          img[key] = value
         end
       end
     end

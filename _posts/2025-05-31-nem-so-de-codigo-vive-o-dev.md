@@ -139,7 +139,7 @@ ajustando.
 Eu sei bem como é. Já fui o dev que odiava reuniões, achava que slide não era trabalho, que alinhar era perda de tempo.
 Eu queria era codar. Pra mim, reunião era só um atraso na sprint.
 
-![geekcom2](/assets/images/posts/nem-so-de-codigo-vive-o-dev/x-geekcom2.png)
+![@geekcom2 via Twiter](/assets/images/posts/nem-so-de-codigo-vive-o-dev/x-geekcom2.png)
 
 Mas aí caiu a ficha: **o código é a menor parte do trabalho.** O impacto real tá em como a gente conecta ideias,
 transmite soluções e colabora com os outros.
