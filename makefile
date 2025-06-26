@@ -3,6 +3,7 @@
 .DEFAULT_GOAL := help
 
 setup: ## Setup the project
+	mkdir -p .well-known/appspecific/ && touch .well-known/appspecific/com.chrome.devtools.json
 	make check-docker
 	docker stop blog.douglasmedeiros.dev > /dev/null 2>&1 || true
 	if [ "$(shell uname -m)" = "arm64" ]; then make setup-arm; else make setup-x86; fi
