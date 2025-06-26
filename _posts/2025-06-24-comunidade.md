@@ -25,7 +25,7 @@ E como esse sentimento de pertencimento ainda tá fresco, quero aproveitar esse 
 reanimar a comunidade aqui no sul — o PHP RS — para contar um pouco sobre como descobri esse universo e o que ele me
 ensinou até agora.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Para quem ficou curioso sobre a talk que palestrei no último Velho Oeste, eu transformei ela em um artigo chamado
 > *"[Nem só de código vive o dev](/artigos/carreira/nem-so-de-codigo-vive-o-dev)"*.
 > Depois dá uma conferida lá — acho que vai curtir.
@@ -55,7 +55,7 @@ PHP assíncrono", "Marcel", "Caruso", "Batista" — nomes e talks que explodiram
 cinco, seis vezes, mastigando cada conceito. Foi uma avalanche de aprendizado. Aquilo ali me mostrou que a área era
 muito maior do que eu imaginava, que existia vida além do meu terminal.
 
-![Meu histórico do YouTube, 2020](/assets/images/posts/comunidade/historico-youtube-2020.png?class=w-80 w-md-80 w-xxl-60)
+![historico-youtube-2020](/assets/images/posts/comunidade/historico-youtube-2020.png?class=w-80 w-md-80 w-xxl-60)
 
 E ali, no meio de uma pandemia, eu fiz uma promessa: no primeiro evento presencial que acontecesse depois de tudo isso,
 eu iria. Não importava onde. E cumpri. Em 2022, quando anunciaram o PHPeste — Em Natal — eu não pensei duas vezes. Moro
@@ -81,7 +81,7 @@ Desci do carro, vi o pessoal ali na frente, cumprimentei, me apresentei, e pront
 sumiu. A gente foi almoçar junto, depois teve o evento, e o resto é história. Conexão real. Vínculo. Gente boa, com a
 mesma vibe, falando sobre tecnologia com brilho nos olhos.
 
-![Credencial PHPest, 2022](/assets/images/posts/comunidade/credencial-phpest-2022.png?class=w-80 w-md-80 w-xxl-60)
+![credencial-phpest-2022.png](/assets/images/posts/comunidade/credencial-phpest-2022.png?class=w-80 w-md-80 w-xxl-60)
 
 ### A troca
 
@@ -94,7 +94,7 @@ pessoas evoluírem.
 
 Ali caiu a ficha: é nesse tipo de evento que a mágica acontece.
 
-![Happy hour pós evento no PHPest, 2022](/assets/images/posts/comunidade/hh-phpest-2022.png?class=w-80 w-md-80 w-xxl-60)
+![hh-phpest-2022.png](/assets/images/posts/comunidade/hh-phpest-2022.png?class=w-80 w-md-80 w-xxl-60)
 
 ### Uma conversa que mudou tudo
 
@@ -148,4 +148,4 @@ compartilha desafios e cresce junto.
 Afinal, carreira não é só sobre o que você sabe, mas também sobre quem está junto com você nessa caminhada. E é nesse
 espaço coletivo que o seu próximo passo pode acontecer.
 
-![PHP Velho Oeste, 2025](/assets/images/posts/comunidade/phpvelhooeste-2025.png)
+![phpvelhooeste-2025.png](/assets/images/posts/comunidade/phpvelhooeste-2025.png)

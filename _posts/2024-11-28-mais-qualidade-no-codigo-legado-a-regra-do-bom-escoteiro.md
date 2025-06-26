@@ -60,7 +60,7 @@ se fosse um escoteiro, pois bons escoteiros sempre deixam o lugar mais limpo do 
 gravada na minha mente, e no mesmo dia fui buscar entender melhor o que isso significava. É essa definição que quero
 compartilhar aqui.
 
-![](/assets/images/posts/escoteiros.png?class=w-80 w-md-80 w-xxl-60)
+![escoteiros.png](/assets/images/posts/escoteiros.png?class=w-80 w-md-80 w-xxl-60)
 
 ### Uma abordagem simples, mas poderosa
 

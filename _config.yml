@@ -52,8 +52,6 @@ plugins:
 sass:
   sass_dir: assets/css
   style: compressed
-include:
-  - .well-known
 exclude:
   - .github
   - Gemfile

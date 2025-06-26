@@ -56,7 +56,7 @@ referências, têm seus casos de uso e propósitos. No entanto, a ideia aqui é 
 simples que nos ajude a nos organizar e melhorar nosso fluxo de desenvolvimento, conectando pontos e caixas em diagramas
 de referência de nossos fluxos.
 
-![Exemplos de diagramas BPMN](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/exemplos-de-diagramas-bpmn.png)
+![exemplos-de-diagramas-bpmn.png](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/exemplos-de-diagramas-bpmn.png)
 
 ## Mas, por que desenhar?
 
