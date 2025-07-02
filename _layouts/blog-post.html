@@ -29,7 +29,7 @@ layout: default
                 de
                 {{ page.date | date: "%Y" }}
                 ·
-                {% assign wordCount = page.content | number_of_words | divided_by: 200 %}
+                {% assign wordCount = page.content | number_of_words | divided_by: 150 %}
                 {% if wordCount < 2 %}
                 {{ '1 minuto de leitura' }}
                 {% else %}
@@ -47,7 +47,7 @@ layout: default
                href="{{ site.srcurl }}{{ page.url }}" title="{{ page.title }}"></a>
         </div>
         {% endif %}
-        <div class="post-content pb-2">
+        <div class="post-content pb-4">
             {{ page.content }}
         </div>
         {% include share.html %}
