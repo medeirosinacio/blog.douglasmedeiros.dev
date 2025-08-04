@@ -11,7 +11,7 @@ tags:
   - engenharia de software
   - soft skills
 image: /assets/images/posts/nem-so-de-codigo-vive-o-dev/eliot-php.png
-description: "O que realmente faz um dev crescer na carreira? Não, não é só saber codar bem. Neste artigo, conto como levei um choque de realidade ao descobrir que comunicação é tão essencial quanto técnica — e como isso mudou tudo no meu jeito de trabalhar. Se você acha que \"o código fala por si\", talvez esteja perdendo a parte mais importante do jogo."
+description: "O que realmente faz um dev crescer na carreira? Não, não é só saber codar bem. Neste artigo, conto como levei um choque de realidade ao descobrir que comunicação é tão essencial quanto técnica, e como isso mudou tudo no meu jeito de trabalhar. Se você acha que \"o código fala por si\", talvez esteja perdendo a parte mais importante do jogo."
 ---
 
 Se alguém tivesse me dito no início da minha carreira que a comunicação seria um dos pilares mais cruciais para o meu
@@ -24,19 +24,19 @@ mostrar que não é bem assim.
 > — Você já sentiu o desconforto de compartilhar uma ideia que ninguém deu atenção, mas quando outra pessoa repetiu a
 > mesma coisa, todos se interessaram?
 
-Esse é um sentimento onde acredito que muitos de nós já enfrentamos na nossa área — e aposto que muitos aqui já passaram
+Esse é um sentimento onde acredito que muitos de nós já enfrentamos na nossa área, e aposto que muitos aqui já passaram
 por isso também. No início da minha carreira, participei de uma reunião em que tentei apresentar uma ideia de
 arquitetura que, para mim, era claramente a melhor escolha. Todos ouviram com atenção, mas a proposta simplesmente não
 engajou. Pouco depois, outro colega expôs a mesma ideia, mas com uma abordagem mais polida e uma comunicação mais clara.
 A ideia foi aceita após uma discussão sobre a solução. Foi um choque perceber que, embora o conteúdo estivesse certo, eu
-tinha falhado na forma de comunicar. E ali entendi, na prática, que na nossa área não basta ter boas ideias — é preciso
+tinha falhado na forma de comunicar. E ali entendi, na prática, que na nossa área não basta ter boas ideias, é preciso
 saber comunicá-las também.
 
 Esse episódio foi meu choque de realidade: comunicação não é detalhe, é peça-chave.
 
 ## O Mito do Dev Introvertido
 
-Existe um estereótipo antigo — mas que ainda persiste — no mundo da tecnologia: o mito do dev introspectivo e genial,
+Existe um estereótipo antigo, mas que ainda persiste, no mundo da tecnologia: o mito do dev introspectivo e genial,
 aquele que resolve tudo sozinho. E não estou falando do estereótipo que nossas famílias têm do "gênio" que arruma a
 impressora ou resolve problemas de computador. Estou falando daquele ideal dos devs para devs: o cara que trabalha no
 escuro, quietinho, como o Eliot de *Mr. Robot* ou o Neo de *Matrix*. Por muito tempo, eu quis ser exatamente isso porque
@@ -49,7 +49,7 @@ E então, o mundo real chega.
 
 ### Mundo real
 
-Quando chegamos no mercado de trabalho, muitas vezes trazemos a mentalidade de que tudo se resume ao código — que o que
+Quando chegamos no mercado de trabalho, muitas vezes trazemos a mentalidade de que tudo se resume ao código, que o que
 realmente importa é saber programar e entregar soluções técnicas. Mas, com o tempo, começamos a perceber que a realidade
 é bem mais complexa. Participar de reuniões, planejar, discutir ideias e entender o contexto de um projeto vai muito
 além de abrir um pull request.
@@ -58,7 +58,7 @@ A gente percebe que o código, de fato, é apenas uma pequena parte de ser um en
 àquele momento de digitar a solução, muita coisa já aconteceu. A solução que vamos implementar foi discutida, planejada
 e validada por outras pessoas. Foram levantados os riscos, analisada a viabilidade, e decididos aspectos como a
 abordagem mais rápida, escalável e configurável. Em outras palavras, quando nos sentamos para codificar, não estamos
-começando do zero — estamos, na maioria das vezes, dando vida a uma solução que já passou por várias fases de análise e
+começando do zero, estamos, na maioria das vezes, dando vida a uma solução que já passou por várias fases de análise e
 decisão.
 
 ### Além do Código
@@ -69,8 +69,8 @@ escolhas técnicas nos objetivos do negócio. O código é o reflexo dessas deci
 muitas vezes, essas decisões não vêm exclusivamente de um aspecto técnico, mas de um equilíbrio entre negócios, prazos,
 custos e necessidades do cliente.
 
-Se a gente acaba focando apenas no código e esquece todo esse background que vem antes, arriscamos — e é muito
-provável — de nos tornarmos invisíveis. Vamos acabar ali, sentados em nossas cadeiras, entregando tarefas a cada sprint,
+Se a gente acaba focando apenas no código e esquece todo esse background que vem antes, arriscamos, e é muito
+provável, de nos tornarmos invisíveis. Vamos acabar ali, sentados em nossas cadeiras, entregando tarefas a cada sprint,
 mas sem realmente impactar o projeto na totalidade, sem perceber as oportunidades que surgem ao se envolver mais nas
 discussões e decisões que acontecem antes da execução. Ao perdermos essa visão, corremos o risco de ser esquecidos, de
 ficar estagnados, sem avançar para novas oportunidades ou desafios dentro da equipe.
@@ -81,12 +81,12 @@ realmente nos dá visibilidade e crescimento na carreira.
 
 ## Comunicação é Skill Técnica Também
 
-Sim, é exatamente sobre isso. E não, comunicação não é sobre “falar bonito” — é sobre se expor, se expressar e conseguir
+Sim, é exatamente sobre isso. E não, comunicação não é sobre “falar bonito”, é sobre se expor, se expressar e conseguir
 ser entendido.
 
 Se a gente, como devs, quer de fato crescer, abraçar oportunidades e evoluir na carreira, precisa entender de uma vez
 por todas: saber se comunicar é uma das principais habilidades técnicas da profissão. Não é um “extra”, nem algo
-reservado apenas para cargos de gestão — é uma skill fundamental, que impacta diretamente na forma como nosso trabalho é
+reservado apenas para cargos de gestão, é uma skill fundamental, que impacta diretamente na forma como nosso trabalho é
 percebido, compreendido e valorizado.
 
 No dia a dia, essa habilidade se reflete em várias situações que não envolvem apenas “conversar”:
@@ -100,11 +100,11 @@ No dia a dia, essa habilidade se reflete em várias situações que não envolve
 
 É nessas horas que a comunicação vira uma ponte entre o que você sabe e o que os outros conseguem enxergar. E foi
 exatamente aí que caiu uma verdade dura: muitas vezes, eu sabia mais do que aparentava. Mas, por não saber expressar
-bem, parecia o contrário — e isso custava espaço, reconhecimento e oportunidades.
+bem, parecia o contrário, e isso custava espaço, reconhecimento e oportunidades.
 
 Aprender a me comunicar mudou meu trabalho. Não só passei a ser mais ouvido, como vi minhas ideias ganharem vida e
 impacto. E, principalmente, deixei de ser só um “executor técnico” e passei a ser alguém capaz de influenciar, colaborar
-e liderar. Porque, no fim, o código é importante — mas a forma como você o defende, explica e compartilha faz toda a
+e liderar. Porque, no fim, o código é importante, mas a forma como você o defende, explica e compartilha faz toda a
 diferença.
 
 Então se você quer crescer na carreira, comece a treinar isso também. Porque saber se comunicar é tão estratégico quanto
@@ -121,16 +121,16 @@ Aí vem as frases clássicas que talvez muitos lendo isso estão se fazendo:
 > 
 > “Fico nervoso, travo, esqueço tudo na hora…”
 
-Se esse é o seu caso, deixa eu te contar uma coisa que devia ser óbvia — mas ninguém fala o suficiente: **ninguém nasce
+Se esse é o seu caso, deixa eu te contar uma coisa que devia ser óbvia, mas ninguém fala o suficiente: **ninguém nasce
 sabendo se comunicar. Não é dom. É prática.**
 
 Comunicação é igual qualquer outra skill técnica: você aprende. Erra. Revisa. Testa de novo. E melhora.
 
 Tipo aquele seu primeiro _Hello World_.
 
-No início, parece bobo — só uma frase na tela. Mas pra quem tá começando, aquilo é um universo novo. É o primeiro passo
+No início, parece bobo, só uma frase na tela. Mas pra quem tá começando, aquilo é um universo novo. É o primeiro passo
 pra entender como o sistema funciona, como falar com ele, como ele responde. É assim com a comunicação. No começo,
-parece simples — mas na prática, dá branco, trava, parece que não sai nada certo. E tudo bem. Porque, assim como no
+parece simples, mas na prática, dá branco, trava, parece que não sai nada certo. E tudo bem. Porque, assim como no
 código, você só melhora **fazendo**.
 
 Não tem mágica. É tentativa e erro. É pedir feedback, prestar atenção em como as pessoas reagem, e aos poucos ir
@@ -148,7 +148,7 @@ E por mais que a gente não goste de admitir… essa é a realidade. A parte que
 
 ### O Impacto Real na Carreira
 
-Uma coisa que eu sempre repito pra mim mesmo — e que foi, sem dúvida, a virada de chave na minha carreira — é essa
+Uma coisa que eu sempre repito pra mim mesmo, e que foi, sem dúvida, a virada de chave na minha carreira, é essa
 frase:
 
 > [!TIP]
@@ -160,7 +160,7 @@ atrás de tasks do Jira?
 
 Por muito tempo, acreditei que bastava trabalhar bem. Entregar com qualidade, entender arquitetura, ajudar o time… e
 que, em algum momento, isso naturalmente seria percebido. Só que o mundo real não funciona assim. Já vi colegas
-crescendo rápido, se tornando referência — mesmo sem serem os mais técnicos do time. E a diferença deles era que sabiam
+crescendo rápido, se tornando referência, mesmo sem serem os mais técnicos do time. E a diferença deles era que sabiam
 se comunicar. Tinham clareza. Sabiam explicar o que estavam fazendo, o porquê das escolhas, e se faziam ouvir.
 
 Pensa bem: quantas vezes você já se envolveu em várias frentes ao mesmo tempo? Mentoria, arquitetura, suporte a outros
@@ -179,7 +179,7 @@ exemplos pode ser um grande aliado, especialmente quando o acesso a feedbacks é
 onde podemos melhorar e até perceber erros que não tínhamos notado antes.
 
 Quando estamos em ambientes que cultivam uma cultura de feedback, o jogo realmente muda. Receber críticas construtivas —
-tanto sobre o nosso código quanto sobre a forma como nos comunicamos — é fundamental para o nosso crescimento. Aprender
+tanto sobre o nosso código quanto sobre a forma como nos comunicamos, é fundamental para o nosso crescimento. Aprender
 a ouvir essas críticas de maneira objetiva, sem tomá-las como algo pessoal, mas entendendo-as como ferramentas para o
 aprimoramento, foi um verdadeiro ponto de virada para mim, impulsionando meu desenvolvimento em diversas áreas.
 
@@ -198,7 +198,7 @@ sobre essas experiências. Deixo aqui algumas leituras que podem expandir sua pe
 
 ## Por fim
 
-No fim das contas, entender que comunicação é parte essencial do nosso trabalho não é sobre abrir mão da técnica — é
+No fim das contas, entender que comunicação é parte essencial do nosso trabalho não é sobre abrir mão da técnica, é
 sobre potencializá-la. É transformar conhecimento em influência, esforço em reconhecimento, ideias em impacto real. E
 isso não significa virar palestrante, influenciador ou alguém extrovertido que fala o tempo todo. Significa,
 simplesmente, ser capaz de conectar o que você sabe com o que o time, a empresa e o mundo precisam entender. Significa
@@ -207,7 +207,7 @@ transforma esse sistema.
 
 Eu sei que pra muita gente, principalmente quem veio da lógica do “só o código importa”, isso pode soar desconfortável.
 Mas crescimento raramente vem do conforto. E é justamente quando começamos a ocupar espaços de conversa, escuta,
-explicação e colaboração que o nosso trabalho começa a ser percebido de forma diferente — mais estratégica, mais
+explicação e colaboração que o nosso trabalho começa a ser percebido de forma diferente, mais estratégica, mais
 relevante, mais alinhada com o todo.
 
 A real é que ninguém cresce sozinho. E quem se comunica bem, constrói pontes. Se torna referência. Inspira confiança.

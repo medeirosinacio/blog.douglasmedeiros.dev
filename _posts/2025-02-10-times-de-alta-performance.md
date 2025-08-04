@@ -42,7 +42,7 @@ vazios, cumpridos mecanicamente, sem que se compreenda seu verdadeiro propósito
 Acredito que essa desconexão é um dos principais fatores que minam a motivação das equipes. Por isso, fomentar um
 ambiente onde as pessoas tenham liberdade para revisar processos, expor dificuldades e sugerir melhorias pode ser a
 chave para um desempenho sustentável. Um time de alta performance não é aquele que simplesmente entrega mais, mas aquele
-que entrega melhor — com menos retrabalho, mais qualidade e uma estrutura que promove a evolução contínua.
+que entrega melhor, com menos retrabalho, mais qualidade e uma estrutura que promove a evolução contínua.
 
 ### O Que Define um Time de Alta Performance
 

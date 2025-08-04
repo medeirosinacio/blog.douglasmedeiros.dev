@@ -202,21 +202,6 @@ layout: default
             codeElement.insertAdjacentElement('afterbegin', newDiv);
         });
 
-        // Initialize code block tooltips
-        [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]')).map(function (tooltipTriggerEl) {
-            const tooltip = new bootstrap.Tooltip(tooltipTriggerEl, {
-                trigger: 'click',
-                placement: 'top',
-                animation: true
-            });
-            tooltipTriggerEl.addEventListener('shown.bs.tooltip', function () {
-                setTimeout(function () {
-                    tooltip.hide();
-                }, 1000);
-            });
-            return tooltip;
-        });
-
         // Script to Copy code block to clipboard from click event in icon
         document.querySelectorAll('.copy').forEach(function (codeBlock) {
             codeBlock.addEventListener('click', function () {
@@ -249,6 +234,38 @@ layout: default
             }
         });
     });
+
+    function waitForBootstrapTooltip(callback) {
+        const maxAttempts = 100; // ~5 segundos se o intervalo for 50ms
+        let attempts = 0;
+
+        const interval = setInterval(() => {
+            if (window.bootstrap?.Tooltip) {
+                clearInterval(interval);
+                callback();
+            } else if (attempts++ > maxAttempts) {
+                clearInterval(interval);
+                console.warn('Bootstrap.Tooltip não foi carregado após o tempo esperado.');
+            }
+        }, 50);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        waitForBootstrapTooltip(() => {
+            document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+                const tooltip = new bootstrap.Tooltip(el, {
+                    trigger: 'click',
+                    placement: 'top',
+                    animation: true
+                });
+
+                el.addEventListener('shown.bs.tooltip', () => {
+                    setTimeout(() => tooltip.hide(), 1000);
+                });
+            });
+        });
+    });
+
 
     // Enable/Disable scroll
     // left: 37, up: 38, right: 39, down: 40,

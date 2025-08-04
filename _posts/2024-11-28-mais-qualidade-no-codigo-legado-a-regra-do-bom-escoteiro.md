@@ -8,7 +8,7 @@ categories:
 tags:
   - boas-praticas
 image: /assets/images/posts/escoteiros-card.png
-description: "Manter a qualidade do código em nossos projetos é um desafio constante. À medida que o tempo passa, nosso código pode se tornar um verdadeiro emaranhado de funcionalidades antigas e mal organizadas, criando o que chamamos de 'dívida técnica' - um débito que, em algum momento, terá que ser pago."
+description: "Manter a qualidade do código em nossos projetos é um desafio constante. À medida que o tempo passa, nosso código pode se tornar um verdadeiro emaranhado de funcionalidades antigas e mal organizadas, criando o que chamamos de 'dívida técnica', um débito que, em algum momento, terá que ser pago."
 ---
 
 > [!NOTE] 
@@ -22,7 +22,7 @@ cada ajuste. Pode ser aquele sem documentação, ou até mesmo um código em uma
 
 Tudo isso está parcialmente correto. Mas, para mim, código legado é algo mais profundo: é o código que carregamos sem
 nunca "quitar" suas dívidas técnicas. São aquelas decisões rápidas ou mal planejadas que, com o tempo, vão acumulando
-problemas. E isso é normal — afinal, quem nunca tomou atalhos? O verdadeiro problema está em nunca voltar para
+problemas. E isso é normal, afinal, quem nunca tomou atalhos? O verdadeiro problema está em nunca voltar para
 corrigi-los.
 
 Legado é aquilo que deixamos para trás, ignoramos, e que cresce como uma sombra até se tornar uma barreira.
