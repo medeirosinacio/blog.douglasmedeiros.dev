@@ -48,7 +48,36 @@ layout: default
         </div>
         {% endif %}
         <div class="post-content pb-4">
-            {{ page.content }}
+            <!-- No seu layout de post, substitua {{ page.content }} por este código: -->
+            {% assign content = page.content %}
+
+            <!-- Processa cada tipo de alerta -->
+            {% assign content = content | replace: '<blockquote>
+            <p>[!NOTE]', '<blockquote class="blockquote-alert blockquote-note">
+            <p>' %}
+
+                {% assign content = content | replace: '<blockquote>
+            <p>[!TIP]', '<blockquote class="blockquote-alert blockquote-tip">
+            <p>' %}
+
+                {% assign content = content | replace: '<blockquote>
+            <p>[!WARNING]', '<blockquote class="blockquote-alert blockquote-warning">
+            <p>' %}
+
+                {% assign content = content | replace: '<blockquote>
+            <p>[!IMPORTANT]', '<blockquote class="blockquote-alert blockquote-important">
+            <p>' %}
+
+                {% assign content = content | replace: '<blockquote>
+            <p>[!CAUTION]', '<blockquote class="blockquote-alert blockquote-caution">
+            <p>' %}
+            <!-- Adiciona classe padrão para blockquotes normais -->
+            {% assign content = content | replace: '<blockquote>', '<blockquote class="blockquote-alert blockquote-default">' %}
+
+            <!-- Corrige possíveis duplicações de classe -->
+            {% assign content = content | replace: 'class="blockquote-alert blockquote-default" class="blockquote-alert blockquote-', 'class="blockquote-alert blockquote-' %}
+
+            {{ content }}
         </div>
         {% include share.html %}
         <!--            <div class="post-tags pt-2">-->
@@ -130,7 +159,7 @@ layout: default
             }
         });
 
-        // Função para alternar entre abrir e fechar a imagem em tela cheia
+        // Functionality to open images in fullscreen on click
         images.forEach(function (img) {
             img.addEventListener('click', function () {
                 let fullscreenDiv = document.querySelector('.fullscreen-image-container');
@@ -217,22 +246,22 @@ layout: default
         });
 
         // Customize/add class to blockquote based on type
-        document.querySelectorAll('blockquote').forEach(blockquote => {
-            const p = blockquote.querySelector('p');
-            if (p) {
-                const html = p.innerHTML.trim();
-                const type = html.match(/^\[!(\w+)\]/);
-                if (type) {
-                    const typeName = type[1].toLowerCase();
-                    p.innerHTML = html.replace(/^\[!\w+\]/, '').trim();
-                    blockquote.classList.add("blockquote-alert");
-                    blockquote.classList.add("blockquote-" + typeName);
-                } else {
-                    blockquote.classList.add("blockquote-alert");
-                    blockquote.classList.add("blockquote-default");
-                }
-            }
-        });
+        // document.querySelectorAll('blockquote').forEach(blockquote => {
+        //     const p = blockquote.querySelector('p');
+        //     if (p) {
+        //         const html = p.innerHTML.trim();
+        //         const type = html.match(/^\[!(\w+)\]/);
+        //         if (type) {
+        //             const typeName = type[1].toLowerCase();
+        //             p.innerHTML = html.replace(/^\[!\w+\]/, '').trim();
+        //             blockquote.classList.add("blockquote-alert");
+        //             blockquote.classList.add("blockquote-" + typeName);
+        //         } else {
+        //             blockquote.classList.add("blockquote-alert");
+        //             blockquote.classList.add("blockquote-default");
+        //         }
+        //     }
+        // });
     });
 
     function waitForBootstrapTooltip(callback) {
