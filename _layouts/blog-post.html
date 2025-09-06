@@ -48,36 +48,22 @@ layout: default
         </div>
         {% endif %}
         <div class="post-content pb-4">
-            <!-- No seu layout de post, substitua {{ page.content }} por este código: -->
-            {% assign content = page.content %}
+            {% capture newline %}
+            {% endcapture %}
+            {% capture tip %}<blockquote>{{newline}}  <p><strong>Tip:</strong>{% endcapture%}
+            {% capture example %}<blockquote>{{newline}}  <p><strong>Example:</strong>{% endcapture%}
+            {% capture warning %}<blockquote>{{newline}}  <p><strong>Warning:</strong>{% endcapture%}
+            {% capture fact %}<blockquote>{{newline}}  <p><strong>Fact:</strong>{% endcapture%}
+            {% capture note %}<blockquote><p>[!NOTE]{% endcapture%}
 
-            <!-- Processa cada tipo de alerta -->
-            {% assign content = content | replace: '<blockquote>
-            <p>[!NOTE]', '<blockquote class="blockquote-alert blockquote-note">
-            <p>' %}
-
-                {% assign content = content | replace: '<blockquote>
-            <p>[!TIP]', '<blockquote class="blockquote-alert blockquote-tip">
-            <p>' %}
-
-                {% assign content = content | replace: '<blockquote>
-            <p>[!WARNING]', '<blockquote class="blockquote-alert blockquote-warning">
-            <p>' %}
-
-                {% assign content = content | replace: '<blockquote>
-            <p>[!IMPORTANT]', '<blockquote class="blockquote-alert blockquote-important">
-            <p>' %}
-
-                {% assign content = content | replace: '<blockquote>
-            <p>[!CAUTION]', '<blockquote class="blockquote-alert blockquote-caution">
-            <p>' %}
-            <!-- Adiciona classe padrão para blockquotes normais -->
-            {% assign content = content | replace: '<blockquote>', '<blockquote class="blockquote-alert blockquote-default">' %}
-
-            <!-- Corrige possíveis duplicações de classe -->
-            {% assign content = content | replace: 'class="blockquote-alert blockquote-default" class="blockquote-alert blockquote-', 'class="blockquote-alert blockquote-' %}
-
-            {{ content }}
+            {% assign newhtml = content |
+            replace: tip, '<blockquote class="tip"><p><strong>Tip:</strong>' |
+            replace: example, '<blockquote class="example"><p><strong>Example:</strong>' |
+            replace: warning, '<blockquote class="warning"><p><strong>Warning:</strong>' |
+            replace: fact, '<blockquote class="fact"><p><strong>Fact:</strong>' |
+            replace: note, '<blockquote class="note"><p> teste' %}
+            %}
+            {{ newhtml }}
         </div>
         {% include share.html %}
         <!--            <div class="post-tags pt-2">-->
