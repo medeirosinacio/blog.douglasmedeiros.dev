@@ -8,7 +8,7 @@ layout: html_minifier
     <meta name="robots" content="index, follow"/>
     <meta charset="utf-8">
     {%if paginator and paginator.page != 1 %}
-    <title> {{ page.title }} - Página {{ paginator.page }} | {{ site.title }} </title>
+    <title> Página {{ paginator.page }} | {{ site.title }} </title>
     {% seo title=false %}
     {% else %}
     {% seo %}
