@@ -29,7 +29,7 @@ type: blog
 keywords: Douglas Medeiros, Douglas, Medeiros, Software, Engenheiro, PicPay, Blog, Tutorial, Desenvolvimento
 
 # Blog Paginator configuration
-paginate: 3
+paginate: 5
 paginate_path: "/pagina/:num"
 
 
