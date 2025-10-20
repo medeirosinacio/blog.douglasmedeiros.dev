@@ -10,7 +10,7 @@ tags:
   - desenvolvimento
   - engenharia de software
   - soft skills
-image: /assets/images/posts/nem-so-de-codigo-vive-o-dev/eliot-php.png
+image: /assets/images/posts/nem-so-de-codigo-vive-o-dev/eliot-php.jpg
 description: "O que realmente faz um dev crescer na carreira? Não, não é só saber codar bem. Neste artigo, conto como levei um choque de realidade ao descobrir que comunicação é tão essencial quanto técnica, e como isso mudou tudo no meu jeito de trabalhar. Se você acha que \"o código fala por si\", talvez esteja perdendo a parte mais importante do jogo."
 ---
 
@@ -139,7 +139,7 @@ ajustando.
 Eu sei bem como é. Já fui o dev que odiava reuniões, achava que slide não era trabalho, que alinhar era perda de tempo.
 Eu queria era codar. Pra mim, reunião era só um atraso na sprint.
 
-![@geekcom2 via Twiter](/assets/images/posts/nem-so-de-codigo-vive-o-dev/x-geekcom2.png)
+![@geekcom2 via Twiter](/assets/images/posts/nem-so-de-codigo-vive-o-dev/x-geekcom2.jpg)
 
 Mas aí caiu a ficha: **o código é a menor parte do trabalho.** O impacto real tá em como a gente conecta ideias,
 transmite soluções e colabora com os outros.

@@ -8,7 +8,7 @@ categories:
 tags:
   - carreira
   - comunidade
-image: /assets/images/posts/comunidade/phpvelhooeste-2025.png
+image: /assets/images/posts/comunidade/phpvelhooeste-2025.jpg
 description: "A comunidade PHP foi o divisor de águas na minha carreira. Mais do que absorver conteúdo técnico, foi na troca genuína de experiências, no networking sincero e no sentimento de pertencimento que encontrei o combustível para crescer de verdade. A comunidade é muito mais que um espaço de conhecimento — é onde se constrói carreira, se formam referências e se criam conexões que impulsionam o profissional e o ser humano."
 ---
 
@@ -55,7 +55,7 @@ PHP assíncrono", "Marcel", "Caruso", "Batista" — nomes e talks que explodiram
 cinco, seis vezes, mastigando cada conceito. Foi uma avalanche de aprendizado. Aquilo ali me mostrou que a área era
 muito maior do que eu imaginava, que existia vida além do meu terminal.
 
-![Meu histórico do YouTube, 2020](/assets/images/posts/comunidade/historico-youtube-2020.png?class=w-80 w-md-80 w-xxl-60)
+![Meu histórico do YouTube, 2020](/assets/images/posts/comunidade/historico-youtube-2020.jpg?class=w-80 w-md-80 w-xxl-60)
 
 E ali, no meio de uma pandemia, eu fiz uma promessa: no primeiro evento presencial que acontecesse depois de tudo isso,
 eu iria. Não importava onde. E cumpri. Em 2022, quando anunciaram o PHPeste — Em Natal — eu não pensei duas vezes. Moro
@@ -81,7 +81,7 @@ Desci do carro, vi o pessoal ali na frente, cumprimentei, me apresentei, e pront
 sumiu. A gente foi almoçar junto, depois teve o evento, e o resto é história. Conexão real. Vínculo. Gente boa, com a
 mesma vibe, falando sobre tecnologia com brilho nos olhos.
 
-![Credencial PHPest, 2022](/assets/images/posts/comunidade/credencial-phpest-2022.png?class=w-80 w-md-80 w-xxl-60)
+![Credencial PHPest, 2022](/assets/images/posts/comunidade/credencial-phpest-2022.jpg?class=w-80 w-md-80 w-xxl-60)
 
 ### A troca
 
@@ -94,7 +94,7 @@ pessoas evoluírem.
 
 Ali caiu a ficha: é nesse tipo de evento que a mágica acontece.
 
-![Happy hour pós evento no PHPest, 2022](/assets/images/posts/comunidade/hh-phpest-2022.png?class=w-80 w-md-80 w-xxl-60)
+![Happy hour pós evento no PHPest, 2022](/assets/images/posts/comunidade/hh-phpest-2022.jpg?class=w-80 w-md-80 w-xxl-60)
 
 ### Uma conversa que mudou tudo
 
@@ -148,4 +148,4 @@ compartilha desafios e cresce junto.
 Afinal, carreira não é só sobre o que você sabe, mas também sobre quem está junto com você nessa caminhada. E é nesse
 espaço coletivo que o seu próximo passo pode acontecer.
 
-![PHP Velho Oeste, 2025](/assets/images/posts/comunidade/phpvelhooeste-2025.png)
+![PHP Velho Oeste, 2025](/assets/images/posts/comunidade/phpvelhooeste-2025.jpg)

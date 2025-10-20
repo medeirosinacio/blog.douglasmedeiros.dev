@@ -30,3 +30,4 @@
     [ ] Adição de um sistema de newsletter
     [ ] Adição de um sistema de curtidas
     [ ] Adição de um sistema de compartilhamento
+    [X] Adição de um otimizador de imagens

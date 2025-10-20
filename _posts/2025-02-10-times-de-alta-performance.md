@@ -12,7 +12,7 @@ tags:
   - melhoria contínua
   - processos
   - colaboração
-image: /assets/images/posts/times-de-alta-performance.jpeg
+image: /assets/images/posts/times-de-alta-performance.jpg
 description: "Construir um time de alta performance vai muito além de adotar metodologias ou seguir processos predefinidos. Trata-se de criar uma cultura onde a melhoria contínua não seja apenas um conceito abstrato, mas uma prática diária. No PicPay, fazer parte do time de Integridade Transacional me mostrou na prática como essa mentalidade transforma não apenas a eficiência das entregas, mas também o engajamento e a motivação da equipe. Neste artigo, compartilho aprendizados sobre como revisar processos, fomentar autonomia e tornar o trabalho mais colaborativo, evitando que a rotina se torne apenas um ciclo mecânico de tarefas."
 ---
 

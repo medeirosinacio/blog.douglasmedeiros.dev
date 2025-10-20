@@ -7,7 +7,7 @@ categories:
   - boas-praticas
 tags:
   - boas-praticas
-image: /assets/images/posts/escoteiros-card.png
+image: /assets/images/posts/escoteiros-card.jpg
 description: "Manter a qualidade do código em nossos projetos é um desafio constante. À medida que o tempo passa, nosso código pode se tornar um verdadeiro emaranhado de funcionalidades antigas e mal organizadas, criando o que chamamos de 'dívida técnica', um débito que, em algum momento, terá que ser pago."
 ---
 
@@ -60,7 +60,7 @@ se fosse um escoteiro, pois bons escoteiros sempre deixam o lugar mais limpo do 
 gravada na minha mente, e no mesmo dia fui buscar entender melhor o que isso significava. É essa definição que quero
 compartilhar aqui.
 
-![](/assets/images/posts/escoteiros.png?class=w-80 w-md-80 w-xxl-60)
+![](/assets/images/posts/escoteiros.jpg?class=w-80 w-md-80 w-xxl-60)
 
 ### Uma abordagem simples, mas poderosa
 

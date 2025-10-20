@@ -6,7 +6,7 @@ permalink: /artigos/:categories/todas-as-novidades-do-php85
 categories:
   - php
 tags: [ php8.5, array_first, array_last, curl_multi, get_error_handler, novidades, stack-traces, php, desenvolvimento, programação ]
-image: /assets/images/posts/php85.png
+image: /assets/images/posts/php85.jpg
 description: "PHP 8.5 chega em novembro com funcionalidades que você vai usar todos os dias: array_first(), array_last(), pipe operator, debugging aprimorado e muito mais. Descubra o que muda e por que atualizar seus projetos agora vai te poupar dor de cabeça depois."
 ---
 

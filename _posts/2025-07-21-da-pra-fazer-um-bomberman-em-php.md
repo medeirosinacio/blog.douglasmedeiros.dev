@@ -27,7 +27,7 @@ Sou apaixonado por videogame desde pequeno. Meu primeiro foi um Dynavision. Depo
 2… e continuo vendo jogos como uma das formas mais interessantes de entretenimento e imersão. Sempre curti jogar, sempre
 investi nisso. Mas nunca levei essa paixão pro meu lado profissional, sempre esteve ali, como válvula de escape.
 
-![Foto aleatória dos meus controles — 2017](/assets/images/posts/da-pra-fazer-um-bomberman-em-php/controles.png?class=w-80 w-md-80 w-xxl-60)
+![Foto aleatória dos meus controles — 2017](/assets/images/posts/da-pra-fazer-um-bomberman-em-php/controles.jpg?class=w-80 w-md-80 w-xxl-60)
 
 Só que, nos últimos tempos, bateu a vontade de unir as coisas. Não pra virar dev de games, mas pra usar os games como
 desculpa pra estudar conceitos técnicos de forma mais divertida. Criar algo pequeno, como hobby, mas que me desafiasse
@@ -65,7 +65,7 @@ estados de jogador, inimigos com movimentação semi-autônoma… Tudo isso enca
 >
 > Toda a dinâmica gira em torno dessa matriz, das interações entre os elementos e do tempo de cada ação.
 
-![(1995) Super Bomberman 3 - Super Nintendo](/assets/images/posts/da-pra-fazer-um-bomberman-em-php/bomberman-3.png?class=w-80 w-md-80 w-xxl-60)
+![(1995) Super Bomberman 3 - Super Nintendo](/assets/images/posts/da-pra-fazer-um-bomberman-em-php/bomberman-3.jpg?class=w-80 w-md-80 w-xxl-60)
 
 ### Um motor de jogo em PHP
 

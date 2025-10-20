@@ -7,7 +7,7 @@ categories:
   - arquitetura
 tags:
   - arquitetura
-image: /assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/caos.jpeg
+image: /assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/caos.jpg
 description: "Softwares confusos, difíceis de entender e mal documentados geram estresse e frustração, especialmente em equipes que enfrentam dificuldades na integração de novos membros. Este artigo explora como a modelagem de software pode transformar esse cenário, trazendo clareza, organização e eficiência aos projetos."
 ---
 
@@ -56,7 +56,7 @@ referências, têm seus casos de uso e propósitos. No entanto, a ideia aqui é 
 simples que nos ajude a nos organizar e melhorar nosso fluxo de desenvolvimento, conectando pontos e caixas em diagramas
 de referência de nossos fluxos.
 
-![Exemplos de diagramas BPMN](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/exemplos-de-diagramas-bpmn.png)
+![Exemplos de diagramas BPMN](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/exemplos-de-diagramas-bpmn.jpg)
 
 ## Mas, por que desenhar?
 
@@ -75,7 +75,7 @@ precisamos falar com três ou quatro pessoas. A informação está toda distribu
 Todo mundo sabe que fulano é quem entende disso ou beltrano é quem sabe daquilo. Esses problemas sempre me soam como um
 **_Software Orientado a Fofoca_**.
 
-![Do Caos à Clareza : Slide 14](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/software-orientado-a-fofoca.png)
+![Do Caos à Clareza : Slide 14](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/software-orientado-a-fofoca.jpg)
 
 Esse tipo de sistema é um clássico, infelizmente. Geralmente, ele pode ser identificado por alguns pontos. Temos aquele
 sênior de 10 anos de empresa, que é considerado sênior não necessariamente por suas habilidades, mas porque está há 10
@@ -110,7 +110,7 @@ O processo de modelagem tem três etapas primordiais: início, processamento e f
 aqui, é importante termos uma linguagem comum para facilitar nosso entendimento. Nestas três etapas, podemos representar
 o início como uma bolinha branca, o quadrado para uma ação e o círculo preto para finalizar.
 
-![Do Caos à Clareza : Slide 18](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/diagrama-1.png)
+![Do Caos à Clareza : Slide 18](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/diagrama-1.jpg)
 
 Seja qual for, um worker que irá ler uma mensagem e processá-la, ou um cron job que realizará uma rotina e disparará
 alguns eventos, todo e qualquer fluxo sempre terá um início, um processamento e um fim. Isso pode começar com uma
@@ -128,7 +128,7 @@ Parece simples, certo? Mas, sem um desenho claro, essa tarefa pode se tornar um 
 
 Primeiro, vamos visualizar o fluxo básico da notificação de usuário.
 
-![Do Caos à Clareza : Slide 19](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/diagrama-2.png)
+![Do Caos à Clareza : Slide 19](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/diagrama-2.jpg)
 
 Primeiro, lemos as mensagens de uma fila chamada "user_notify". Depois, verificamos se há mensagens nessa fila. Se não
 houver mensagens, o fluxo termina. Caso haja mensagens, iteramos sobre cada uma delas e enviamos um e-mail para o
@@ -145,7 +145,7 @@ problema pode ser complicado. No entanto, com o diagrama em mãos, podemos rapid
 localizar onde o erro está ocorrendo. Por exemplo, se a exceção está sendo lançada porque o corpo da mensagem está
 vazio, podemos ver que faltou uma etapa de validação antes do envio do e-mail.
 
-![Do Caos à Clareza : Slide 20](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/diagrama-3.png)
+![Do Caos à Clareza : Slide 20](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/diagrama-3.jpg)
 
 Esses problemas podem ser identificados e resolvidos durante as sessões de entendimento e desenho. Muitas vezes, após
 horas de discussão, alguém olha para o fluxo e percebe um gap, algo que pode evitar um bug em produção.
@@ -161,7 +161,7 @@ sistema funciona e contribuir efetivamente.
 Mesmo que o fluxo ganhe novas formas de envio, como Telegram, ou novas tratativas de erros, podemos voltar ao desenho e
 discutir a melhor forma de implementar essas mudanças.
 
-![Do Caos à Clareza : Slide 22](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/diagrama-4.png)
+![Do Caos à Clareza : Slide 22](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/diagrama-4.jpg)
 
 ### Nem Só de Software Vive o Desenho
 
@@ -169,7 +169,7 @@ Quando comecei a escrever a palestra que apresentei, tinha tantas coisas que que
 roteiro coeso. Foi aí que usei o [miro.com](http://miro.com/) para criar um mapa mental dos assuntos. Fui organizando as
 ideias até encontrar uma ordem que fizesse sentido e que transmitisse o que eu queria dizer.
 
-![Mapa mental feito via miro.com](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/miro.png)
+![Mapa mental feito via miro.com](/assets/images/posts/do-caos-a-clareza-explorando-a-modelagem-de-software/miro.jpg)
 
 Mas essa técnica vai além do software. Minha esposa, que é psicóloga, usa diagramas de emoções com seus pacientes.
 Enquanto conversava com eles, ela desenhava as relações entre as pessoas e os sentimentos que surgiam. Esses diagramas
