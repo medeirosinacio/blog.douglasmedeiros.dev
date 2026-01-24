@@ -4,6 +4,7 @@ source: .
 destination: ./public
 baseurl: ""
 personal_url: https://douglasmedeiros.dev
+links_url: https://links.douglasmedeiros.dev
 srcurl: ""
 lang: pt-BR
 locale: pt_BR
