@@ -231,12 +231,12 @@ Use blockquotes para destacar frases que o leitor pode estar pensando:
 
 Para blocos de código, sempre especifique a linguagem quando possível:
 
-```markdown
+````markdown
 ```python
 def hello_world():
     print("Hello, World!")
 ```
-```
+````
 
 ### 3. Listas
 
@@ -281,7 +281,7 @@ Imagens são referenciadas com paths absolutos e podem ter classes CSS:
 Use links de forma natural no texto:
 
 ```markdown
-- Link externo: [Dev.to](http://dev.to/)
+- Link externo: [Dev.to](https://dev.to/)
 - Link interno: [Nem Só de Código Vive o Dev](/artigos/carreira/nem-so-de-codigo-vive-o-dev)
 ```
 
