@@ -11,7 +11,7 @@ tags:
   - postgresql
   - otimizacao
 image: /assets/images/posts/o-beaba-do-banco-de-dados/beaba-banco-dados.png
-description: "Depois de 11 anos na área, acredito que existem práticas essenciais sobre banco de dados que todo desenvolvedor deveria dominar. Não saber disso traz problemas lá na frente."
+description: ""
 ---
 
 Desde sempre eu gostei muito de banco de dados. E, sempre que aparecia alguma oportunidade de encostar num problema de
@@ -59,7 +59,8 @@ Selecionar todas as colunas tem vários efeitos colaterais. Você está trafegan
 Um payload que poderia ser menor, porque às vezes você vai usar só o ID e o status, acaba carregando todos os 10, 20
 campos que existem na tabela.
 
-No Sentinela, por exemplo, não buscamos no banco o `created_at` nem o `updated_at`. Por quê? Porque não usamos essas
+Em um dos sistemas que trabalhei, por exemplo, não buscamos no banco o `created_at` nem o `updated_at`. Por quê? Porque
+não usamos essas
 colunas na aplicação. Por mais que isso "estrague" um pouco a modelagem (o `created_at` no banco é `NOT NULL`, mas na
 entidade é nullable), é um tradeoff que vale a pena.
 
@@ -78,9 +79,8 @@ Claro que muitos índices também é ruim, e nenhum índice também é ruim. Tud
 para aquele contexto. Mas as colunas que vocês mais filtram devem ter os índices corretos para conseguir filtrar melhor
 aqueles dados.
 
-> [!IMPORTANT]
-> Índices melhoram leitura, mas degradam escrita. Cada `UPDATE` num registro com índice precisa atualizar o índice
-> também. Tem bancos com mais de 10 índices. Cuidado.
+Índices melhoram leitura, mas degradam escrita. Cada `UPDATE` num registro com índice precisa atualizar o índice também.
+Tem bancos com mais de 10 índices. Cuidado.
 
 ### ORM: Use com Cuidado
 
@@ -106,36 +106,46 @@ vai ter casos que não convém. Faça na mão e teste a performance.
 cruze com esse array do que fazer uma consulta com join.
 
 Dependendo de como for sua query ou o que você está querendo buscar, é mais fácil fazer duas consultas e cruzar elas do
-que uma consulta só com join. Parece contraintuitivo, mas em certos cenários, funciona melhor.
+que uma consulta só com join. Parece contraintuitivo, mas em certos cenários funciona melhor.
 
-> [!TIP]
-> Não é sobre “join é ruim”. É sobre **entender o plano de execução** e o volume de dados. Tem join que é lindo e tem
-> join
-> que vira um caminhão sem freio descendo ladeira.
+E tem um outro ponto aqui que muita gente esquece: **muitas vezes uma CTE (`WITH`) bem feita é mais rápida (e mais fácil
+de manter) do que um joinzão monstruoso**. Não porque join é “ruim”, mas porque você consegue quebrar o problema em
+etapas, reduzir o conjunto de dados cedo e deixar o plano mais previsível.
 
-Um exemplo bem simples (pensando em aplicação): você busca os `user_id` que estão ativos e, depois, busca os pedidos só
-pra esse grupo.
-
-```sql
--- Query 1: pega um conjunto pequeno de IDs
-SELECT id
-FROM users
-WHERE status = 'active' LIMIT 1000;
-
--- Query 2: usa o conjunto de IDs (na aplicação) numa segunda consulta
-SELECT id, user_id, total
-FROM orders
-WHERE user_id IN (/* ids ativos */);
-```
-
-Agora, quando o volume é grande e você consegue resolver tudo no banco, um join bem indexado costuma ser mais direto:
+Um exemplo (bem simplificado) de join que pode virar uma bomba quando você começa a misturar filtros, agregações e
+volume grande:
 
 ```sql
-SELECT o.id, o.user_id, o.total
-FROM orders o
-         JOIN users u ON u.id = o.user_id
-WHERE u.status = 'active';
+SELECT u.id, u.name, SUM(o.total) AS total_30d
+FROM users u
+JOIN orders o ON o.user_id = u.id
+WHERE u.status = 'active'
+  AND o.created_at >= NOW() - INTERVAL '30 days'
+GROUP BY u.id, u.name;
 ```
+
+A mesma ideia “fatiando” primeiro o conjunto de pedidos recentes e só depois relacionando com usuários:
+
+```sql
+WITH recent_orders AS (
+  SELECT user_id, total
+  FROM orders
+  WHERE created_at >= NOW() - INTERVAL '30 days'
+),
+active_users AS (
+  SELECT id, name
+  FROM users
+  WHERE status = 'active'
+)
+SELECT au.id, au.name, SUM(ro.total) AS total_30d
+FROM active_users au
+JOIN recent_orders ro ON ro.user_id = au.id
+GROUP BY au.id, au.name;
+```
+
+De novo: não é regra absoluta. Em alguns bancos/versões, CTE pode inclusive ser materializada e piorar. Mas no dia a dia,
+quando a consulta começa a crescer, **CTE costuma salvar**: fica mais legível, mais testável e (muitas vezes)
+mais rápida.
 
 ### O Vilão ORDER BY
 
@@ -149,9 +159,8 @@ Então às vezes é muito mais vantajoso fazer o `ORDER BY` na aplicação, em t
 mandar esse `ORDER BY` ser feito pelo banco. Porque o banco pode degradar muita performance fazendo sorting,
 principalmente se esse campo de `ORDER BY` não tiver índice.
 
-> [!NOTE]
-> Já pegamos problemas aqui onde o problema era só o `ORDER BY`. Tiramos da consulta e ela melhorou 10 vezes. O
-> `ORDER BY` estava ordenando gigas e gigas de dados dentro do banco, e na aplicação só queríamos filtrar um registro.
+Já pegamos caso em que o problema era só o `ORDER BY`. Tiramos da consulta e ela melhorou 10x, porque o banco estava
+ordenando gigas e gigas de dados, e na aplicação a gente só queria filtrar um registro.
 
 ### Enums como Texto
 
@@ -183,11 +192,9 @@ dentro da cláusula.
 
 Só que isso faz com que o banco execute essa transformação em cada linha que ele vai percorrendo. Isso é muito custoso.
 O ideal é fazer o filtro sem essas conversões de tipos e na aplicação você converter isso, ou converter de alguma forma
-antes de fazer de fato o filtro.
-
-> [!TIP]
-> Se você está fazendo conversão de tipo filtrando terabytes de registro, isso não é viável. É melhor ajustar o filtro
-> ou fazer a conversão antes na aplicação.
+antes de fazer de fato o filtro. Se você está fazendo conversão de tipo filtrando terabytes de registro, isso não é
+viável. É melhor ajustar o filtro ou
+fazer a conversão antes na aplicação.
 
 ## Chaves Únicas: O Problema do UUIDv4
 
@@ -330,7 +337,7 @@ consistente deveriam ser parte natural de qualquer sistema, garantindo qualidade
 início.
 
 > [!NOTE]
-> Depois de mais de 11 anos na área, acredito que isso é o mínimo que um desenvolvedor deveria saber para criar uma
+> Depois de mais de anos na área, acredito que isso é o mínimo que um desenvolvedor deveria saber para criar uma
 > modelagem de dados que aguente o tranco ao longo prazo, sem dores de cabeça no futuro.
 
 Não adianta só tocar as coisas e no meio do caminho tentar mudar. É muito mais custoso, porque o sistema já vai estar
