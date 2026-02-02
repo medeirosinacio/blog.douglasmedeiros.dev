@@ -44,6 +44,30 @@ content.
 └── README.md         # Project documentation
 ```
 
+### ✍️ Writing Articles
+
+This blog uses Copilot Instructions to maintain consistent writing style when creating articles from transcriptions or notes.
+
+#### Creating Articles with AI Assistance
+
+The `.github/copilot-instructions.md` file contains detailed guidelines for:
+- Writing tone and style
+- Article structure and formatting
+- Using blockquotes and special alerts
+- Converting speech transcriptions into articles
+
+📖 **For detailed instructions on how to use this feature, see [.github/README-COPILOT.md](.github/README-COPILOT.md)**
+
+#### Manual Article Creation
+
+Articles are written in Markdown and stored in the `_posts/` directory with the naming convention:
+
+```
+YYYY-MM-DD-title-of-article.md
+```
+
+Each article must include YAML front matter with metadata (title, date, categories, tags, image, description).
+
 ### 🚀 Running Locally
 
 #### Prerequisites
