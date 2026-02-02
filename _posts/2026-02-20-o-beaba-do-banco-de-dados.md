@@ -11,7 +11,7 @@ tags:
   - postgresql
   - otimizacao
 image: /assets/images/posts/o-beaba-do-banco-de-dados/beaba-banco-dados.png
-description: ""
+description: "Banco de dados raramente é o gargalo… até virar. Depois de 11 anos mexendo com performance, modelagem e aquela query que ninguém quer encostar, eu juntei o beabá que todo dev deveria ter na ponta da língua. Se você quer parar de sofrer com consulta lenta, índice faltando e decisão que vira dívida pro teu eu do futuro, esse post é pra você."
 ---
 
 Desde sempre eu gostei muito de banco de dados. E, sempre que aparecia alguma oportunidade de encostar num problema de
@@ -60,9 +60,8 @@ Um payload que poderia ser menor, porque às vezes você vai usar só o ID e o s
 campos que existem na tabela.
 
 Em um dos sistemas que trabalhei, por exemplo, não buscamos no banco o `created_at` nem o `updated_at`. Por quê? Porque
-não usamos essas
-colunas na aplicação. Por mais que isso "estrague" um pouco a modelagem (o `created_at` no banco é `NOT NULL`, mas na
-entidade é nullable), é um tradeoff que vale a pena.
+não usamos essas colunas na aplicação. Por mais que isso "estrague" um pouco a modelagem (o `created_at` no banco é
+`NOT NULL`, mas na entidade é nullable), é um tradeoff que vale a pena.
 
 Quem aqui não tem uma tabela com mais de 10, 20 colunas? E todo ano que passa sempre tem uma coluna a mais. "Essa é a
 última coluna, daqui não sai". E do nada surge um campo novo. Já peguei tabelas com 100 colunas. Imagina fazer
@@ -143,10 +142,8 @@ FROM active_users au
 GROUP BY au.id, au.name;
 ```
 
-De novo: não é regra absoluta. Em alguns bancos/versões, CTE pode inclusive ser materializada e piorar. Mas no dia a
-dia,
-quando a consulta começa a crescer, **CTE costuma salvar**: fica mais legível, mais testável e (muitas vezes)
-mais rápida.
+De novo: não é regra absoluta. Em alguns bancos/versões, CTE pode inclusive ser materializada e piorar. Mas no dia a dia,
+quando a consulta começa a crescer, **CTE costuma salvar**: fica mais legível, mais testável e (muitas vezes) mais rápida.
 
 ### O Vilão ORDER BY
 
@@ -239,134 +236,169 @@ de isso virar gargalo. Ajuste o filtro (intervalo, normalização, índice funci
 
 ## Chaves Únicas: O Problema do UUIDv4
 
-A maioria dos sistemas hoje gera UUID na versão 4. Eles são identificadores bons porque são aleatórios, é difícil ter
-uma colisão entre eles. Porém, a maioria que usa esse tipo de abordagem também coloca o ID como índice da tabela.
+UUIDv4 é muito popular (com razão): é simples, é aleatório, praticamente elimina a chance de colisão e dá uma segurança
+legal quando você não quer expor IDs sequenciais.
 
-**E aqui está o problema:** por não ser ordenado, o índice fica muito fragmentado. Você não consegue ter um índice muito
-eficiente quando quer fazer um `ORDER BY`, por exemplo, ou qualquer outro tipo de pesquisa em algum período específico.
+Só que tem um preço que quase ninguém percebe no começo. O preço aparece quando a tabela cresce e você começa a sentir a
+escrita ficando mais cara.
+
+Quando você usa UUIDv4 (totalmente aleatório) como chave primária e indexa isso, você está basicamente pedindo pro banco
+inserir novos registros **no meio da árvore do índice o tempo todo**.
+
+Em um índice B-Tree (que é o padrão na maioria dos bancos), isso costuma significar:
+
+- mais *page split* (o banco quebrando páginas do índice pra encaixar o novo valor)
+- mais fragmentação
+- mais I/O
+- e um índice “espalhado”, que piora cache e deixa range scan mais caro
+
+E aí vem o efeito cascata: o insert em si não é “só inserir”. Ele vira inserir + ajustar páginas + atualizar estruturas
+internas + escrever mais coisa em disco.
+
+Isso também explica por que UUIDv4 costuma ser ruim quando você quer fazer consultas ordenadas por tempo usando o próprio
+ID. Não tem “ordem natural” ali. É tudo aleatório.
+
+Beleza, isso significa que UUIDv4 é proibido? Não. Mas significa que, se você tá num cenário de **alto volume de escrita**
+(e o ID é PK + índice principal), vale pensar duas vezes.
 
 ### A Vantagem do UUIDv7
 
-Já com o UUIDv7, conseguimos ter IDs ordenados. Os primeiros cinco ou sete caracteres dele são um carimbo de data e o
-resto final é o aleatório.
+O UUIDv7 nasce justamente pra atacar esse ponto: ele é **time-ordered**. Ele carrega um timestamp no começo (em nível de
+bits), e o resto continua sendo aleatório.
 
-Isso faz com que a gente ainda mantenha os IDs seguros e aleatórios contra colisão, e muito mais eficientes para terem
-chaves primárias e índices em cima deles.
+Na prática, isso dá um comportamento muito mais “amigável” pro índice:
 
-**E é super tranquilo:** você vai lá na sua biblioteca que gera UUID e coloca o 7. Ela gera o 7. É compatível com a
-versão 4, é o mesmo padrão e funciona normalmente. É uma implementação muito simples que tem um ganho bem grande,
-principalmente para sistemas novos que vão usar esses campos como chave primária.
+- os inserts tendem a cair **mais perto do final do índice**, em vez de espalhados no meio
+- reduz fragmentação
+- reduz *page split*
+- melhora locality (cache/CPU/IO agradecem)
+
+E aqui tem um bônus bem legal: você continua com um ID que não é simplesmente “1, 2, 3…”, mas passa a ter alguma ordem
+natural que ajuda em muita consulta do dia a dia (principalmente em tabelas de eventos, pagamentos, logs, etc.).
+
+Sobre adoção: pra sistema novo, é uma troca bem tranquila. Em geral é literalmente “gerar v7 ao invés de v4” na
+biblioteca que você já usa.
 
 ## O Custo de Múltiplos Índices
 
-Em tabelas com muitos índices, cada insert precisa atualizar todos os índices relevantes. Isso aumenta
-significativamente o custo de escrita, pois o banco precisa recalcular posições, reorganizar árvores B ou estruturas
-internas e escrever em disco várias vezes.
+Índice é ótimo… até você ter índice demais.
 
-Quanto mais complexos e numerosos os índices, maior o impacto em CPU, I/O e latência de inserção. Em cenários de alta
-escala, isso pode se tornar o principal gargalo, exigindo planejamento cuidadoso de quais índices são realmente
-necessários.
+Na prática, cada `INSERT`/`UPDATE` não mexe só na tabela. Ele precisa atualizar **todos os índices** que envolvem as
+colunas alteradas. Ou seja: quanto mais índice você cria, mais você aumenta o custo de escrita.
+
+Isso vira “write amplification”: uma operação simples vira várias escritas em disco/IO. E aí a conta chega em forma de
+latência, CPU alta e banco suando em horário de pico.
 
 ### O Tradeoff dos Índices
 
-Lembra que falei lá em cima que índices melhoram leitura? Pois é, mas eles degradam escrita. Cada `UPDATE` num registro
-com índice precisa atualizar o índice também. É diferente você fazer update num registro que não tem índice do que fazer
-update num registro que tem um índice, ou pior, que tem 10 índices.
+O tradeoff é simples de entender:
 
-**Desvantagens de múltiplos índices:**
+- índice acelera leitura (`SELECT`)
+- índice encarece escrita (`INSERT`/`UPDATE`/`DELETE`)
+- índice ocupa espaço e precisa de manutenção (reindex, vacuum/analyze dependendo do banco)
 
-- Cada insert atualiza todos os índices, aumentando o custo de escrita
-- Maior uso de CPU e I/O
-- Aumento da latência de inserção
-- Mais espaço em disco ocupado pelos índices
-- Necessidade de manutenção periódica, como reindexação
+Então, ao invés de sair indexando tudo, eu gosto de pensar em duas perguntas:
 
-Tem bancos que têm mais de 10 índices. Cuidado com updates e índices, porque vai aumentando o tempo de updates desse
-registro conforme mais índices a aplicação tem.
+1. **Quais queries realmente importam?** (as que rodam o tempo todo e doem quando ficam lentas)
+2. **Onde estão os filtros/join/order by dessas queries?** (é aí que índice costuma fazer diferença)
+
+Se você tem uma coluna que quase nunca aparece em `WHERE`/`JOIN`/`ORDER BY`, o índice dela provavelmente só está
+cobrando aluguel.
+
+E uma regra bem pé no chão: se sua tabela é muito “write-heavy” (muita escrita), você tem que ser ainda mais conservador
+com índice. Tem banco com 10+ índices que vive lento não por falta de otimização, mas porque toda escrita vira um
+carnaval.
 
 ## Um Mundo à Parte
 
-Esse beabá vai além da nomenclatura. Tem outras práticas importantes que fazem parte desse universo:
+Esse beabá vai além da nomenclatura. Na real, ele é o tipo de coisa que você só sente falta quando dá ruim:
+consulta lenta em produção, dado inconsistente, migração travando, lock bizarro, deploy que virou madrugada…
+
+E o ponto aqui não é “virar DBA”. É só entender que banco não é um `JSON` gigante onde a gente joga coisa lá dentro e
+reza. Banco tem regra, tem custo e tem comportamento.
+
+Então, além das boas práticas que já falei, tem um pacote de hábitos que (pra mim) separa o “banco funciona” do “banco
+aguenta o tranco”.
 
 ### Use Constraints
 
-Use `NOT NULL` e `UNIQUE` para garantir integridade. Essas constraints são sua primeira linha de defesa contra dados
-inconsistentes.
+Use `NOT NULL`, `UNIQUE` e `FOREIGN KEY` pra garantir integridade. Isso aqui é sua primeira linha de defesa contra dado
+inconsistente — e, de quebra, evita que a aplicação precise virar um juiz de tudo o tempo todo.
+
+O famoso caso real: quando você não tem `UNIQUE` onde deveria, você só descobre depois… quando aparece duplicidade e
+ninguém sabe mais qual registro é o certo.
 
 ### Filtre UPDATE e DELETE
 
-Sempre filtre suas operações de `UPDATE` e `DELETE` para evitar impactos totais. Um `UPDATE` sem `WHERE` pode destruir
-uma tabela inteira em produção.
+Sempre filtre suas operações de `UPDATE` e `DELETE`. Parece óbvio, mas todo mundo já viu (ou quase fez) a tragédia do
+"faltou o WHERE".
+
+Se eu puder te dar uma regra simples é: se você vai rodar um `UPDATE`/`DELETE` “perigoso”, roda primeiro um `SELECT`
+com o mesmo `WHERE`.
+
+```sql
+SELECT id
+FROM users
+WHERE status = 'inactive';
+
+-- só depois:
+-- DELETE FROM users WHERE status = 'inactive';
+```
 
 ### Stored Procedures
 
-Stored procedures reduzem tráfego e melhoram performance quando bem usadas. Tem gente que odeia, tem gente que faz o
-sistema inteiro em stored procedures. Como tudo na vida, tem um meio termo.
+Stored procedures reduzem tráfego e podem melhorar performance quando bem usadas — principalmente quando você precisa
+executar vários passos perto dos dados.
 
-### Indexe Colunas Usadas em JOINs
+Mas também podem virar um "software orientado a fofoca": ninguém sabe o que tem lá dentro, não tem versionamento direito,
+e a regra de negócio vira um Frankenstein.
 
-Se você faz joins frequentes em determinadas colunas, elas precisam de índices. Isso acelera drasticamente as consultas.
-
-### Prefira Joins/CTEs a Subqueries
-
-Quando possível, prefira joins e CTEs (Common Table Expressions) a subqueries desnecessárias. Elas costumam ser mais
-eficientes e legíveis.
-
-Um exemplo clássico de subquery que até funciona, mas começa a ficar difícil de manter:
-
-```sql
-SELECT u.id, u.name
-FROM users u
-WHERE u.id IN (SELECT o.user_id
-               FROM orders o
-               WHERE o.created_at >= NOW() - INTERVAL '30 days'
-    );
-```
-
-A mesma ideia usando join (geralmente mais legível):
-
-```sql
-SELECT DISTINCT u.id, u.name
-FROM users u
-         JOIN orders o ON o.user_id = u.id
-WHERE o.created_at >= NOW() - INTERVAL '30 days';
-```
-
-E quando você precisa organizar melhor a consulta (e dar nome pros “pedaços”), CTE ajuda demais:
-
-```sql
-WITH recent_orders AS (SELECT user_id
-                       FROM orders
-                       WHERE created_at >= NOW() - INTERVAL '30 days'
-    )
-SELECT u.id, u.name
-FROM users u
-         JOIN recent_orders ro ON ro.user_id = u.id;
-```
+Meu meio-termo pessoal: procedure pra coisa bem data-centric (lote, manutenção, agregação). Regra de negócio da aplicação
+fica na aplicação.
 
 ### Agregue Valores Consultados Frequentemente
 
-Se você tem valores que são consultados com frequência, considere armazená-los agregados. Isso pode economizar muito
-processamento.
+Se você tem valores que são consultados com frequência (ex: total de pedidos do usuário, saldo, contadores), avalie
+persistir um agregado.
+
+Não é pra sair duplicando dado sem critério. É pra evitar recalcular a mesma coisa mil vezes por minuto. Em alto volume,
+essa diferença é brutal.
 
 ### Monitore Bloqueios e Deadlocks
 
-Bloqueios e deadlocks são inimigos silenciosos. Monitore-os constantemente e evite transações longas que possam causar
-esses problemas.
+Bloqueios e deadlocks são inimigos silenciosos. Não dá pra otimizar o que você não enxerga.
+
+Algumas coisas bem práticas que ajudam:
+
+- transação curta (não abre transação e depois fica chamando serviço externo, por favor)
+- evita lock "desnecessário" (ex: `SELECT ... FOR UPDATE` sem motivo)
+- consistência na ordem de acesso às tabelas (pra reduzir chance de deadlock)
 
 ### Evite Cálculos Repetidos em SELECT
 
-Se você precisa fazer o mesmo cálculo várias vezes, persista o resultado. Não force o banco a recalcular a mesma coisa
-toda hora.
+Se você precisa fazer o mesmo cálculo várias vezes, persista o resultado (ou cacheie). Não force o banco a recalcular a
+mesma coisa toda hora.
+
+Exemplo clássico: relatório que soma milhões de linhas em toda requisição. Na primeira semana é lindo… depois vira o
+maior consumidor de CPU do teu banco.
 
 ### Planeje Backups e Restores Eficientes
 
-Backups não são opcionais. Mas também não precisam ser exagerados. Planeje de acordo com seu contexto de negócio e
-necessidade real de retenção.
+Backup não é opcional. O que é opcional é *só perceber isso no dia que precisar restaurar*.
+
+Não precisa ser exagerado, mas precisa ser testado: saiba quanto tempo leva pra restaurar, qual o RPO/RTO que você
+aguenta, e onde isso quebra primeiro.
 
 ### Documente Schema e Regras
 
 Documente o schema e as regras do seu banco. Seu eu do futuro (e seus colegas) vão agradecer.
+
+E aqui vale qualquer coisa que funcione:
+
+- README do banco (simples)
+- diagrama básico
+- comentários em migration
+- descrição de índices “por que esse índice existe?”
 
 ## O Mínimo Necessário
 
@@ -375,7 +407,7 @@ consistente deveriam ser parte natural de qualquer sistema, garantindo qualidade
 início.
 
 > [!NOTE]
-> Depois de mais de anos na área, acredito que isso é o mínimo que um desenvolvedor deveria saber para criar uma
+> Depois de mais de 11 anos na área, acredito que isso é o mínimo que um desenvolvedor deveria saber para criar uma
 > modelagem de dados que aguente o tranco ao longo prazo, sem dores de cabeça no futuro.
 
 Não adianta só tocar as coisas e no meio do caminho tentar mudar. É muito mais custoso, porque o sistema já vai estar

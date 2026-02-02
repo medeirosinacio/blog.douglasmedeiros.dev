@@ -1403,3 +1403,48 @@ blockquote.blockquote-tip {
 blockquote.blockquote-important {
   border-color: var(--borderColor-done-emphasis);
 }
+
+/* ------------------------------------------------------------
+ * SQL (Rouge)
+ * ------------------------------------------------------------ */
+
+.language-sql .c,
+.language-sql .c1,
+.language-sql .cm {
+  color: #5e6565; /* comentários */
+}
+
+.language-sql .k,
+.language-sql .kd,
+.language-sql .kn,
+.language-sql .kp,
+.language-sql .kr,
+.language-sql .kt {
+  color: #CC7832; /* keywords */
+}
+
+.language-sql .s,
+.language-sql .s1,
+.language-sql .s2 {
+  color: #789765; /* strings */
+}
+
+.language-sql .m,
+.language-sql .mi,
+.language-sql .mf {
+  color: #A9B7C6; /* números */
+}
+
+.language-sql .o,
+.language-sql .p {
+  color: #A9B7C6; /* operadores/pontuação */
+}
+
+.language-sql .n,
+.language-sql .na,
+.language-sql .nb,
+.language-sql .nf,
+.language-sql .nn,
+.language-sql .nv {
+  color: #FFC66D; /* nomes (tabelas, colunas, aliases) */
+}
