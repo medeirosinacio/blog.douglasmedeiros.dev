@@ -530,27 +530,6 @@ padrão para cache. Mas descobri que não é bem assim... depende do contexto.
 [Continue desenvolvendo o artigo...]
 ```
 
-### 2. Conversão de Fala para Escrita
-
-- Mantenha o tom conversacional, mas organize melhor
-- Transforme "ahs" e "éhs" em pausas narrativas ou ênfases
-- Converta redundâncias em ênfases intencionais
-- Preserve expressões coloquiais que soam naturais escritas
-
-### 3. Enriquecimento
-
-- Adicione exemplos de código quando apropriado
-- Inclua analogias que tornem conceitos mais claros
-- Adicione blockquotes para destacar pontos importantes
-- Use formatação (negrito, itálico) para dar ênfase
-
-### 4. Preservação do Estilo
-
-- Mantenha a autenticidade da voz do autor
-- Preserve humor e autoironia
-- Mantenha vulnerabilidade e honestidade
-- Use as mesmas expressões e gírias do autor
-
 ## Checklist para Revisão de Artigos
 
 Antes de finalizar um artigo, verifique:
