@@ -118,7 +118,7 @@ volume grande:
 ```sql
 SELECT u.id, u.name, SUM(o.total) AS total_30d
 FROM users u
-JOIN orders o ON o.user_id = u.id
+         JOIN orders o ON o.user_id = u.id
 WHERE u.status = 'active'
   AND o.created_at >= NOW() - INTERVAL '30 days'
 GROUP BY u.id, u.name;
@@ -127,23 +127,24 @@ GROUP BY u.id, u.name;
 A mesma ideia “fatiando” primeiro o conjunto de pedidos recentes e só depois relacionando com usuários:
 
 ```sql
-WITH recent_orders AS (
-  SELECT user_id, total
-  FROM orders
-  WHERE created_at >= NOW() - INTERVAL '30 days'
-),
-active_users AS (
-  SELECT id, name
-  FROM users
-  WHERE status = 'active'
-)
+WITH recent_orders AS (SELECT user_id, total
+                       FROM orders
+                       WHERE created_at >= NOW() -
+    INTERVAL '30 days'
+    )
+   , active_users AS (
+SELECT id, name
+FROM users
+WHERE status = 'active'
+    )
 SELECT au.id, au.name, SUM(ro.total) AS total_30d
 FROM active_users au
-JOIN recent_orders ro ON ro.user_id = au.id
+         JOIN recent_orders ro ON ro.user_id = au.id
 GROUP BY au.id, au.name;
 ```
 
-De novo: não é regra absoluta. Em alguns bancos/versões, CTE pode inclusive ser materializada e piorar. Mas no dia a dia,
+De novo: não é regra absoluta. Em alguns bancos/versões, CTE pode inclusive ser materializada e piorar. Mas no dia a
+dia,
 quando a consulta começa a crescer, **CTE costuma salvar**: fica mais legível, mais testável e (muitas vezes)
 mais rápida.
 
@@ -184,17 +185,57 @@ muito para fazer `ALTER TABLE` quando tiver que incluir um enum novo, porque a t
 
 ### Tipos Corretos Garantem Melhor Performance
 
-Armazene data no tipo correto. Se é ID, use o tipo de ID. Se é booleano, use booleano. Parece básico, mas faz diferença.
+Armazene cada coisa no tipo certo. Parece papo de guia básico, mas isso aqui tem impacto direto em **tamanho de linha**,
+**índice**, **cache** e, no final das contas, I/O.
 
-E cuidado com conversões dentro de queries. Muitas vezes a gente quer fazer uma pesquisa e o campo no banco está em
-minúsculo, mas o que estamos buscando está em maiúsculo. Aí fazemos um `UPPER` ou `LOWER` para mudar aquele registro
-dentro da cláusula.
+- Data é data (`DATE`, `TIMESTAMP`) — não é string.
+- Boolean é boolean (`BOOLEAN`) — não é `VARCHAR('true')`.
+- Número é número (`INT`, `BIGINT`, `NUMERIC`) — não é `VARCHAR`.
 
-Só que isso faz com que o banco execute essa transformação em cada linha que ele vai percorrendo. Isso é muito custoso.
-O ideal é fazer o filtro sem essas conversões de tipos e na aplicação você converter isso, ou converter de alguma forma
-antes de fazer de fato o filtro. Se você está fazendo conversão de tipo filtrando terabytes de registro, isso não é
-viável. É melhor ajustar o filtro ou
-fazer a conversão antes na aplicação.
+O detalhe que muita gente ignora é que, quando você escolhe um tipo “qualquer coisa” (normalmente `VARCHAR` pra tudo),
+você não só gasta mais espaço. Você também força o banco a fazer mais trabalho pra comparar, ordenar e indexar.
+
+### Conversões no WHERE
+
+Aqui é onde muita query começa a ficar lenta sem ninguém perceber. A gente quer “só ajustar um detalhe” e mete uma
+função no `WHERE`.
+
+Por exemplo, buscar por dia usando `TRUNC`/`DATE` em cima da coluna:
+
+```sql
+-- Parece inocente… mas pode impedir o uso do índice em created_at
+SELECT id
+FROM orders
+WHERE TRUNC(created_at) = DATE '2026-02-02';
+```
+
+Uma forma mais performática costuma ser filtrar por intervalo (e aí o índice em `created_at` tem chance de trabalhar de
+verdade):
+
+```sql
+SELECT id
+FROM orders
+WHERE created_at >= TIMESTAMP '2026-02-02 00:00:00'
+  AND created_at < TIMESTAMP '2026-02-03 00:00:00';
+```
+
+Outro clássico é normalizar texto no `WHERE`:
+
+```sql
+-- Pode matar índice em email
+SELECT id
+FROM users
+WHERE LOWER(email) = 'douglas@exemplo.com';
+```
+
+O ideal aqui depende do banco e do contexto, mas geralmente você tem algumas saídas melhores:
+
+1. **Normalizar na escrita** (armazenar sempre em minúsculo e validar na aplicação)
+2. **Usar collation/citext** (Postgres) quando faz sentido
+3. **Índice funcional** quando você realmente precisa usar `LOWER(...)` no filtro
+
+No final das contas, a regra é: se você está fazendo conversão de tipo filtrando uma tabela grande, tem uma boa chance
+de isso virar gargalo. Ajuste o filtro (intervalo, normalização, índice funcional) ou faça a transformação antes.
 
 ## Chaves Únicas: O Problema do UUIDv4
 
@@ -211,9 +252,6 @@ resto final é o aleatório.
 
 Isso faz com que a gente ainda mantenha os IDs seguros e aleatórios contra colisão, e muito mais eficientes para terem
 chaves primárias e índices em cima deles.
-
-Esse estudo que fizemos acabou sendo levado para outros projetos aqui dentro. Foi algo bem bacana. Tem projetos hoje que
-só geram UUIDv7 e outros que já querem começar a gerar.
 
 **E é super tranquilo:** você vai lá na sua biblioteca que gera UUID e coloca o 7. Ela gera o 7. É compatível com a
 versão 4, é o mesmo padrão e funciona normalmente. É uma implementação muito simples que tem um ganho bem grande,
