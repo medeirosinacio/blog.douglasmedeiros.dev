@@ -14,27 +14,38 @@ image: /assets/images/posts/o-beaba-do-banco-de-dados/beaba-banco-dados.png
 description: "Depois de 11 anos na área, acredito que existem práticas essenciais sobre banco de dados que todo desenvolvedor deveria dominar. Não saber disso traz problemas lá na frente."
 ---
 
-Vou ser sincero: eu não sou DBA. Sou só um desenvolvedor que trilhou a carreira resolvendo vários problemas de banco de
-dados. Muitas vezes o DBA não conseguiu atender no momento, estava ocupado ou simplesmente não tinha DBA disponível. Foi
-assim que eu precisei entrar a fundo nessas questões.
+Desde sempre eu gostei muito de banco de dados, e sempre quis estar presente nas oportunidades que tive para resolver
+problemas
+nessa área. Até brinco que, se não fosse dev, eu seria DBA. Mas não aquele DBA que só executa query — o que a gente vê
+bastante por
+aí e parece uma vida um pouco triste (kk) — mas sim aquele focado em explorar e resolver problemas.
 
-E cara, o meu primeiro contato sério com banco de dados brilhou meus olhos. Trabalhava numa provedora onde tínhamos um
-sistema que registrava o consumo de velocidade dos clientes na internet, atualizado a cada segundo. Eram cerca de 10 mil
-clientes conectados, gerando atualizações de banda constantemente. E quem segurava essa pancada? PostgreSQL.
+Hoje em dia, a gente vê que as linguagens de programação já não são tanto o gargalo. Se você pegar sistemas que rodam em
+Python, Node ou PHP, vai ver que a linguagem é o de menos. A maior parte do processamento é I/O, e grande parte desse
+I/O é de banco. A linguagem acaba não sendo mais o gargalo das aplicações, e sim, muitas vezes, as consultas ou a
+comunicação de rede.
 
-Naquela época, a gente trabalhava num sistema muito legado. Era HTML fazendo select direto, pegando ID global da sessão
-e fazendo query no banco. Tudo mal otimizado. E olhar aquele PostgreSQL recebendo aquela quantidade de requisições me
-fez perceber: um banco bem configurado e bem planejado pode ser muito mais do que a gente imagina.
+Então, saber otimizar um banco de dados e trabalhar bem com ele é muito importante para a área. Nesse tempo que sou
+desenvolvedor, tive a oportunidade de trabalhar bastante com banco e realizar diversas melhorias de
+performance. Depois desses 11 anos, acredito que tem um **beabá** que todo dev deveria saber.
+
+> [!NOTE]
+> Este artigo saiu de uma talk minha chamada **Autópsia de um banco de dados de alta performance**.
+> No meio dessa talk, eu falo sobre essas boas práticas que trago resumidas aqui.
+
+Obviamente, é difícil o dev saber tudo isso que vou explicar logo abaixo, que considero serem boas práticas. Mas, depois
+de tanto tempo na área, acredito que saber dessas boas práticas de "cabo a rabo" vai fazer seu sistema ser de alta
+performance.
+
+Então, bora lá? Vou compartilhar aqui um pouquinho sobre o que acho que é o essencial que a gente deveria saber.
 
 ## O Básico que Não É Tão Básico Assim
 
-Depois de 11 anos na área, acredito que isso é o mínimo que um dev deveria saber para criar uma modelagem de dados.
-Questão de colunas, tipos, forma de fazer um `WHERE`, índices corretos. Parece óbvio, mas não é. E não saber disso me
-trouxe problemas lá na frente.
+Quando a gente fala de "básico" ou "boas práticas", muita gente pensa logo em nomenclatura. E sim, nomenclatura é
+importante. Quem nunca pegou um banco onde todas as tabelas começavam com `tb_` ou `tabela_`? (kk)
 
-Esse "beabá" é mais do que nomenclatura. Já trabalhei em bancos onde todas as tabelas tinham prefixo `tabela_` alguma
-coisa. Você está num banco, num schema, e todas as tabelas começam com "tabela". Existem guias e boas práticas de
-nomenclatura, mas vamos ao que realmente importa.
+Mas esse "beabá" que quero trazer vai muito além de nomes bonitinhos. Estamos falando de estrutura e performance.
+Existem guias ótimos sobre nomenclatura por aí, mas aqui vamos focar no que realmente faz diferença no dia a dia.
 
 ### Evite SELECT *
 
