@@ -1,8 +1,10 @@
-# Instruções para Criação de Artigos do Blog
+# Instruções do Copilot para Criação de Artigos
 
-## Contexto Geral
+## Propósito
 
-Este documento contém instruções detalhadas para auxiliar na criação de artigos para o blog douglasmedeiros.dev. As instruções foram baseadas em uma análise profunda dos artigos existentes e capturam o estilo de escrita, tom de voz, estrutura e convenções específicas do autor.
+Este documento contém instruções detalhadas para o GitHub Copilot auxiliar na criação de artigos para o blog douglasmedeiros.dev **baseados em transcrições de fala**. As instruções foram criadas através de análise profunda dos artigos existentes e capturam o estilo de escrita, tom de voz, estrutura e convenções específicas do autor Douglas Medeiros.
+
+**Objetivo principal:** Transformar transcrições de fala (áudio convertido em texto) em artigos bem estruturados mantendo a autenticidade e o estilo pessoal do autor.
 
 ## Público-Alvo
 
@@ -338,14 +340,195 @@ O autor faz referências a:
 
 ## Trabalhando com Transcrições de Fala
 
-Quando você receber uma transcrição de fala para transformar em artigo:
+**ATENÇÃO:** Esta é a funcionalidade principal destas instruções. Quando você receber uma transcrição de fala (áudio convertido em texto), siga este processo:
 
-### 1. Estruturação
+### 1. Análise Inicial da Transcrição
 
-- Identifique o tema principal e subtemas
-- Organize ideias dispersas em seções lógicas
-- Remova repetições naturais da fala
-- Adicione transições entre ideias
+**Primeiro, identifique:**
+- **Tema central:** Qual é o assunto principal da fala?
+- **Subtemas:** Quais tópicos são abordados?
+- **Tom emocional:** A pessoa estava animada, reflexiva, frustrada?
+- **Experiências pessoais:** Que histórias ou exemplos concretos foram mencionados?
+- **Mensagem principal:** O que a pessoa quer comunicar ao leitor?
+
+### 2. Estruturação do Conteúdo
+
+**Organize as ideias:**
+- Agrupe pensamentos relacionados em seções lógicas
+- Identifique a sequência natural da narrativa
+- Separe contexto, problema, solução e conclusão
+- Remova repetições naturais da fala oral
+- Mantenha apenas repetições que sirvam para ênfase intencional
+
+**Crie uma estrutura:**
+```
+1. Abertura envolvente (gancho)
+2. Contexto/Apresentação do problema
+3. Desenvolvimento (2-4 seções principais)
+4. Aprendizados/Solução
+5. Conclusão reflexiva
+```
+
+### 3. Transformação de Fala em Escrita
+
+**Limpe, mas preserve a voz:**
+
+❌ **NÃO faça isso:**
+- Não torne o texto formal demais
+- Não remova toda a informalidade
+- Não use jargão acadêmico
+- Não apague a personalidade
+
+✅ **FAÇA isso:**
+- Transforme "ahm", "éh", "tipo assim" em pausas narrativas ou remova
+- Converta frases soltas em parágrafos coesos
+- Organize pensamentos dispersos mantendo a essência
+- Preserve expressões coloquiais que soam naturais escritas
+
+**Exemplos de transformação:**
+
+**Transcrição original:**
+```
+"Então... ahm... eu tava pensando, sabe? Tipo, a gente sempre quer fazer tudo 
+perfeito logo de cara, mas... éh... na real isso nunca funciona, entende?"
+```
+
+**Artigo transformado:**
+```
+A gente sempre quer fazer tudo perfeito logo de cara. Mas, na real, isso nunca funciona.
+```
+
+**Transcrição original:**
+```
+"E aí eu fiquei tipo 'cara, que que eu to fazendo?' porque o código tava uma bagunça, 
+sabe? Aí eu parei e pensei, mano, preciso mudar isso."
+```
+
+**Artigo transformado:**
+```
+E aí veio aquele momento de clareza: "o que eu estou fazendo?" O código estava uma 
+bagunça, e eu sabia que precisava mudar aquilo.
+```
+
+### 4. Enriquecimento do Conteúdo
+
+**Adicione elementos que melhoram a leitura:**
+
+- **Blockquotes** para destacar pontos importantes da fala
+- **Exemplos de código** quando conceitos técnicos são mencionados
+- **Analogias expandidas** se a pessoa começou uma comparação
+- **Seções claras** com títulos descritivos
+- **Formatação** (negrito, itálico) para dar ênfase
+
+**Se a transcrição mencionar:**
+- Um conceito técnico → Adicione exemplo de código simples
+- Uma situação vivida → Transforme em storytelling estruturado
+- Uma reflexão → Destaque com blockquote [!NOTE] ou [!IMPORTANT]
+- Uma dica → Use blockquote [!TIP]
+
+### 5. Preservação da Autenticidade
+
+**CRÍTICO: Mantenha a voz do autor!**
+
+✅ **Preserve:**
+- Gírias brasileiras ("kk", "mano", "cara")
+- Humor e autoironia
+- Vulnerabilidade e honestidade
+- Experiências pessoais específicas
+- Opiniões fortes (não neutralize)
+
+❌ **Não neutralize:**
+- Não transforme "cara, isso é frustrante" em "isto causa frustração"
+- Não remova opiniões pessoais
+- Não formalize demais "achei muito legal" → mantenha natural
+- Não apague erros admitidos (são pontos de conexão com o leitor)
+
+### 6. Adição de Metadados
+
+**Crie o Front Matter baseado no conteúdo:**
+
+```yaml
+---
+layout: blog-post
+date: [data atual ou fornecida]
+permalink: /artigos/:categories/[slug-baseado-no-titulo]
+title: "[Título impactante baseado no tema central]"
+categories:
+  - [escolha UMA categoria apropriada]
+tags:
+  - [3-5 tags relevantes]
+image: /assets/images/posts/[sugestao-de-nome].jpg
+description: "[1-2 frases que capturam a essência e fazem querer ler]"
+---
+```
+
+**Como escolher a categoria:**
+- Fala sobre experiência pessoal/blog? → `pessoal`
+- Fala sobre código limpo, refatoração? → `boas-praticas`
+- Fala sobre design, modelagem? → `arquitetura`
+- Fala sobre times, processos? → `cultura`
+- Fala sobre soft skills, crescimento? → `carreira`
+- Fala sobre criar conteúdo, palestrar? → `conteudo`
+- Fala sobre otimização, cache? → `performance`
+
+### 7. Checklist de Transformação
+
+Antes de entregar o artigo transformado, verifique:
+
+- [ ] A transcrição foi organizada em seções lógicas?
+- [ ] Repetições desnecessárias foram removidas?
+- [ ] A voz autêntica foi preservada?
+- [ ] Gírias e expressões naturais foram mantidas?
+- [ ] Histórias pessoais estão bem estruturadas?
+- [ ] Blockquotes destacam pontos importantes?
+- [ ] Front matter está completo e correto?
+- [ ] Título é impactante e claro?
+- [ ] Descrição captura a essência?
+- [ ] Há uma abertura envolvente?
+- [ ] Há um fechamento reflexivo?
+- [ ] O artigo soa como o autor falando?
+
+### 8. Exemplo de Fluxo de Trabalho
+
+**INPUT (Transcrição):**
+```
+"Esses dias eu tava debugando um problema de performance, sabe? E descobri que o 
+Redis tava sendo o gargalo. Eu fiquei tipo 'como assim?' porque a gente sempre 
+acha que Redis resolve tudo, né? Mas não é bem assim... depende do contexto."
+```
+
+**OUTPUT (Artigo):**
+```markdown
+---
+layout: blog-post
+date: 2026-02-02
+permalink: /artigos/:categories/quando-o-redis-vira-gargalo
+title: "Quando o Redis Vira o Gargalo"
+categories:
+  - performance
+tags:
+  - redis
+  - cache
+  - otimização
+image: /assets/images/posts/redis-gargalo.jpg
+description: "Redis sempre resolve tudo, certo? Errado. Descobri isso da pior forma 
+ao debugar um problema de performance que me deixou em choque."
+---
+
+Esses dias eu estava debugando um problema de performance que, no papel, não fazia 
+sentido. Tudo estava configurado corretamente, a arquitetura estava sólida, mas algo 
+estava lento demais.
+
+Aí veio o choque: o Redis era o gargalo.
+
+> [!NOTE]
+> "Como assim o Redis é o problema?" Foi exatamente o que pensei.
+
+A gente sempre acha que Redis resolve tudo, né? É rápido, confiável, a solução 
+padrão para cache. Mas descobri que não é bem assim... depende do contexto.
+
+[Continue desenvolvendo o artigo...]
+```
 
 ### 2. Conversão de Fala para Escrita
 
