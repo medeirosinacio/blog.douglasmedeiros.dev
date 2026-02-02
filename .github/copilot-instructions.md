@@ -550,6 +550,7 @@ Antes de finalizar um artigo, verifique:
 - [ ] Imagens referenciadas corretamente (se houver)
 - [ ] Revisão ortográfica e gramatical
 - [ ] Linguagem inclusiva e respeitosa
+- [ ] O texto não ultrapassa 120 caracteres por linha sempre que possível
 
 ## Exemplos de Frases Típicas do Autor
 
