@@ -14,30 +14,33 @@ image: /assets/images/posts/o-beaba-do-banco-de-dados/beaba-banco-dados.png
 description: "Depois de 11 anos na área, acredito que existem práticas essenciais sobre banco de dados que todo desenvolvedor deveria dominar. Não saber disso traz problemas lá na frente."
 ---
 
-Desde sempre eu gostei muito de banco de dados, e sempre quis estar presente nas oportunidades que tive para resolver
-problemas
-nessa área. Até brinco que, se não fosse dev, eu seria DBA. Mas não aquele DBA que só executa query — o que a gente vê
-bastante por
-aí e parece uma vida um pouco triste (kk) — mas sim aquele focado em explorar e resolver problemas.
+Desde sempre eu gostei muito de banco de dados. E, sempre que aparecia alguma oportunidade de encostar num problema de
+performance, modelagem ou query esquisita, eu tava lá: “deixa eu ver isso aí”.
 
-Hoje em dia, a gente vê que as linguagens de programação já não são tanto o gargalo. Se você pegar sistemas que rodam em
-Python, Node ou PHP, vai ver que a linguagem é o de menos. A maior parte do processamento é I/O, e grande parte desse
-I/O é de banco. A linguagem acaba não sendo mais o gargalo das aplicações, e sim, muitas vezes, as consultas ou a
-comunicação de rede.
+Eu até brinco que, se não fosse dev, eu seria DBA. Mas não aquele DBA que só executa query (o que a gente vê bastante
+por aí e parece uma vida meio triste, kkk) — e sim o DBA curioso, que gosta de entender o *porquê* das coisas e caçar
+gargalo.
 
-Então, saber otimizar um banco de dados e trabalhar bem com ele é muito importante para a área. Nesse tempo que sou
-desenvolvedor, tive a oportunidade de trabalhar bastante com banco e realizar diversas melhorias de
-performance. Depois desses 11 anos, acredito que tem um **beabá** que todo dev deveria saber.
+A questão é que hoje em dia a linguagem raramente é o vilão. Se você pegar sistemas rodando em Python, Node ou PHP, dá
+pra ver claramente: a maior parte do tempo tá indo embora em I/O. E uma fatia enorme desse I/O é… banco de dados. Na
+prática, o gargalo quase nunca é “a linguagem lenta”. Normalmente é consulta ruim, índice faltando, rede, lock, ou
+qualquer combinação dessas coisas.
+
+Então sim: saber trabalhar bem com banco, e saber otimizar quando precisa, é uma skill bem valiosa.
+
+Nesses 11 anos como dev, eu tive a oportunidade de mexer bastante com banco e fazer várias melhorias de performance. E
+depois de apanhar o suficiente, eu fiquei bem convencido de uma coisa: existe um **beabá** que todo dev deveria ter na
+ponta da língua.
 
 > [!NOTE]
 > Este artigo saiu de uma talk minha chamada **Autópsia de um banco de dados de alta performance**.
 > No meio dessa talk, eu falo sobre essas boas práticas que trago resumidas aqui.
+>
+> E se você curtiu esse assunto e quer levar essa conversa para dentro da sua empresa ou do seu time,
+> pode [me pingar](https://links.douglasmedeiros.dev).
 
-Obviamente, é difícil o dev saber tudo isso que vou explicar logo abaixo, que considero serem boas práticas. Mas, depois
-de tanto tempo na área, acredito que saber dessas boas práticas de "cabo a rabo" vai fazer seu sistema ser de alta
-performance.
-
-Então, bora lá? Vou compartilhar aqui um pouquinho sobre o que acho que é o essencial que a gente deveria saber.
+Obviamente, é difícil o dev saber tudo isso que eu vou comentar aqui *de cabo a rabo*. Mas, no final das contas, dominar
+esse básico bem feito aumenta (e muito) a chance do seu sistema ser de alta performance.
 
 ## O Básico que Não É Tão Básico Assim
 
