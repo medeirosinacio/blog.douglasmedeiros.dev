@@ -28,7 +28,7 @@ qualquer combinação dessas coisas.
 
 Então sim: saber trabalhar bem com banco, e saber otimizar quando precisa, é uma skill bem valiosa.
 
-Nesses 11 anos como dev, eu tive a oportunidade de mexer bastante com banco e fazer várias melhorias de performance. E
+Nesses anos como dev, eu tive a oportunidade de mexer bastante com banco e fazer várias melhorias de performance. E
 depois de apanhar o suficiente, eu fiquei bem convencido de uma coisa: existe um **beabá** que todo dev deveria ter na
 ponta da língua.
 
@@ -45,7 +45,7 @@ esse básico bem feito aumenta (e muito) a chance do seu sistema ser de alta per
 ## O Básico que Não É Tão Básico Assim
 
 Quando a gente fala de "básico" ou "boas práticas", muita gente pensa logo em nomenclatura. E sim, nomenclatura é
-importante. Quem nunca pegou um banco onde todas as tabelas começavam com `tb_` ou `tabela_`? (kk)
+importante. Quem nunca pegou um banco onde todas as tabelas começavam com `tb_` ou `tabela_`?
 
 Mas esse "beabá" que quero trazer vai muito além de nomes bonitinhos. Estamos falando de estrutura e performance.
 Existem guias ótimos sobre nomenclatura por aí, mas aqui vamos focar no que realmente faz diferença no dia a dia.
@@ -108,6 +108,35 @@ cruze com esse array do que fazer uma consulta com join.
 Dependendo de como for sua query ou o que você está querendo buscar, é mais fácil fazer duas consultas e cruzar elas do
 que uma consulta só com join. Parece contraintuitivo, mas em certos cenários, funciona melhor.
 
+> [!TIP]
+> Não é sobre “join é ruim”. É sobre **entender o plano de execução** e o volume de dados. Tem join que é lindo e tem
+> join
+> que vira um caminhão sem freio descendo ladeira.
+
+Um exemplo bem simples (pensando em aplicação): você busca os `user_id` que estão ativos e, depois, busca os pedidos só
+pra esse grupo.
+
+```sql
+-- Query 1: pega um conjunto pequeno de IDs
+SELECT id
+FROM users
+WHERE status = 'active' LIMIT 1000;
+
+-- Query 2: usa o conjunto de IDs (na aplicação) numa segunda consulta
+SELECT id, user_id, total
+FROM orders
+WHERE user_id IN (/* ids ativos */);
+```
+
+Agora, quando o volume é grande e você consegue resolver tudo no banco, um join bem indexado costuma ser mais direto:
+
+```sql
+SELECT o.id, o.user_id, o.total
+FROM orders o
+         JOIN users u ON u.id = o.user_id
+WHERE u.status = 'active';
+```
+
 ### O Vilão ORDER BY
 
 O `ORDER BY` é um grande vilão. Se você faz um select por status e depois faz um `ORDER BY` em ordem decrescente, ele
@@ -122,7 +151,7 @@ principalmente se esse campo de `ORDER BY` não tiver índice.
 
 > [!NOTE]
 > Já pegamos problemas aqui onde o problema era só o `ORDER BY`. Tiramos da consulta e ela melhorou 10 vezes. O
-`ORDER BY` estava ordenando gigas e gigas de dados dentro do banco, e na aplicação só queríamos filtrar um registro.
+> `ORDER BY` estava ordenando gigas e gigas de dados dentro do banco, e na aplicação só queríamos filtrar um registro.
 
 ### Enums como Texto
 
@@ -237,6 +266,38 @@ Se você faz joins frequentes em determinadas colunas, elas precisam de índices
 
 Quando possível, prefira joins e CTEs (Common Table Expressions) a subqueries desnecessárias. Elas costumam ser mais
 eficientes e legíveis.
+
+Um exemplo clássico de subquery que até funciona, mas começa a ficar difícil de manter:
+
+```sql
+SELECT u.id, u.name
+FROM users u
+WHERE u.id IN (SELECT o.user_id
+               FROM orders o
+               WHERE o.created_at >= NOW() - INTERVAL '30 days'
+    );
+```
+
+A mesma ideia usando join (geralmente mais legível):
+
+```sql
+SELECT DISTINCT u.id, u.name
+FROM users u
+         JOIN orders o ON o.user_id = u.id
+WHERE o.created_at >= NOW() - INTERVAL '30 days';
+```
+
+E quando você precisa organizar melhor a consulta (e dar nome pros “pedaços”), CTE ajuda demais:
+
+```sql
+WITH recent_orders AS (SELECT user_id
+                       FROM orders
+                       WHERE created_at >= NOW() - INTERVAL '30 days'
+    )
+SELECT u.id, u.name
+FROM users u
+         JOIN recent_orders ro ON ro.user_id = u.id;
+```
 
 ### Agregue Valores Consultados Frequentemente
 
