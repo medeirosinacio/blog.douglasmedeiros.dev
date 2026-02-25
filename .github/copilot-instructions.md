@@ -6,6 +6,12 @@ Este documento contém instruções detalhadas para o GitHub Copilot auxiliar na
 
 **Objetivo principal:** Transformar transcrições de fala (áudio convertido em texto) em artigos bem estruturados mantendo a autenticidade e o estilo pessoal do autor.
 
+> **OBRIGATÓRIO:** Existe a skill `humanizer` (`.github/skills/humanizer/SKILL.md`) que **deve ser
+> consultada SEMPRE** durante a transformação de transcrições e a escrita/revisão de artigos.
+> Essa skill identifica e remove padrões de escrita que denunciam texto gerado por IA, garantindo
+> que o resultado final soe natural e humano. Antes de finalizar qualquer artigo, passe o texto
+> pela checklist da skill para eliminar "AI tells" sem perder a voz autêntica do autor.
+
 ## Público-Alvo
 
 Os artigos são escritos para desenvolvedores de software de todos os níveis (júnior, pleno, sênior), focados principalmente em:
@@ -285,13 +291,6 @@ Use links de forma natural no texto:
 - Link interno: [Nem Só de Código Vive o Dev](/artigos/carreira/nem-so-de-codigo-vive-o-dev)
 ```
 
-### 6. Emojis
-
-O autor usa emojis ocasionalmente, mas com moderação:
-- 🚀 (foguete) - para fechamentos motivacionais
-- 🔮 (bola de cristal) - para referências tecnológicas
-- Geralmente no final de artigos ou em títulos de seções especiais
-
 ## Elementos de Escrita Específicos
 
 ### 1. Software Orientado a Fofoca
@@ -485,8 +484,9 @@ Antes de entregar o artigo transformado, verifique:
 - [ ] Título é impactante e claro?
 - [ ] Descrição captura a essência?
 - [ ] Há uma abertura envolvente?
-- [ ] Há um fechamento reflexivo?
 - [ ] O artigo soa como o autor falando?
+- [ ] O texto foi validado pela skill `humanizer` para remover padrões de IA?
+- [ ] O texto foi validado pela skill `humanizer` para remover padrões de IA?
 
 ### 8. Exemplo de Fluxo de Trabalho
 
@@ -550,6 +550,8 @@ Antes de finalizar um artigo, verifique:
 - [ ] Imagens referenciadas corretamente (se houver)
 - [ ] Revisão ortográfica e gramatical
 - [ ] Linguagem inclusiva e respeitosa
+- [ ] O texto não ultrapassa 120 caracteres por linha sempre que possível
+- [ ] O texto foi validado pela skill `humanizer` para remover padrões de escrita de IA
 
 ## Exemplos de Frases Típicas do Autor
 
