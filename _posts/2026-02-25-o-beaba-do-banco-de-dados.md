@@ -171,8 +171,10 @@ consulta começa a crescer, CTE costuma salvar.
 
 ### O Inimigo Oculto: ORDER BY
 
-O `ORDER BY` é um grande vilão. Se você faz um select por status e depois faz um `ORDER BY` em ordem decrescente, ele
-vai pegar todos os dados do banco, ordenar primeiro para depois fazer o filtro.
+O `ORDER BY` é um grande vilão. Se você faz um SELECT com filtro por status e depois ordena em ordem decrescente,
+o banco aplica o filtro primeiro, pega o resultado e ainda precisa ordenar tudo antes de devolver os dados.
+Se esse conjunto for grande e o campo não tiver índice cobrindo a ordenação, o banco faz um filesort em cima
+de muita coisa, e aí a performance despenca.
 
 Isso muitas vezes vai degradar muito a performance. E às vezes esse `ORDER BY` vai ser feito só na aplicação para
 ordenar o primeiro e último pagamento ou o último ou primeiro usuário de uma tabela.
