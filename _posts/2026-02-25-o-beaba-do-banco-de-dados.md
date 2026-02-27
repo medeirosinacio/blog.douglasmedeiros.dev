@@ -196,15 +196,14 @@ aquele Enum é válido ou não para aquele campo. Até aí, tudo bem, quando voc
 mudar.
 
 Mas quando você tem campos no formato status, tipos, microsserviços ou meio de pagamento que costumam crescer conforme a
-aplicação cresce, cada vez que você tem que fazer um `ALTER TABLE` nesse campo é muito custoso.
+aplicação cresce, o enum começa a mostrar suas limitações. Não dá pra remover um valor sem recriar o tipo, a ordem dos
+valores é imutável, e o comportamento de certas operações DDL pode variar dependendo da versão do banco gerando lock.
 
-Pensa numa tabela com alguns terabytes de dados. Fazer um `ALTER TABLE` numa coluna dessa para adicionar um método de
-pagamento novo é inviável, porque esse `ALTER TABLE` vai ter que percorrer esses terabytes para conseguir mudar esse
-tipo da coluna.
+Na prática, domínios que mudam com frequência ficam engessados dentro de um enum. Você depende de operações de schema
+pra algo que poderia ser apenas uma regra de validação na aplicação.
 
-**É muito melhor a coluna ser um `VARCHAR`** e a aplicação é que valida se aquele enum é válido ou não. Você pode sofrer
-muito para fazer `ALTER TABLE` quando tiver que incluir um enum novo, porque a tabela pode estar muito grande e esse
-`ALTER TABLE` vai ser custoso.
+**É muito melhor a coluna ser um `VARCHAR`** e a aplicação é que valida se aquele valor é permitido ou não. Mais
+flexível, mais fácil de evoluir, e sem surpresas quando o negócio pedir um novo status ou meio de pagamento.
 
 ### Use o Tipo Certo pra Cada Dado
 
