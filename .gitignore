@@ -19,3 +19,4 @@ vendor
 !*/*/*/*/*/*/.gitkeep
 /.gem-cache/
 /.well-known/appspecific/com.chrome.devtools.json
+.transcriptions/*
