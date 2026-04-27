@@ -10,11 +10,27 @@ Medeiros.
 **Objetivo principal:** Transformar transcrições de fala (áudio convertido em texto) em artigos bem estruturados
 mantendo a autenticidade e o estilo pessoal do autor.
 
-> **OBRIGATÓRIO:** Existe a skill `humanizer` (`.github/skills/humanizer/SKILL.md`) que **deve ser
-> consultada SEMPRE** durante a transformação de transcrições e a escrita/revisão de artigos.
-> Essa skill identifica e remove padrões de escrita que denunciam texto gerado por IA, garantindo
-> que o resultado final soe natural e humano. Antes de finalizar qualquer artigo, passe o texto
-> pela checklist da skill para eliminar "AI tells" sem perder a voz autêntica do autor.
+> **OBRIGATÓRIO:** Este documento define apenas o **processo, estrutura, formatação markdown e workflow**
+> de transformação de transcrição em artigo. A **voz autoral** e a **execução automatizada** estão
+> separadas em:
+>
+> 1. **Skill `douglas-voice`** (`.github/skills/douglas-voice/SKILL.md`) — referência de voz a ser
+>    consultada **SEMPRE** durante a escrita e revisão. É a fonte primária pra fazer o texto soar
+>    como o Douglas. Use no fluxo principal, parágrafo a parágrafo.
+> 2. **Skill `humanizer`** (`.github/skills/humanizer/SKILL.md`) — identifica e remove padrões de
+>    escrita que denunciam texto gerado por IA. Use ao finalizar cada artigo.
+> 3. **Agent `article-writer`** (`.github/agents/article-writer.md`) — agente que **executa o
+>    pipeline completo**: recebe uma transcrição em `.transcriptions/` e devolve o artigo pronto
+>    em `_posts/`. É o ponto de entrada padrão pra transformar transcrição em artigo.
+> 4. **Agent `voice-reviewer`** (`.github/agents/voice-reviewer.md`) — revisor de voz invocável pra
+>    crítica final estruturada do rascunho pronto, com contexto isolado. Deve ser invocado
+>    **antes de publicar** como passo 8 do workflow.
+>
+> **Pipeline padrão:** transcrição em `.transcriptions/` → `article-writer` → rascunho em
+> `_posts/` → `voice-reviewer` → ajustes finais → publica.
+>
+> **Em caso de conflito entre voz (`douglas-voice`) e processo (este documento), o autor prevalece:
+> peça desambiguação.** Mas em geral, este doc não fala de voz, e a skill não fala de processo.
 
 ## Público-Alvo
 
@@ -27,47 +43,23 @@ principalmente em:
 - Carreira em tecnologia
 - Experiências práticas e aprendizados reais
 
-**Local das transcrições:** Todas as transcrições ficam salvas em `.transcriptions/` na raiz do projeto. Ao receber um
-áudio ou transcrição, salve o texto bruto nessa pasta com o formato `YYYY-MM-DD-slug-do-tema.txt` antes de transformar
-em artigo. Essa pasta é ignorada pelo Git (`.gitignore`).
+**Pasta `.transcriptions/`:** ignorada pelo Git, serve como **workspace de matéria-prima** com dois
+tipos de conteúdo distintos:
 
-## Tom de Voz e Estilo de Escrita
+1. **Transcrições próprias do Douglas** — áudios convertidos em texto. São matéria-prima principal
+   pra virar artigo. Salve com o formato `YYYY-MM-DD-slug-do-tema.txt` (ou `.md`). Exemplo:
+   `2026-04-27-uso-de-ia.txt`.
 
-### Características Principais
+2. **Material de referência externo** — artigos de outros autores, conteúdo de sites, posts,
+   threads, papers, documentação. Servem como **base de argumentação, contraponto, fonte de
+   citação ou inspiração**, mas **não viram artigo direto**. Salve com nome descritivo do
+   tema/autor (ex: `clean-code-para-agentes-de-ia.md`, `apagao-dev-lucas-montano.md`). Quando
+   possível, mantenha a URL de origem na primeira linha do arquivo pra atribuição correta.
 
-1. **Conversacional e Autêntico**: O estilo é descontraído, como uma conversa entre colegas. Use linguagem direta, sem
-   formalidades excessivas.
-    - ✅ "Vou ser sincero, demorou mais do que eu imaginava."
-    - ✅ "E cá estamos..."
-    - ✅ "Pense bem: quantas vezes você..."
-    - ❌ "Neste trabalho, será apresentado de forma sistemática..."
-
-2. **Uso de Gírias e Expressões Brasileiras**: O autor usa gírias e expressões coloquiais brasileiras naturalmente.
-    - "kk" (risos)
-    - "~~gambiarras~~" (texto riscado com humor)
-    - "No final das contas"
-    - "Da próxima vez"
-    - "Aí vem as frases clássicas"
-    - "Caiu a ficha"
-    - "Spoiler: esse momento não existe"
-
-3. **Autoironia e Humor Sutil**: O autor não se leva muito a sério e usa humor para conectar com o leitor.
-    - "Como bom back-end, não foi fácil definir o layout"
-    - "~~nem sempre na real~~" (texto riscado)
-    - "soluções mais modernas ~~gambiarras~~"
-    - "(kk não fui aprender Tailwind-CSS)"
-
-4. **Pessoal e Experiencial**: O autor compartilha experiências pessoais e vulnerabilidades.
-    - Use primeira pessoa ("eu", "minha")
-    - Conte histórias reais
-    - Admita erros e aprendizados
-    - Seja vulnerável quando apropriado
-
-5. **Provocativo e Reflexivo**: O autor faz perguntas diretas ao leitor para provocar reflexão.
-    - "E você, já aplicou a Regra do Bom Escoteiro no seu código?"
-    - "Mas legado é realmente um problema?"
-    - "Por que desenhar?"
-    - "Você não é ruim em comunicação, só não treinou o suficiente"
+> **Crítico:** o agente `article-writer` precisa **distinguir os dois tipos antes de começar**.
+> Material de referência **nunca** é transformado em artigo do Douglas como se fosse fala dele.
+> Pode ser citado, linkado, contestado ou usado como gancho de uma reflexão própria — mas a
+> autoria sempre fica clara.
 
 ## Estrutura de Artigos
 
@@ -88,7 +80,7 @@ tags:
   - tag2
   - tag3
 image: /assets/images/posts/nome-da-imagem.jpg
-description: "Descrição curta e impactante do artigo, geralmente 1-2 frases que capturam a essência e fazem o leitor querer ler."
+description: "Descrição em estilo ensaio, 3-5 frases no mesmo tom do corpo do artigo, antecipando a tese em vez de resumir. Veja a seção 'Description: estilo ensaio, não resumo' abaixo."
 ---
 ```
 
@@ -101,6 +93,33 @@ description: "Descrição curta e impactante do artigo, geralmente 1-2 frases qu
 - carreira
 - conteudo
 - performance
+
+**Description: estilo ensaio, não resumo.**
+
+A `description` aparece em link previews, RSS, SEO e na listagem do blog. É a primeira amostra de voz que o leitor recebe, então **não trate como resumo executivo**. Funciona melhor escrita no mesmo registro do corpo do artigo.
+
+❌ **Evite:**
+- Frase curta e crua que só descreve o tema ("Sobre X e Y")
+- Tom corporativo, neutro ou genérico
+- Recapitulação fria do conteúdo
+- Usar a description como abstract acadêmico
+
+✅ **Prefira:**
+- 3-5 frases que **antecipam o ensaio** em vez de resumir
+- Tese implícita já visível no primeiro período
+- Tensão, contraste ou provocação que faça o leitor querer continuar
+- Vocabulário e cadência idênticos ao corpo do artigo (a description já é voz autoral)
+- Pode terminar com a fórmula "Sobre [tema], [ângulo do autor]" ou variação
+
+**Exemplo: crua vs com aura**
+
+❌ Crua:
+> "O gargalo do ciclo de desenvolvimento mudou de endereço com a IA, e a gente acabou voltando pro papel de arquiteto sem pedir. Sobre vibe coding feito a sério, e por que qualidade virou um problema mais nosso, não menos."
+
+✅ Com aura:
+> "A IA tirou a digitação do caminho e a gente ficou sem o gargalo que justificava metade do nosso dia. No lugar dele, sobrou o trabalho que a máquina não faz: decidir o que vai pra produção, segurar a régua de qualidade, apertar guardrail, ler o que o agente escreveu antes que vire dor de cabeça em runtime. Sobre vibe coding feito a sério e o papel de arquiteto que ninguém pediu, mas que a gente herdou."
+
+A diferença não é tamanho, é densidade: a versão com aura faz o leitor sentir o tom do ensaio antes de clicar.
 
 ### 2. Estrutura do Conteúdo
 
@@ -313,61 +332,17 @@ Use links de forma natural no texto:
 - Link interno: [Nem Só de Código Vive o Dev](/artigos/carreira/nem-so-de-codigo-vive-o-dev)
 ```
 
-## Elementos de Escrita Específicos
-
-### 1. Software Orientado a Fofoca
-
-O autor criou este termo humorístico para descrever sistemas mal documentados onde o conhecimento está apenas nas
-cabeças das pessoas. Use referências criativas e humor quando apropriado.
-
-### 2. Analogias e Metáforas
-
-O autor usa analogias do dia a dia para explicar conceitos técnicos:
-
-- "É como uma dívida financeira: se você não a paga, ela só aumenta"
-- "Como bons escoteiros sempre deixam o lugar mais limpo do que encontraram"
-- "Sistemas são organismos vivos"
-- "Uma boa analogia para isso é a rotina de atletas de alta performance"
-
-### 3. Expressões de Transição
-
-Use expressões naturais para conectar ideias:
-
-- "No final das contas"
-- "Pense bem"
-- "A questão é que"
-- "Aí vem"
-- "E então"
-- "Por exemplo"
-- "Além disso"
-- "Mais do que isso"
-- "Claro"
-- "É aí que"
-
-### 4. Storytelling
-
-Conte histórias de forma cronológica e envolvente:
-
-- Apresente o contexto
-- Mostre o problema
-- Descreva a jornada
-- Revele a solução/aprendizado
-- Conclua com reflexão
-
-### 5. Referências Técnicas e Culturais
-
-O autor faz referências a:
-
-- Tecnologias modernas (Docker, Kafka, Redis, PHP, etc.)
-- Cultura pop tech (Mr. Robot, Matrix)
-- Comunidade tech brasileira (Dev.to, TabNews)
-- Práticas de desenvolvimento (SOLID, Clean Code, TDD)
-- Livros técnicos
-
 ## Trabalhando com Transcrições de Fala
 
 **ATENÇÃO:** Esta é a funcionalidade principal destas instruções. Quando você receber uma transcrição de fala (áudio
 convertido em texto), siga este processo:
+
+> **Atalho recomendado:** invoque o agent `article-writer`
+> (`.github/agents/article-writer.md`) passando o caminho da transcrição. Ele
+> executa todas as fases descritas abaixo num contexto isolado e devolve o
+> artigo pronto em `_posts/`, junto com um resumo de decisões editoriais.
+> Use o processo manual abaixo só quando precisar de controle fino sobre
+> alguma fase específica.
 
 ### 1. Análise Inicial da Transcrição
 
@@ -497,7 +472,7 @@ categories:
 tags:
   - [ 3-5 tags relevantes ]
 image: /assets/images/posts/[sugestao-de-nome].jpg
-description: "[1-2 frases que capturam a essência e fazem querer ler]"
+description: "[3-5 frases em estilo ensaio, mesmo registro do corpo, antecipando a tese — ver 'Description: estilo ensaio, não resumo' acima]"
 ---
 ```
 
@@ -511,7 +486,106 @@ description: "[1-2 frases que capturam a essência e fazem querer ler]"
 - Fala sobre criar conteúdo, palestrar? → `conteudo`
 - Fala sobre otimização, cache? → `performance`
 
-### 7. Checklist de Transformação
+### 7. Parágrafos densos, nunca anêmicos
+
+Um dos vícios mais comuns ao transformar transcrição em artigo é deixar parágrafos
+**anêmicos**: 2-3 frases que afirmam algo, mas não desenvolvem o raciocínio até a tese.
+O leitor sai do parágrafo sem ter ganhado uma reflexão concreta — só uma posição
+declarada.
+
+**Sinais de parágrafo anêmico:**
+
+- Tem 2-3 frases curtas, declara uma posição, e segue pra próxima seção sem ancorar
+  o argumento em algo concreto (incidente, número, episódio, contraste).
+- Cita um fato externo ("a Vercel teve um incidente") sem detalhar **o que aconteceu**,
+  **por que importa**, **o que isso ensina**.
+- Usa um conceito técnico ("rate limit", "não-determinístico", "complexidade ciclomática")
+  sem traduzir em consequência prática pra quem lê.
+- Termina com uma frase de transição ("e é por isso que precisamos de qualidade") em
+  vez de uma frase-punch que feche o ponto.
+
+**Como adensar um parágrafo:**
+
+1. **Ancore em concreto.** Se a transcrição menciona um incidente de passagem, leia o
+   material de referência (se houver) e traga 2-3 detalhes específicos: data, vetor do
+   ataque, consequência. Resumo de 1 frase é anêmico; recapitulação de 3-4 frases que
+   reconstrói o caso é denso.
+2. **Use "conta de padaria" sempre que houver magnitude.** Se o argumento depende de
+   "a IA escreve muito código", traduza em número: "10 mil linhas por dia, impossível
+   revisar à mão". Magnitude abstrata não convence; magnitude com número convence.
+3. **Aplique concessão-oposição dentro do parágrafo.** Não basta declarar a tese:
+   reconheça o contra-argumento ("Uncle Bob tem razão de que a gente não dá conta") e
+   vire ("Mas mesmo com complexidade ciclomática baixa, ainda passa bug que só sênior
+   pega"). A virada é o que dá peso.
+4. **Feche com punch.** Última frase do parágrafo deve ser curta, afirmativa, sem
+   condicional. Se o parágrafo termina em transição ("e isso nos leva a pensar..."),
+   reescrever.
+
+**Regra prática de tamanho:** parágrafo de seção principal raramente fica abaixo de
+4-5 frases. Se estiver com 2-3, provavelmente falta substância — desenvolva ou funda
+com o parágrafo vizinho.
+
+**Cuidado com o modo jornalístico.** Adensar parágrafo não é encher de nome, data,
+fonte e citação. Esse é o vício oposto ao anêmico, e arruína a voz na mesma medida.
+Se o parágrafo virou matéria de portal de tecnologia, com 4 nomes próprios em 5 linhas
+("a empresa X, segundo o veículo Y, citando o pesquisador Z, no incidente W..."), o
+excesso de detalhe matou a reflexão. O leitor sai do parágrafo sabendo o quê, mas não
+sabendo o que o autor pensa daquilo.
+
+Sinais de modo jornalístico:
+
+- Mais de 2-3 nomes próprios (pessoa, empresa, veículo) em sequência num mesmo
+  parágrafo.
+- Citações diretas longas de terceiros, especialmente em aspas, no lugar de
+  paráfrase + reflexão.
+- Datas, versões e cifras precisas que não servem ao argumento.
+- Frase do tipo "segundo X, citando Y..." sem o autor entrar com posição própria
+  depois.
+- O parágrafo descreveria o mesmo fato pra qualquer leitor, sem assinatura.
+
+Como corrigir: **detalhe é insumo da reflexão, não substituto**. Mantenha o exemplo
+concreto, mas com nomes essenciais apenas (1-2 por parágrafo, raramente 3), sem
+citação direta longa, e abrindo espaço pra o autor virar pra reflexão dele.
+
+Antes (jornalístico):
+> A Vercel publicou em abril um boletim de incidente confirmando acesso não
+> autorizado. O vetor não foi força bruta nem CVE: um funcionário da Context.ai foi
+> infectado por infostealer, o atacante pulou pra um token OAuth do Google Workspace
+> de um funcionário da Vercel, e de lá leu variáveis de ambiente. O CEO Guillermo
+> Rauch reconheceu publicamente o problema.
+
+Depois (com voz):
+> A Vercel passou um perrengue feio em abril que nem foi por código deles: um
+> funcionário tinha instalado uma extensão de IA no navegador, o token de acesso
+> dela vazou, e por essa porta o atacante leu variáveis de ambiente que vários devs
+> tinham marcado como "não sensíveis" por descuido. Não foi exploit, não foi
+> zero-day. Foi a superfície de ataque crescendo pelo lado das integrações de IA
+> que ninguém audita.
+
+A versão "depois" tem o mesmo fato, perde detalhe que ninguém ia lembrar dois
+parágrafos depois (Context.ai, Google Workspace, Guillermo Rauch), e ganha espaço
+pra fechar com a reflexão que ancora o argumento ("a superfície de ataque
+crescendo..."). Isso é o que importa.
+
+**Bullets dentro de seção quase sempre são preguiça.** Se você está pensando em
+abrir uma lista de itens com bullets ou em quebrar uma seção com bold sub-headings
+(`**Cobertura.** ... **Análise estática.** ... **Regressão.**`), pare. Quase sempre
+isso é o sinal de que você está organizando informação como se fosse documentação
+técnica, não argumento. O Douglas raramente usa lista. Quando usa, é pra elemento
+genuinamente paralelo e curto. Sub-heading em negrito dentro de seção quebra o
+fluxo de prosa e dá tom de manual de instruções.
+
+**Quando uma seção inteira é anêmica:** se a seção tem só 1 parágrafo curto, ou ela
+não justifica existir como seção (funde com a vizinha) ou ela precisa de 2-3 parágrafos
+de desenvolvimento. Não existe seção legítima de "declaração rápida".
+
+**Em transcrições longas com muitos pontos rasos:** o trabalho é justamente desenvolver
+cada ponto em parágrafo denso usando material de referência (`.transcriptions/` de
+fontes externas), textos antigos do próprio blog, e conta-de-padaria pra ancorar
+argumentos. Transcrição é matéria-prima, não rascunho — capturar **o que ele quis
+dizer**, desenvolver até a tese.
+
+### 8. Checklist de Transformação
 
 Antes de entregar o artigo transformado, verifique:
 
@@ -528,7 +602,23 @@ Antes de entregar o artigo transformado, verifique:
 - [ ] O artigo soa como o autor falando?
 - [ ] O texto foi validado pela skill `humanizer` para remover padrões de IA?
 
-### 8. Exemplo de Fluxo de Trabalho
+### 9. Revisão Final pelo Agent `voice-reviewer`
+
+**Antes de salvar/publicar o artigo**, invoque o agent `voice-reviewer` (`.github/agents/voice-reviewer.md`)
+passando o caminho do arquivo do rascunho. O agent vai fazer 3 passadas (voz, padrões de IA, estrutura) e
+devolver crítica estruturada com:
+
+- Veredito geral (pronto / ajuste leve / retrabalho)
+- Pontos fortes específicos
+- Violações de voz com sugestão de reescrita
+- Padrões de IA detectados
+- Problemas estruturais
+- Reescritas prioritárias (top 3-5)
+
+Aplique as reescritas prioritárias antes de publicar. Não trate as sugestões como ordem absoluta: se
+discordar, mantenha sua escolha — o autor sempre prevalece. Mas leia tudo antes de decidir.
+
+### 10. Exemplo de Fluxo de Trabalho
 
 **INPUT (Transcrição):**
 
@@ -574,66 +664,22 @@ padrão para cache. Mas descobri que não é bem assim... depende do contexto.
 
 ## Checklist para Revisão de Artigos
 
-Antes de finalizar um artigo, verifique:
+Antes de finalizar um artigo, verifique itens de **processo, estrutura e formatação** (a checklist
+de **voz autoral** está na skill `douglas-voice`):
 
-- [ ] Front matter completo e correto
-- [ ] Título impactante e claro
-- [ ] Descrição que capture a essência do artigo
-- [ ] Abertura envolvente que prenda o leitor
-- [ ] Estrutura clara com seções e subseções
-- [ ] Uso apropriado de blockquotes e alertas
-- [ ] Formatação consistente (negrito, itálico, código)
-- [ ] Analogias e exemplos claros
-- [ ] Tom conversacional e autêntico
-- [ ] Humor e autoironia quando apropriado
-- [ ] Vulnerabilidade e honestidade
-- [ ] Fechamento reflexivo ou provocativo
-- [ ] Links funcionais (se houver)
-- [ ] Imagens referenciadas corretamente (se houver)
+- [ ] Front matter completo e correto (layout, date, permalink, title, categories, tags, image, description)
+- [ ] Título e descrição preenchidos e coerentes com o conteúdo
+- [ ] Abertura envolvente (a skill `douglas-voice` define o que conta como "envolvente")
+- [ ] Estrutura clara com seções (`##`) e subseções (`###`) quando necessário
+- [ ] Uso de blockquotes/alertas (`[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`) conforme convenção
+- [ ] Formatação consistente (negrito, itálico, código inline, listas)
+- [ ] Links funcionais (internos pra outros posts do blog quando o tema toca algo já abordado; externos válidos)
+- [ ] Imagens referenciadas com path absoluto e classes corretas (se houver)
 - [ ] Revisão ortográfica e gramatical
-- [ ] Linguagem inclusiva e respeitosa
-- [ ] O texto não ultrapassa 120 caracteres por linha sempre que possível
-- [ ] O texto foi validado pela skill `humanizer` para remover padrões de escrita de IA
-
-## Exemplos de Frases Típicas do Autor
-
-Para referência, aqui estão exemplos de frases que capturam o estilo:
-
-**Aberturas:**
-
-- "Finalmente saiu! Ah, fazia tempo que eu queria..."
-- "Se alguém tivesse me dito no início da minha carreira que..."
-- "Fazer parte do time X é quase como um privilégio..."
-- "Esses dias vi um cara no Twitter perguntando..."
-
-**Transições:**
-
-- "E aí veio o momento de clareza."
-- "Foi um choque perceber que..."
-- "Aí vem as frases clássicas..."
-- "E então, o mundo real chega."
-- "No final das contas..."
-
-**Ênfases:**
-
-- "E não, comunicação não é sobre 'falar bonito'..."
-- "Sim, é exatamente sobre isso."
-- "A real é que ninguém cresce sozinho."
-- "E spoiler: esse momento não existe."
-
-**Reflexões:**
-
-- "Essa é a essência da Regra..."
-- "Esse episódio foi meu choque de realidade..."
-- "O verdadeiro diferencial acontece quando..."
-- "No fim das contas, tudo se resume a..."
-
-**Fechamentos:**
-
-- "Nos vemos nos próximos posts! 🚀"
-- "E você, já aplicou X? Compartilhe suas experiências..."
-- "Então, da próxima vez que você..."
-- "Espero que você me acompanhe nessa jornada."
+- [ ] Texto não ultrapassa 120 caracteres por linha sempre que possível
+- [ ] **Voz validada pela skill `douglas-voice`** (use a checklist completa lá)
+- [ ] **Padrões de IA removidos pela skill `humanizer`**
+- [ ] **Rascunho passou pelo agent `voice-reviewer`** antes de publicar (passo 8 do workflow)
 
 ## Categorias e Tags Sugeridas
 
@@ -837,253 +883,3 @@ prática profissional. E isso só funciona quando o conteúdo é **autêntico E 
 
 ---
 
-## Fingerprint Linguístico do Douglas
-
-Esta seção captura os padrões concretos de voz, sintaxe e argumentação do autor, extraídos por análise
-estilométrica das transcrições e do artigo final aprovado. Use como referência primária para gerar texto que
-soe como ele.
-
-### Estrutura sintática
-
-**Frases curtas a médias.** Mediana de ~18 palavras. Faixa produtiva: 8 a 28 palavras. Frases acima de 30
-palavras aparecem mas sempre seguidas de uma frase curta compensatória.
-
-**Coordenação sobre subordinação.** Encadeia com "e", "aí", "mas", "então", "porque". Construções com
-"embora", "caso", "todavia" são praticamente inexistentes.
-
-**Ritmo martelo-expansão-martelo.** Frase curta assertiva, desenvolvimento longo, frase curta que fecha. A
-proporção é ~1 punch para cada 2-3 frases de desenvolvimento.
-
-### Abertura de parágrafos e seções
-
-Começa com posição pessoal, nunca com contexto abstrato. Pronome pessoal ou verbo no passado na primeira
-posição. Nunca substantivo abstrato.
-
-- ✅ "Eu já vi a IA recomendar duas coisas contraditórias na mesma conversa"
-- ✅ "Lembro quando o ChatGPT saiu, em 2022"
-- ✅ "Tem um comportamento que me irrita mais do que ceticismo exagerado"
-- ❌ "A inteligência artificial é amplamente reconhecida como..."
-- ❌ "O mercado de trabalho está passando por uma transformação..."
-
-### Fechamento de seções
-
-A última frase de cada seção carrega peso desproporcional. Precisa ser curta, afirmativa, sem condicional.
-É a frase que o leitor vai lembrar. Não pode ser transição nem qualificação.
-
-- "E o agricultor ainda precisava saber operar o trator."
-- "Isso a IA não faz por você."
-- "Isso não mudou."
-- "Reconhecer as limitações não é ser anti-IA. É a única forma de usar a ferramenta com responsabilidade."
-
-### Movimento retórico central: concessão-oposição
-
-Quase todo argumento segue: [reconhece o mérito] + Mas/Só que + [crítica]. O "Mas" é a dobradiça. Nunca
-critica sem conceder primeiro. Nunca concede sem virar.
-
-- "Uso IA, gosto de usar, e vou continuar usando. Mas a ferramenta escreve código."
-- "Tem verdade nisso, mas é uma verdade incompleta."
-- "A ferramenta me dá produtividade... Só que tô meio de saco cheio com o discurso em volta."
-
-### Pronomes
-
-- **"a gente"** = experiência coletiva de engenheiros. Default. Nunca usa "nós" formal.
-- **"eu"** = quando assume posição individual. "Eu já vi", "O que eu não faço".
-- **"você"** = quando confronta o leitor. "Quando der errado, quem vão chamar é você."
-- Nunca usa impessoal ("deve-se", "é necessário", "é importante ressaltar").
-
-### Léxico e registro
-
-Nível de formalidade: **4.5/10** (conversa séria entre pares técnicos). Contrações gramaticais são livres
-("tô", "pra", "pro", "num"). Vulgaridade é cortada na edição ("mano", "caralho", "porra" da fala não vão
-pro artigo). Exceção: tachado irônico ~~kk~~ como válvula de escape.
-
-**Palavras que são dele:** "bacana", "galera", "senso crítico", "delegar raciocínio", "alucinação/alucinado"
-(usa pra LLMs e pra pessoas), "tiro no pé", "chão de fábrica", "a conta vai bater", "trade-off", "gargalo".
-
-**Palavras que soam do assistente** (evitar ou reduzir): "subterfúgio", "iceberg inteiro que sustenta",
-"relação ambígua com a ferramenta". Quando o vocabulário ficar polido demais, reformular pro registro dele.
-
-**Termos técnicos sem tradução:** corrotina, rate limit, breakpoint, code review, PagerDuty, war room,
-postmortem, tokens, CLI, DDD, prompt. Assume que o leitor é dev.
-
-### Argumentação
-
-Sempre na ordem: **experiência pessoal concreta → reflexão abstrata**. Nunca o contrário. O episódio ancora
-o argumento. O argumento sozinho flutua.
-
-- ✅ [conta que o agente escalou a instância] → [reflete sobre limites de agentes autônomos]
-- ❌ [tese sobre limites de agentes autônomos] → [menciona um caso como exemplo]
-
-**Perguntas retóricas** são econômicas: 1-2 por artigo, posicionadas no final de blocos argumentativos como
-desconforto pro leitor. Nunca no começo de seção. Nunca em excesso.
-
-### Analogias
-
-Do mundo físico para problemas de software. Curtas (1-2 frases). Nunca se estendem em parábola. Se a
-analogia não fecha em 2 frases, reformular ou cortar.
-
-- ✅ "O trator não deu ao agricultor mais horas de descanso."
-- ❌ "Imagine um fazendeiro que, ao receber seu primeiro trator, pensou que poderia finalmente descansar.
-  No entanto, logo percebeu que..." (extenso, didático)
-
-Analogia pela metade é pior que nenhuma analogia. Se não dá pra desenvolver até fechar, corta.
-
-### Blockquotes
-
-Raros e cirúrgicos. Máximo 2-3 por artigo. Não são ênfase, são destaque estrutural reservado pra momentos
-que precisam parar o fluxo de leitura. Usar mais diluiria o efeito.
-
-### Encerramento circular
-
-Sempre que possível, a frase final do artigo ecoa uma imagem ou situação concreta da abertura, sem repetir
-literalmente. O leitor que lembra, sorri. O leitor que não lembra, entende a frase no contexto imediato.
-
-### O que sobrevive da fala para a escrita
-
-Algumas construções orais funcionam escritas sem alteração e devem ser preservadas:
-
-- Frases curtas assertivas com sujeito implícito ("Código era somente uma parte")
-- Construções proverbiais ("A conta sempre vai bater uma hora")
-- Cenários hipotéticos diretos ("Caiu a Anthropic. E aí? Vai ficar olhando a IDE?")
-- A expressão "delegar raciocínio" (formulação cunhada por ele, conceito central)
-
-### O que muda da fala para a escrita
-
-- Enumerações em cascata da fala ("sabe contexto, sabe regra de negócio, sabe arquitetura") viram
-  raciocínio causal na escrita ("porque valida o output, sabe quando está alucinando e consegue corrigir")
-- "sabe?", "tá ligado?", "né?" são cortados (marcadores fáticos orais, sem função escrita)
-- Repetições da fala são condensadas: se ele martelou o mesmo ponto 4 vezes no áudio, no artigo aparece 1
-  vez com punch
-- Hesitações, autocorreções e tangentes são eliminadas. Analogias que ficaram pela metade na fala são
-  reformuladas ou descartadas
-
----
-
-## Lições Aprendidas em Revisões Reais
-
-Esta seção acumula aprendizados de sessões de revisão com o autor para calibrar melhor as transformações futuras.
-
-### Frases soltas entre parágrafos são proibidas
-
-Uma frase sozinha entre dois parágrafos quase sempre é problema. Ou ela pertence ao parágrafo anterior (como
-fechamento), ou ao próximo (como abertura), ou deveria virar um parágrafo inteiro com desenvolvimento. Frase
-solta flutuando no meio do texto quebra o ritmo e parece nota mental não resolvida.
-
-Exceção: quando a frase solta é intencional, como um punch line ou uma quebra de expectativa ("E o agricultor
-ainda precisava saber operar o trator."). Nesse caso, ela funciona exatamente porque o contraste é o efeito
-desejado. A diferença é que a frase intencional não precisaria de mais contexto, ela é autossuficiente.
-
-### Listas disfarçadas de parágrafos
-
-Se um "parágrafo" é na verdade uma sequência de frases curtas sem conexão ("IA alucina. Toma decisões sem
-contexto. Não tem memória confiável."), ele precisa ser reescrito como prosa de verdade ou virar uma lista
-explícita. Texto corrido com estrutura de bullet point é o pior dos dois mundos: nem flui nem organiza.
-
-### Cada seção precisa ser desenvolvida, não apenas declarada
-
-Se uma seção tem menos de 2-3 parágrafos, ela provavelmente está subdesenvolvida. O Douglas não cria seções para
-declarar posições, ele desenvolve ideias. Cada seção deve ter substância reflexiva, não apenas afirmar algo e
-seguir em frente. Se não tem o que dizer em 2-3 parágrafos, a seção não justifica existir como seção separada.
-
-### Ganchos narrativos entre seções
-
-Seções não devem terminar no vácuo nem começar do zero. O fechamento de uma seção deve naturalmente conduzir ao
-tema da próxima, como numa conversa onde um assunto puxa o outro. O leitor não deve sentir que mudou de artigo ao
-trocar de seção.
-
-- ❌ Seção A termina com uma reflexão fechada. Seção B começa com "Outro ponto importante é..."
-- ✅ Seção A termina questionando uma consequência. Seção B abre dizendo "E essa consequência aparece de um jeito
-  que me irrita mais do que ceticismo exagerado..."
-
-### Credenciais sem virar currículo
-
-Quando o Douglas menciona que tem agentes autônomos rodando em produção, não é pra impressionar. É pra
-contextualizar de onde vem a opinião. A diferença entre credencial e currículo é intenção: credencial diz "eu sei
-do que estou falando porque vivo isso", currículo diz "olha como eu sou foda". Se o trecho começar a soar como
-LinkedIn, reescrever.
-
-- ❌ "Tenho anos de experiência construindo sistemas de IA em escala para uma das maiores fintechs do país."
-- ✅ "Hoje tenho agentes autônomos rodando no PicPay, sistemas que tomam decisão em produção sem esperar minha
-  confirmação. Quando algo quebra, sou eu que depuro."
-
-### Não ser arrogante nem professoral
-
-O Douglas tem opinião forte, mas não se coloca acima do leitor. Frases que soam como "uma conta que as pessoas
-não estão fazendo" ou "o que ninguém está dizendo" são condescendentes, pressupõem que o autor viu algo que os
-outros são burros demais pra ver. Reformular pra algo que inclua o leitor na reflexão em vez de excluí-lo.
-
-- ❌ "Tem uma consequência óbvia que ninguém está fazendo a conta."
-- ✅ "E tem uma consequência óbvia disso que ninguém nas empresas está dizendo em voz alta."
-
-A diferença é sutil, mas importante: "ninguém está dizendo em voz alta" é uma observação sobre o discurso público.
-"Ninguém está fazendo a conta" é chamar os outros de incompetentes.
-
-### A frase precisa combinar com o que vem antes e depois
-
-Toda frase pertence a um fluxo. Se você trocar a frase de lugar e ela funcionar igual em qualquer outro parágrafo,
-ela não está conectada ao contexto. Cada frase deve responder, complementar ou avançar o que a anterior disse.
-
-Quando revisar, ler cada transição entre frases e perguntar: "a segunda frase faz mais sentido aqui do que em
-qualquer outro lugar do texto?" Se não, reescrever a conexão.
-
-### Estrangeirismos desnecessários
-
-"Falando alto" (tradução literal de "saying out loud") não é português natural. O Douglas fala "dizendo em voz
-alta". De forma geral, quando uma expressão parece tradução literal do inglês, provavelmente é. Trocar pela
-expressão equivalente em português brasileiro. Isso vale especialmente pra expressões idiomáticas: "at the end of
-the day" vira "no fim das contas", não "no final do dia".
-
-### Contradições honestas devem ficar em aberto
-
-Se o Douglas diz que é fã e hater ao mesmo tempo, não resolva a contradição. Não escolha um lado. Não faça uma
-síntese elegante que neutralize a tensão. A honestidade está exatamente em deixar a contradição exposta. Artigos
-reflexivos que resolvem tudo de forma limpa soam falsos.
-
-- ❌ "Apesar das críticas, no fundo a ferramenta entrega valor e merece reconhecimento."
-- ✅ "Dependendo do dia que você me perguntar, vou estar mais crítico, mais entusiasmado ou mais cético. O que
-  não muda é que ela me ajuda bastante e que ela erra bastante também."
-
-### Transcrição é matéria-prima, não rascunho
-
-O Douglas pensa em voz alta durante as gravações. O que sai na transcrição é um rascunho mental, com repetições,
-analogias inacabadas e pensamentos interrompidos. A missão não é transcrever fielmente, é entender o raciocínio por
-trás e reconstruir em texto com storytelling coerente.
-
-Se uma analogia ficou pela metade na gravação (ex: "é como uma carroça... mas não é exatamente isso"), não publique
-a analogia quebrada. Ou reformule de forma que funcione, ou descarte.
-
-**Capturar o que ele quis dizer, não o que ele disse.** Se na transcrição ele enrola por três frases pra chegar
-num ponto, no artigo aquele ponto deve aparecer direto. Se ele volta num assunto que já tinha deixado pra trás,
-incorporar na seção certa, não na ordem que ele falou.
-
-### Títulos de seção devem soar como alguém falando
-
-Evite títulos que pareçam cabeçalhos de documentação técnica ou de slide de apresentação corporativa. Prefira títulos
-que tenham personalidade e que o próprio Douglas poderia falar em voz alta.
-
-- ❌ "Considerações sobre produtividade com IA"
-- ✅ "O problema com 'mais produtividade'"
-- ❌ "Utilização prática da ferramenta"
-- ✅ "Na prática, então"
-
-### O parágrafo explicativo não pode soar como narrador externo
-
-Quando o Douglas conta um episódio pessoal (ex: o agente que escalou a instância sem pedir), o parágrafo que
-explica o que aconteceu de verdade deve soar como ele mesmo refletindo, não como um narrador técnico de fora. Se
-o trecho começa a soar como um post-mortem de incidente corporativo, está errado.
-
-- ❌ "O que ocorreu foi uma ausência de guardrail de confirmação em ação com efeito financeiro irreversível."
-- ✅ "O agente achou uma brecha, uma situação que o meu prompt não cobria, e decidiu sozinho. É quase como um
-  pen tester procurando onde o escopo não foi definido."
-
-### Travessões são um sinal de alerta
-
-O uso excessivo de travessão (—) é um dos marcadores mais visíveis de texto gerado por IA. O Douglas usa vírgula,
-ponto e vírgula ou reestrutura a frase. Sempre que um travessão aparecer no rascunho, perguntar: dá pra trocar por
-vírgula ou ponto? Se sim, trocar.
-
-### A rejeição ao hype é parte da voz, não uma ressalva
-
-Quando o Douglas diz que não gosta de falar de IA, não está sendo modesto nem se protegendo de críticas. É uma
-posição genuína. Essa resistência inicial ao hype é parte do que dá credibilidade ao que ele diz depois. Preservar
-esse tom no início do artigo é importante, não suavize para "apesar de ser um tema muito discutido...".
