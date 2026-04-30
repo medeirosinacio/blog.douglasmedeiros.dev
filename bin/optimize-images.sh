@@ -4,7 +4,26 @@ IMAGE_DIRS="/app/assets/images"
 HASH_FILE="/app/_data/.optimized-images"
 
 # Install dependencies
-npm install sharp-cli -g
+# Em redes com TLS interceptado (proxy corporativo, Zscaler etc.) o npm
+# falha com UNABLE_TO_GET_ISSUER_CERT_LOCALLY. Tentamos uma sequência de
+# fallbacks antes de desistir.
+install_sharp() {
+  npm install sharp-cli -g 2>/dev/null && return 0
+  echo "WARN: npm install falhou no modo padrão, tentando registry HTTP..."
+  npm install sharp-cli -g --registry=http://registry.npmjs.org/ 2>/dev/null && return 0
+  echo "WARN: ainda falhou, tentando com strict-ssl=false (inseguro)..."
+  npm install sharp-cli -g --strict-ssl=false && return 0
+  return 1
+}
+
+if ! command -v sharp >/dev/null 2>&1; then
+  if ! install_sharp; then
+    echo "ERROR: não foi possível instalar sharp-cli. Verifique sua rede/proxy"
+    echo "       ou monte a CA corporativa via NODE_EXTRA_CA_CERTS."
+    exit 1
+  fi
+fi
+
 touch "$HASH_FILE"
 mkdir -p /app/.images-cache
 
