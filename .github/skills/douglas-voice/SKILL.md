@@ -484,6 +484,47 @@ Se uma seção tem menos de 2-3 parágrafos, ela provavelmente está subdesenvol
 declarar posições, ele desenvolve ideias. Cada seção deve ter substância reflexiva, não apenas afirmar algo e
 seguir em frente. Se não tem o que dizer em 2-3 parágrafos, a seção não justifica existir como seção separada.
 
+### Declarações de critério sem ancoragem
+
+Frases curtas que anunciam um critério ou posição pessoal ficam truncadas quando empilhadas em sequência sem
+ponte com o que vem antes ou depois. Cada frase declara, mas o leitor não vê por que aquele critério entrou
+na conversa agora, como ele se manifestou em concreto, nem qual era a expectativa por trás. Resultado: parece
+bullet de LinkedIn disfarçado de prosa.
+
+Sinais:
+
+- Sequência de 2-3 frases curtas declarativas no mesmo parágrafo, cada uma anunciando uma posição.
+- Frase do tipo "O que importa é X", "O que mudou foi Y", "X nunca foi Z" sem desenvolver no mesmo fôlego.
+- Critério abstrato ("gente boa do lado", "desafio grande") sem um exemplo específico do que aquilo significava
+  na prática.
+- Salto sem ponte entre "esse é meu critério" e "e foi por isso que aconteceu X".
+
+Como adensar:
+
+1. **Adiciona expectativa prévia.** Mostra que a escolha foi calculada, não constatação retrospectiva. "E aqui
+   tinha os dois de sobra" → "E uma empresa do tamanho do PicPay eu tinha certeza que teria os dois de sobra".
+2. **Nomeia o concreto.** Substitui o abstrato pela manifestação específica. "Gente boa" → "gente que me forçava
+   a ler em diagonal pra acompanhar conversa". "Desafio grande" → "desafio que não cabia na cadeira em que eu
+   entrei".
+3. **Constrói contra um candidato rejeitado.** Quando a reflexão é "por que aconteceu X", abre com o candidato
+   óbvio e descarta antes de oferecer a resposta real. "Fico pensando no porquê" sozinho fica suspenso. "Fico
+   pensando no porquê, e a resposta nunca é esforço. Esforço eu sempre tive..." abre, descarta candidato,
+   justifica o descarte, e entrega a resposta verdadeira.
+4. **Ponte causal explícita.** Amarra a consequência ao critério com conector visível. "Lá dentro o caminho foi
+   rápido" cai do céu depois de "o que prende é X". "O caminho foi rápido por causa disso" amarra.
+
+Antes:
+
+> Cargo nunca foi o que me prendeu. O que prende é com quem eu vou trabalhar e o tamanho do desafio que tô
+> assumindo. Lá dentro o caminho foi rápido, virei sênior, depois tech lead, e agora tech manager.
+
+Depois:
+
+> Cargo nunca foi o que me prendeu, o que prende é com quem eu vou trabalhar e o tamanho do desafio que tô
+> assumindo. E uma empresa do tamanho do PicPay eu tinha certeza que teria os dois de sobra: gente que me
+> forçava a ler em diagonal pra acompanhar conversa, e desafio que não cabia na cadeira em que eu entrei. O
+> caminho foi rápido por causa disso, virei sênior, depois tech lead, e agora tech manager.
+
 ### Ganchos narrativos entre seções
 
 Seções não devem terminar no vácuo nem começar do zero. O fechamento de uma seção deve naturalmente conduzir ao
@@ -493,6 +534,70 @@ trocar de seção.
 - ❌ Seção A termina com uma reflexão fechada. Seção B começa com "Outro ponto importante é..."
 - ✅ Seção A termina questionando uma consequência. Seção B abre dizendo "E essa consequência aparece de um jeito
   que me irrita mais do que ceticismo exagerado..."
+
+### Memórias pessoais precisam de textura, não só fatos
+
+Quando o Douglas narra um episódio do passado (infância, começo de carreira, primeiro emprego, fase específica
+da vida), o parágrafo não pode ser uma lista de fatos secos. Memória sem textura vira currículo narrativo: o
+leitor entende o que aconteceu, mas não sente que esteve lá. E sem essa sensação, a história não puxa pro
+próximo parágrafo.
+
+**Sinais de memória sem textura:**
+
+- Sequência de fatos no passado simples ("comecei o curso, aprendi HTML, montei um site") sem nenhum detalhe
+  sensorial, temporal ou cultural.
+- Referência a tecnologia, jogo, programa ou produto da época sem contextualizar pro leitor que não viveu
+  ("instalei TF2", "usei Dreamweaver", "abri MSN") — quem é mais novo lê o nome e não sabe nem o que era nem
+  por que importa.
+- Pular direto pro problema técnico/conflito sem deixar a paixão ou a obsessão respirar antes ("queria
+  servidor próprio" sem antes mostrar **por que** queria, **o que sentia**, **quanto tempo gastava**).
+- Marcador temporal ausente ou genérico ("nessa época", "naquele tempo") sem ancoragem em algo concreto da
+  era (internet via rádio, MSN, Orkut, eMule, 2011 em si).
+
+**Como dar textura:**
+
+1. **Detalhe sensorial ou temporal específico.** Uma sensação ("virava madrugadas"), um som, um cheiro, um
+   objeto da época ("internet via rádio de dez megas", "MSN", "garimpar no eMule"). Um item desses já
+   muda o parágrafo de "currículo narrativo" pra "memória vivida".
+2. **Contexto pra referência cultural.** Se cita TF2, Dreamweaver, Flash, Orkut, MSN, eMule: uma frase
+   curta explicando o que era e por que importava pro leitor que não viveu. Sem virar enciclopédia. Uma
+   linha basta: *"FPS daqueles que inspiraram um monte de outros depois: times, personagens com
+   habilidades distintas, cada um com seu papel."* Ou *"naquela época isso era comum, vendiam curso de
+   Office, de Windows, de manutenção de PC direto pra galera dentro da escola."*
+3. **Deixar a paixão/obsessão respirar antes do problema técnico.** A estrutura natural é: primeiro a
+   imersão emocional (eu virava madrugada, eu era obcecado, eu queria muito), depois o problema concreto
+   (queria customizar, queria que rodasse em casa, queria meu próprio servidor). Quem pula direto pro
+   problema mata o setup.
+4. **Marcador temporal ancorado.** "2011" sozinho é número. "Em 2011 eu tinha acabado de fazer 18, tava
+   no último ano do ensino médio" é ancoragem. O leitor sabe não só **quando** mas **em que fase da vida
+   sua** aquilo aconteceu.
+
+**Exemplo antes/depois:**
+
+Antes (lista de fatos secos):
+> Eu mexia em computador o suficiente pra entrar em chat, baixar jogo pirata, ler tópico aleatório no
+> Orkut. E pra rodar servidor privado de Team Fortress 2. Queria jogar com os amigos num servidor
+> próprio, com mapa, regra e modo customizados. Descobri que dava pra subir o servidor em casa.
+
+Depois (com textura):
+> Eu mexia em computador o suficiente pra abrir MSN, garimpar jogo pirata no eMule, ler tópico aleatório
+> no Orkut sobre como deixar o Windows mais rápido. Coisa de adolescente com PC em 2011, nada de
+> especial. Mas ali já tinha uma faísca: tentar rodar um servidor privado de Team Fortress 2.
+>
+> Nessa época eu virava madrugadas jogando online. O game era um FPS que a gente chamava carinhosamente
+> de TF2, daqueles que inspiraram um monte de outros que vieram depois: times, personagens com
+> habilidades distintas, cada um com seu papel. A gente jogava em servidores públicos abertos e numa
+> dessas descobri que dava pra ter o meu, customizado.
+
+A diferença não é tamanho, é presença. A versão com textura ancora o leitor na época (MSN, eMule, 2011,
+madrugadas), explica o que TF2 era pra quem não viveu (FPS com times e habilidades distintas), e deixa a
+obsessão respirar antes do problema técnico ("virava madrugadas" → depois "descobri que dava pra ter o
+meu"). Quem é dev de 25 anos consegue se situar; quem é da geração TF2 reconhece o cheiro.
+
+**Quando a transcrição já entrega textura, preservar.** O Douglas, falando, costuma trazer naturalmente
+o detalhe sensorial ("eu virava madrugada jogando", "internet via rádio"). O risco é o redator achar que
+isso é firula oral e cortar na edição. Não corte. Esse é o material que separa relato pessoal de
+currículo narrativo.
 
 ### Credenciais sem virar currículo
 
@@ -629,6 +734,8 @@ Antes de finalizar qualquer artigo, valide cada item:
 - [ ] Linka pra artigo anterior do próprio blog quando o tema toca algo já abordado
 - [ ] Nenhuma frase solta entre parágrafos sem ser punch intencional
 - [ ] Cada seção tem 2+ parágrafos de desenvolvimento real
+- [ ] Declarações de critério/posição vêm com expectativa prévia, âncora concreta ou ponte causal — nunca empilhadas soltas
+- [ ] Memórias pessoais têm textura (detalhe sensorial/temporal, contexto pra referência cultural da época, paixão respirando antes do problema técnico) — não são lista de fatos secos
 - [ ] Transições entre seções têm gancho narrativo, não "outro ponto importante"
 - [ ] Credenciais soam como contexto, não como currículo
 - [ ] Sem condescendência ("ninguém pensa nisso") nem tom professoral
