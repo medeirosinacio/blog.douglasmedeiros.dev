@@ -525,6 +525,15 @@ declarada.
 4-5 frases. Se estiver com 2-3, provavelmente falta substância — desenvolva ou funda
 com o parágrafo vizinho.
 
+**Revise parágrafos vizinhos como pares.** Se o segundo apenas continua a mesma cena,
+explica a consequência do anterior, faz o autor se reconhecer no episódio ou contrapõe
+problema e solução, os dois provavelmente são um único parágrafo. Una e use uma ponte
+causal ou narrativa (`só que`, `por isso`, `reconheci ali`, `uma boa delegação faz o
+oposto`) para o texto continuar em prosa. Mantenha a separação quando houver mudança real
+de tempo, cena, perspectiva ou argumento, ou quando a frase curta funcionar como punch
+intencional. O objetivo não é produzir blocos enormes, é evitar que uma mesma ideia seja
+quebrada por um espaço em branco sem função.
+
 **Cuidado com o modo jornalístico.** Adensar parágrafo não é encher de nome, data,
 fonte e citação. Esse é o vício oposto ao anêmico, e arruína a voz na mesma medida.
 Se o parágrafo virou matéria de portal de tecnologia, com 4 nomes próprios em 5 linhas
@@ -599,6 +608,7 @@ Antes de entregar o artigo transformado, verifique:
 - [ ] Título é impactante e claro?
 - [ ] Descrição captura a essência?
 - [ ] Há uma abertura envolvente?
+- [ ] Parágrafos vizinhos que continuam a mesma cena ou argumento foram unidos?
 - [ ] O artigo soa como o autor falando?
 - [ ] O texto foi validado pela skill `humanizer` para remover padrões de IA?
 
@@ -882,4 +892,3 @@ Na real, descobri depois que...
 prática profissional. E isso só funciona quando o conteúdo é **autêntico E tecnicamente preciso**.
 
 ---
-

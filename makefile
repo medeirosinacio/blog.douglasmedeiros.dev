@@ -22,17 +22,21 @@ setup-x86: ## Setup the project for x86
       /bin/bash -c "bundle install --path=./.gem-cache && bundle exec jekyll serve --force_polling --host 0.0.0.0 --livereload"
 
 setup-arm: ## Setup the project for ARM
+	mkdir -p .gem-cache
+	security find-certificate -a -p > .gem-cache/macos-keychains.pem
 	docker run -t --rm \
 	  --name $(CONTAINER_NAME) \
       -v ./:/app \
+	  -v ./.gem-cache/macos-keychains.pem:/tmp/macos-keychains.pem:ro \
       -w /app \
       --dns 8.8.8.8 \
       -p 80:4000 \
       -p 4000:4000 \
       -p 35729:35729 \
+	  -e SSL_CERT_FILE=/tmp/macos-keychains.pem \
       -e RUBYOPT="-W0" \
       arm64v8/ruby:2.7 \
-      /bin/sh -c "apt update && apt install nodejs -y && bundle install --path=./.gem-cache && bundle exec jekyll serve --force_polling --host 0.0.0.0 --livereload"
+      /bin/sh -c "sed -i 's|http://deb.debian.org|https://deb.debian.org|g' /etc/apt/sources.list && apt-get -o Acquire::https::CaInfo=/tmp/macos-keychains.pem update && apt-get -o Acquire::https::CaInfo=/tmp/macos-keychains.pem install -y --no-install-recommends nodejs && bundle install --path=./.gem-cache && bundle exec jekyll serve --force_polling --host 0.0.0.0 --livereload"
 
 check-docker: ## Check if Docker is installed
 	@docker --version > /dev/null || (echo "Docker is not installed. Please install Docker first." && exit 1)
